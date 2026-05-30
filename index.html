@@ -6,7 +6,7 @@
 <title>What's Your Home Health Score? — Trace</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -28,7 +28,7 @@
     min-height: 100%;
     background: var(--linen);
     color: var(--night);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-weight: 300;
     -webkit-font-smoothing: antialiased;
   }
@@ -47,7 +47,7 @@
     max-width: 640px;
     display: flex;
     justify-content: center;
-    padding: 20px 0 16px;
+    padding: 36px 0 24px;
     border-bottom: 1px solid var(--bone);
     margin-bottom: 0;
   }
@@ -56,18 +56,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    gap: 10px;
-    width: 100%;
+    gap: 6px;
   }
 
   .wordmark {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-weight: 300;
-    font-size: 14px;
-    letter-spacing: 0.32em;
-    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.25em;
     text-transform: lowercase;
     color: var(--night);
   }
@@ -121,54 +117,51 @@
 
   /* ── Hook screen ── */
   #screen-hook {
-    background: var(--linen);
-    padding: 32px 0 0;
+    padding-top: 56px;
     text-align: center;
-    margin: 0;
   }
 
   .hook-eyebrow {
     font-size: 11px;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--ash);
-    font-weight: 300;
-    margin-bottom: 16px;
+    color: var(--dusk);
+    font-weight: 400;
+    margin-bottom: 28px;
   }
 
   .hook-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(28px, 7vw, 46px);
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.15;
-    letter-spacing: 0em;
+    font-size: clamp(36px, 8vw, 56px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
     color: var(--night);
-    margin-bottom: 20px;
+    margin-bottom: 28px;
   }
 
   .hook-headline em {
-    font-style: normal;
-    font-weight: 400;
+    font-style: italic;
+    font-weight: 300;
   }
 
   .stat-block {
     background: var(--night);
     color: var(--linen);
-    padding: 22px 24px;
-    margin: 0 0 20px;
+    padding: 32px;
+    margin: 36px 0;
     text-align: left;
     position: relative;
-    border-left: 3px solid rgba(245,245,243,0.15);
+    border-left: 3px solid rgba(245,245,243,0.2);
   }
 
   .stat-number {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 48px;
-    font-weight: 200;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
     line-height: 1;
     margin-bottom: 6px;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.02em;
     color: var(--linen);
   }
 
@@ -176,26 +169,26 @@
     font-size: 11px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(245,245,243,0.4);
-    font-weight: 300;
+    color: rgba(245,245,243,0.45);
+    font-weight: 400;
     margin-bottom: 16px;
   }
 
   .stat-label {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 300;
-    color: rgba(245,245,243,0.75);
-    line-height: 1.75;
+    color: rgba(245,245,243,0.85);
+    line-height: 1.65;
     letter-spacing: 0.01em;
     padding-top: 16px;
     border-top: 1px solid rgba(245,245,243,0.12);
   }
 
   .hook-body {
-    font-size: 14px;
-    line-height: 1.75;
+    font-size: 15px;
+    line-height: 1.7;
     color: var(--dusk);
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     max-width: 480px;
     margin-left: auto;
     margin-right: auto;
@@ -206,8 +199,8 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--ash);
-    margin-bottom: 12px;
-    font-weight: 300;
+    margin-bottom: 24px;
+    font-weight: 400;
   }
 
   /* ── Buttons ── */
@@ -215,7 +208,7 @@
     display: inline-block;
     background: var(--night);
     color: var(--linen);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.18em;
@@ -233,7 +226,7 @@
     display: inline-block;
     background: transparent;
     color: var(--night);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.18em;
@@ -264,9 +257,8 @@
 
   .q-text {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 4.5vw, 28px);
-    font-weight: 400;
-    font-style: italic;
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 300;
     line-height: 1.25;
     color: var(--night);
     margin-bottom: 12px;
@@ -299,7 +291,7 @@
     transition: border-color 0.15s, background 0.15s;
     text-align: left;
     width: 100%;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
   }
 
   .option:hover {
@@ -363,7 +355,7 @@
     background: none;
     border: none;
     cursor: pointer;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-weight: 400;
     transition: color 0.2s;
   }
@@ -377,7 +369,7 @@
     background: var(--night);
     border: none;
     cursor: pointer;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-weight: 400;
     padding: 16px 36px;
     transition: opacity 0.2s;
@@ -438,9 +430,8 @@
 
   .score-number {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 72px;
-    font-weight: 400;
-    font-style: normal;
+    font-size: 42px;
+    font-weight: 300;
     line-height: 1;
     color: var(--night);
   }
@@ -463,10 +454,9 @@
 
   .result-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(20px, 4.5vw, 28px);
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.25;
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 300;
+    line-height: 1.2;
     color: var(--night);
     margin-bottom: 16px;
     text-align: center;
@@ -487,127 +477,115 @@
   .swap-highlight {
     background: var(--night);
     color: var(--linen);
-    padding: 24px 28px;
-    margin-bottom: 32px;
-  }
-
-  .swap-eyebrow {
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(245,245,243,0.5);
-    margin-bottom: 12px;
-    font-weight: 400;
-  }
-
-  .swap-title {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--linen);
-    margin-bottom: 8px;
-  }
-
-  .swap-desc {
-    font-size: 13px;
-    color: rgba(245,245,243,0.7);
-    line-height: 1.6;
-    font-weight: 300;
-  }
-
-  /* Locked swap teaser — shown before email */
-  .swap-locked {
-    border: 1px solid var(--bone);
-    background: var(--white);
-    padding: 20px 24px;
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  .swap-locked-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: var(--bone);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-  }
-
-  .swap-locked-text { flex: 1; }
-
-  .swap-locked-label {
-    font-size: 10px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ash);
-    font-weight: 400;
-    margin-bottom: 4px;
-  }
-
-  .swap-locked-hint {
-    font-size: 13px;
-    font-weight: 300;
-    color: var(--night);
-    line-height: 1.4;
-  }
-
-  /* Findings teaser — shown before email */
-  .findings-teaser {
-    border: 1px solid var(--bone);
-    background: var(--white);
-    padding: 16px 20px;
+    padding: 20px;
     margin-bottom: 28px;
   }
-
-  .findings-teaser-label {
-    font-size: 10px;
-    letter-spacing: 0.14em;
+  .swap-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--ash);
+    color: rgba(245,245,243,0.35);
+    margin-bottom: 6px;
     font-weight: 400;
-    margin-bottom: 12px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--bone);
+    font-family: 'Jost', sans-serif;
   }
-
-  .findings-teaser-row {
+  .swap-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--linen);
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+  .swap-detail-line {
+    font-size: 10px;
+    font-weight: 300;
+    color: rgba(245,245,243,0.35);
+    font-family: 'Jost', sans-serif;
+    margin-bottom: 8px;
+  }
+  .swap-desc {
+    font-size: 10px;
+    font-weight: 300;
+    color: rgba(245,245,243,0.5);
+    line-height: 1.65;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-family: 'Jost', sans-serif;
+    margin-bottom: 0;
+  }
+  .swap-why-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,245,243,0.25);
+    font-family: 'Jost', sans-serif;
+    margin-bottom: 4px;
+  }
+  .swap-boost-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--bone);
+    justify-content: space-between;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin-top: 10px;
   }
-
-  .findings-teaser-row:last-child { border-bottom: none; }
-
-  .findings-teaser-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .findings-teaser-blur {
-    flex: 1;
-    height: 10px;
-    background: var(--bone);
-    border-radius: 2px;
-    filter: blur(1px);
-  }
-
-  .findings-teaser-lock {
-    font-size: 11px;
+  .swap-boost-label {
+    font-size: 9px;
     font-weight: 300;
-    color: var(--ash);
-    letter-spacing: 0.06em;
+    color: rgba(245,245,243,0.35);
+    font-family: 'Jost', sans-serif;
+  }
+  .swap-boost-nums {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .swap-boost-from {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(245,245,243,0.25);
+  }
+  .swap-boost-arr {
+    font-size: 10px;
+    color: rgba(245,245,243,0.2);
+  }
+  .swap-boost-to {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 22px;
+    color: #7DC878;
+  }
+  .swap-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245,245,243,0.65);
+    background: rgba(245,245,243,0.08);
+    border: 1px solid rgba(245,245,243,0.12);
+    padding: 8px 14px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .swap-link:hover { opacity: 0.8; }
+  .swap-budget-note {
+    background: rgba(125,200,120,0.1);
+    border: 0.5px solid rgba(125,200,120,0.2);
+    padding: 8px 10px;
+    margin-top: 10px;
+    font-size: 10px;
+    font-weight: 300;
+    color: #7DC878;
+    font-family: 'Jost', sans-serif;
+    line-height: 1.5;
   }
 
-  /* Findings list — shown after email submitted */
-  .findings {
+.findings {
     margin-bottom: 36px;
   }
 
@@ -655,64 +633,7 @@
     line-height: 1.5;
   }
 
-  /* Inline confirmation block — shown after email submitted */
-  .confirmation-block {
-    background: var(--night);
-    padding: 32px 28px 36px;
-    margin: 32px 0 0;
-    text-align: center;
-  }
-
-  .confirmation-check {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(245,245,243,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
-  }
-
-  .confirmation-headline {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: normal;
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--linen);
-    margin: 0 0 10px;
-    line-height: 1.15;
-  }
-
-  .confirmation-body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    color: rgba(245,245,243,0.7);
-    line-height: 1.65;
-    margin: 0 0 0;
-  }
-
-  .confirmation-body strong {
-    color: var(--linen);
-    font-weight: 400;
-  }
-
-  .confirmation-divider {
-    width: 24px;
-    height: 0.5px;
-    background: rgba(245,245,243,0.15);
-    margin: 20px auto;
-  }
-
-  .confirmation-sub {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 300;
-    color: rgba(245,245,243,0.35);
-    line-height: 1.7;
-    margin: 0;
-  }
+  /* Email capture */
   .email-gate {
     padding: 32px;
     border: 1px solid var(--bone);
@@ -722,7 +643,6 @@
 
   .email-gate-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-style: normal;
     font-size: 22px;
     font-weight: 400;
     color: var(--night);
@@ -749,7 +669,7 @@
     padding: 14px 16px;
     border: 1px solid var(--bone);
     background: var(--linen);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: 14px;
     font-weight: 300;
     color: var(--night);
@@ -766,7 +686,7 @@
     padding: 16px;
     background: var(--night);
     color: var(--linen);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Jost', sans-serif;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.18em;
@@ -805,10 +725,9 @@
 
   .ty-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-style: normal;
-    font-size: clamp(24px, 5vw, 36px);
-    font-weight: 400;
-    line-height: 1.2;
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 300;
+    line-height: 1.1;
     color: var(--night);
     margin-bottom: 20px;
   }
@@ -859,7 +778,292 @@
     .email-gate { padding: 24px 20px; }
     .swap-highlight { padding: 20px; }
   }
-</style>
+
+  .swap-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--linen);
+    background: var(--night);
+    padding: 10px 16px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .swap-link:hover { opacity: 0.85; }
+
+  
+  /* ── Full product teaser ── */
+  .full-teaser {
+    border: 1px solid var(--bone);
+    padding: 24px;
+    margin-bottom: 20px;
+    background: var(--white);
+  }
+  .ft-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2D5A27;
+    margin-bottom: 8px;
+  }
+  .ft-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--night);
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .ft-body {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--dusk);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .ft-features {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .ft-feature {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .ft-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ash);
+    flex-shrink: 0;
+  }
+  .ft-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--night);
+  }
+
+  /* ── Share button ── */
+  .share-wrap {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .btn-share {
+    background: none;
+    border: 1px solid var(--bone);
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--night);
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-share:hover {
+    background: var(--night);
+    color: var(--linen);
+    border-color: var(--night);
+  }
+
+  
+  /* ── Start today card — Option A dark ── */
+  .swap-today {
+    background: #1A1A1A;
+    padding: 13px;
+    margin-bottom: 28px;
+  }
+  .today-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #7DC878;
+    margin-bottom: 6px;
+    font-weight: 400;
+    font-family: 'Jost', sans-serif;
+  }
+  .today-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: #F5F5F3;
+    margin-bottom: 2px;
+    line-height: 1.3;
+  }
+  .today-detail {
+    font-size: 9px;
+    font-weight: 300;
+    color: rgba(245,245,243,0.35);
+    font-family: 'Jost', sans-serif;
+    margin-bottom: 6px;
+  }
+  .today-desc {
+    font-size: 9px;
+    font-weight: 300;
+    color: rgba(245,245,243,0.4);
+    line-height: 1.55;
+    padding-top: 7px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    font-family: 'Jost', sans-serif;
+  }
+  .today-boost-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 7px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+    margin-top: 7px;
+  }
+  .today-boost-label {
+    font-size: 9px;
+    font-weight: 300;
+    color: rgba(245,245,243,0.35);
+    font-family: 'Jost', sans-serif;
+  }
+  .today-boost-nums {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .today-boost-from {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(245,245,243,0.25);
+  }
+  .today-boost-arr {
+    font-size: 8px;
+    color: rgba(245,245,243,0.2);
+  }
+  .today-boost-to {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: #7DC878;
+  }
+  .today-link {
+    display: inline-block;
+    margin-top: 9px;
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7DC878;
+    background: rgba(125,200,120,0.12);
+    border: 0.5px solid rgba(125,200,120,0.25);
+    padding: 5px 9px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .today-link:hover { opacity: 0.8; }
+  .swap-cards-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 10px;
+  }
+
+  
+  .hook-eyebrow-sub {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 20px;
+    margin-top: -8px;
+  }
+
+  
+  /* ── Scroll indicator ── */
+  .scroll-hint {
+    text-align: center;
+    padding: 14px 0 6px;
+    margin-bottom: 8px;
+  }
+  .scroll-hint-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ash);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  .scroll-arrow {
+    animation: bounce 1.5s infinite;
+    display: inline-block;
+    font-size: 14px;
+    color: #2D5A27;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(4px); }
+  }
+
+  
+  .bridge-callout {
+    background: #EBF0E8;
+    border-left: 3px solid #2D5A27;
+    padding: 9px 12px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .bc-text {
+    font-size: 10px;
+    font-weight: 300;
+    color: #2D5A27;
+    font-family: 'Jost', sans-serif;
+    line-height: 1.5;
+  }
+
+  
+  /* ── Legal + affiliate ── */
+  .affiliate-note {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    color: var(--ash);
+    letter-spacing: 0.04em;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .legal-footer {
+    padding: 16px 0 8px;
+    border-top: 1px solid var(--bone);
+    margin-top: 8px;
+  }
+  .legal-line {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    color: var(--ash);
+    letter-spacing: 0.03em;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  </style>
 </head>
 <body>
 
@@ -868,9 +1072,8 @@
   <!-- Header / Logo -->
   <header class="header">
     <div class="logo-mark">
-      <img src="data:image/png;base64,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" 
-           alt="trace" 
-           style="display:block; width:140px; height:auto; margin:0 auto;" />
+      <img src="https://tracehomeco.github.io/trace_logo_A_primary.png" alt="Trace" style="height:52px;width:auto;display:block;">
+      
     </div>
   </header>
 
@@ -890,15 +1093,12 @@
   ════════════════════════════════════════ -->
   <div class="screen active" id="screen-hook">
 
-    <p class="hook-eyebrow">Home Health Assessment</p>
+    <p class="hook-eyebrow">The 5 Most Common Hidden Toxin Exposures</p>
+    <p class="hook-eyebrow-sub">Full Assessment Coming Summer 2026</p>
 
     <h1 class="hook-headline">
       What's your<br><em>home health</em><br>score?
     </h1>
-
-    <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: clamp(14px, 3vw, 17px); font-weight: 300; color: var(--dusk); line-height: 1.65; margin: 0 auto 20px; max-width: 440px; text-align: center;">
-      Home is where we feel safest. It's also where most of our chemical exposure happens.
-    </p>
 
     <div class="stat-block">
       <div class="stat-number">20</div>
@@ -912,13 +1112,15 @@
     </div>
 
     <p class="hook-body">
-      In five questions, Trace reveals your biggest exposure pathways
-      and the highest-impact swaps you can make.
+      Most homes have hidden toxins across five key areas &mdash;
+      air, water, laundry, cookware, and fragrance. In 5 questions, get a first look at where your home stands &mdash;
+      a preview of the full 80+ checkpoint Trace home health assessment
+      launching this summer.
     </p>
 
     <p class="hook-time">Takes 90 seconds</p>
 
-    <button class="btn-primary" onclick="goToQ(1)">Start the assessment</button>
+    <button class="btn-primary" onclick="goToQ(1)">See how your home scores &rarr;</button>
 
   </div>
 
@@ -976,7 +1178,7 @@
     <div class="question-wrap">
       <p class="q-number">Question 02 — Water Quality</p>
       <h2 class="q-text">What do you use for drinking water?</h2>
-      <p class="q-context">Tap water in most cities is technically safe but often contains trace chlorine, fluoride, lead (from older pipes), and microplastics. The type of filter matters significantly.</p>
+      <p class="q-context">Tap water often contains trace chlorine, fluoride, lead (from older pipes), and microplastics. The type of filter matters significantly. <strong>Note: a water softener alone does not filter contaminants &mdash; it only removes hardness minerals.</strong></p>
 
       <div class="options-list" id="opts-q2">
         <button class="option" data-q="2" data-val="0" onclick="selectOption(this)">
@@ -990,7 +1192,7 @@
           <span class="option-letter">B</span>
           <div>
             <div class="option-text">Whole-house filtration system</div>
-            <div class="option-sub">Protects all water in the home</div>
+            <div class="option-sub">Protects all water in the home &mdash; not a water softener</div>
           </div>
         </button>
         <button class="option" data-q="2" data-val="10" onclick="selectOption(this)">
@@ -1007,10 +1209,24 @@
             <div class="option-sub">Often contains microplastics from the plastic bottle</div>
           </div>
         </button>
-        <button class="option" data-q="2" data-val="15" onclick="selectOption(this)">
+        <button class="option" data-q="2" data-val="10" onclick="selectOption(this)">
           <span class="option-letter">E</span>
           <div>
-            <div class="option-text">Straight from the tap — unfiltered</div>
+            <div class="option-text">Refrigerator filter</div>
+            <div class="option-sub">Most fridge filters remove chlorine taste only &mdash; not PFAS, lead, microplastics, or fluoride. Not a meaningful health filter without NSF certification for contaminant removal</div>
+          </div>
+        </button>
+        <button class="option" data-q="2" data-val="5" onclick="selectOption(this)">
+          <span class="option-letter">F</span>
+          <div>
+            <div class="option-text">Water softener only</div>
+            <div class="option-sub">Softeners remove hardness minerals but do not filter chlorine, PFAS, lead, or microplastics &mdash; a filtration upgrade is still recommended</div>
+          </div>
+        </button>
+        <button class="option" data-q="2" data-val="15" onclick="selectOption(this)">
+          <span class="option-letter">G</span>
+          <div>
+            <div class="option-text">Straight from the tap &mdash; unfiltered</div>
             <div class="option-sub">Quality depends heavily on your municipality</div>
           </div>
         </button>
@@ -1203,81 +1419,121 @@
       <h2 class="result-headline" id="result-headline"></h2>
       <p class="result-body" id="result-body"></p>
 
-      <!-- LOCKED — shown before email submitted -->
-      <div id="pre-gate-content">
+      <p class="affiliate-note">Some product links support Trace through affiliate commissions — at no extra cost to you.</p>
 
-        <div class="swap-locked">
-          <div class="swap-locked-icon">
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <rect x="2" y="6" width="10" height="7" rx="1" stroke="#888888" stroke-width="1.2"/>
-              <path d="M4.5 6V4.5a2.5 2.5 0 0 1 5 0V6" stroke="#888888" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="swap-locked-text">
-            <p class="swap-locked-label">Your #1 highest-impact swap</p>
-            <p class="swap-locked-hint">Enter your email below to see your personalised swap recommendation.</p>
+      <div class="swap-highlight" id="swap-highlight">
+        <div class="swap-eyebrow" id="swap-eyebrow">Your #1 highest-impact swap</div>
+        <div class="swap-title" id="swap-title"></div>
+        <div class="swap-detail-line" id="swap-detail"></div>
+        <div class="swap-desc" id="swap-desc"></div>
+        <div class="swap-boost-row">
+          <span class="swap-boost-label">Score impact if you make this swap</span>
+          <div class="swap-boost-nums">
+            <span class="swap-boost-from" id="boost-from">--</span>
+            <span class="swap-boost-arr">&rarr;</span>
+            <span class="swap-boost-to" id="boost-to">--</span>
           </div>
         </div>
-
-        <div class="findings-teaser" id="findings-teaser">
-          <p class="findings-teaser-label" id="findings-teaser-label">What we found in your home</p>
-          <div class="findings-teaser-row">
-            <div class="findings-teaser-dot" style="background: var(--red);"></div>
-            <div class="findings-teaser-blur"></div>
-            <span class="findings-teaser-lock">Locked</span>
-          </div>
-          <div class="findings-teaser-row">
-            <div class="findings-teaser-dot" style="background: var(--amber);"></div>
-            <div class="findings-teaser-blur"></div>
-            <span class="findings-teaser-lock">Locked</span>
-          </div>
-          <div class="findings-teaser-row">
-            <div class="findings-teaser-dot" style="background: var(--green-text);"></div>
-            <div class="findings-teaser-blur"></div>
-            <span class="findings-teaser-lock">Locked</span>
-          </div>
-        </div>
-
-        <!-- Email gate -->
-        <div class="email-gate">
-          <h3 class="email-gate-headline">See your results — and your swaps.</h3>
-          <p class="email-gate-body">Your score is just the start. Enter your email to unlock your highest-impact swap, your full findings list, and early access to the complete room-by-room Trace assessment.</p>
-          <div class="input-wrap">
-            <input type="email" class="input-field" id="email-input" placeholder="Email address" autocomplete="email">
-            <button class="btn-submit" id="btn-submit" onclick="submitEmail()">Unlock my results →</button>
-          </div>
-          <p class="error-msg" id="email-error">Please enter a valid email address.</p>
-          <p class="email-privacy">No spam. Unsubscribe anytime. Your data stays private.</p>
-        </div>
-
+        <div class="swap-budget-note" id="swap-budget-note"></div>
       </div>
 
-      <!-- UNLOCKED — shown after email submitted -->
-      <div id="post-gate-content" style="display:none;">
-
-        <div class="swap-highlight" id="swap-highlight">
-          <div class="swap-eyebrow">Your #1 highest-impact swap</div>
-          <div class="swap-title" id="swap-title"></div>
-          <div class="swap-desc" id="swap-desc"></div>
-        </div>
-
-        <div class="findings" id="findings-wrap">
-          <div class="findings-label">What we found in your home</div>
-          <div id="findings-list"></div>
-        </div>
-
-        <div class="confirmation-block">
-          <div class="confirmation-check">
-            <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-              <path d="M1 6L6 11L15 1" stroke="#F5F5F3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
+      <!-- Start today card -->
+      <div class="swap-today" id="swap-today" style="display:none;">
+        <div class="today-eyebrow">Start today &mdash; under $30</div>
+        <div class="today-title" id="today-title"></div>
+        <div class="today-detail" id="today-detail"></div>
+        <div class="today-desc" id="today-desc"></div>
+        <div class="today-boost-row">
+          <span class="today-boost-label">Score impact</span>
+          <div class="today-boost-nums">
+            <span class="today-boost-from" id="today-boost-from">--</span>
+            <span class="today-boost-arr">&rarr;</span>
+            <span class="today-boost-to" id="today-boost-to">--</span>
           </div>
-          <h3 class="confirmation-headline">You're in.</h3>
-          <p class="confirmation-body">Your swap recommendations are on their way to <strong>your inbox</strong> — check for an email from Trace.<br>If you don't see it within a few minutes, <strong>check your spam folder</strong> and mark it as not spam.</p>
-          <div class="confirmation-divider"></div>
-          <p class="confirmation-sub">This is a snapshot across your five highest-exposure areas. The full Trace room-by-room assessment goes deeper — every room, every exposure pathway, ranked by what matters most. You'll be first to know when it launches.</p>
         </div>
+        <a class="today-link" id="today-link" href="#" target="_blank" rel="noopener noreferrer">Find this product &rarr;</a>
+      </div>
 
+      <!-- Clean home special recommendations -->
+      <div id="clean-home-swaps" style="display:none; margin-bottom:16px;">
+        <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:#1A1A1A;margin-bottom:8px;font-family:'Jost',sans-serif;">What even clean homes often miss</p>
+        <div class="dark-card" style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
+          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;font-family:'Jost',sans-serif;">Most surprising finding — oral care</p>
+          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;font-family:'Jost',sans-serif;">Cocofloss by CocoLab</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);font-family:'Jost',sans-serif;margin-bottom:6px;">~$9 · Third-party PFAS tested · PTFE-free</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);font-family:'Jost',sans-serif;">Most clean-living households still use Oral-B Glide — PTFE-coated floss with PFAS compounds in direct contact with gum tissue. One of the most overlooked swaps even in health-conscious homes.</p>
+          <a href="https://www.amazon.com/s?k=cocofloss&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
+        </div>
+        <div style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
+          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:#7DC878;margin-bottom:4px;font-family:'Jost',sans-serif;">Hidden exposure — kitchen</p>
+          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;font-family:'Jost',sans-serif;">French press or pour-over coffee maker</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);font-family:'Jost',sans-serif;margin-bottom:6px;">~$20–40 · Glass or stainless · No plastic in brew path</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);font-family:'Jost',sans-serif;">Hot water through plastic Keurig pods or plastic drip machines releases microplastics and BPA directly into your cup — every morning. Glass or stainless steel brew path eliminates this entirely.</p>
+          <a href="https://www.amazon.com/s?k=glass+french+press&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:#7DC878;background:rgba(125,200,120,0.12);border:1px solid rgba(125,200,120,0.25);padding:5px 9px;text-decoration:none;">Find this product →</a>
+        </div>
+        <div style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
+          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;font-family:'Jost',sans-serif;">Overlooked refinement — hair care</p>
+          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;font-family:'Jost',sans-serif;">Rahua Classic Shampoo</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);font-family:'Jost',sans-serif;margin-bottom:6px;">~$38 · Sulfate-free · No synthetic fragrance · Plant-based</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);font-family:'Jost',sans-serif;">Shampoo aerosolises in a hot shower — absorbed through the scalp and inhaled simultaneously. Even people who avoid synthetic fragrance elsewhere often haven't addressed their shampoo.</p>
+          <a href="https://www.amazon.com/s?k=rahua+shampoo&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
+        </div>
+        <div style="background:#1A1A1A;padding:12px;margin-bottom:0;">
+          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;font-family:'Jost',sans-serif;">Most overlooked category — bedding</p>
+          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;font-family:'Jost',sans-serif;">Aizome Organic Bedding</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);font-family:'Jost',sans-serif;margin-bottom:6px;">GOTS certified · FDA registered Class 1 medical device · No bleach, no PFAS</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);font-family:'Jost',sans-serif;">Even people who buy organic sheets rarely know about Aizome — the only bedding registered as a medical device by the FDA. 8 hours of skin contact every night. The standard for a truly clean bedroom.</p>
+          <a href="https://aizome.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
+        </div>
+      </div>
+
+            <!-- Bridge callout — above findings -->
+      <div class="bridge-callout" id="bridge-callout">
+        <span style="font-size:14px;color:#2D5A27;">&darr;</span>
+        <p class="bc-text">Your full swap list &mdash; including everything else we found &mdash; is waiting in your report below.</p>
+      </div>
+
+      <div class="findings" id="findings-wrap">
+        <div class="findings-label">What we found in your home</div>
+        <div id="findings-list"></div>
+      </div>
+
+      <!-- Share your score -->
+      <div class="share-wrap">
+        <button class="btn-share" onclick="shareScore()">Share my score →</button>
+      </div>
+
+            <!-- Scroll hint -->
+      <div class="scroll-hint" id="scroll-hint">
+        <div class="scroll-hint-text">
+          <span>More swaps + early access below</span>
+          <span class="scroll-arrow">&darr;</span>
+        </div>
+      </div>
+
+      <!-- Full product teaser -->
+      <div class="full-teaser">
+        <div class="ft-eyebrow">Coming this summer</div>
+        <h3 class="ft-headline">The full Trace assessment goes deeper.</h3>
+        <p class="ft-body">These 5 questions cover the most widespread hidden toxin pathways in most homes. The complete Trace assessment looks at every room &mdash; 80+ checkpoints, room-by-room scores, and a 12-month swap plan personalised to your budget.</p>
+        <div class="ft-features">
+          <div class="ft-feature"><span class="ft-num">01</span><span class="ft-text">Room-by-room health score</span></div>
+          <div class="ft-feature"><span class="ft-num">02</span><span class="ft-text">80+ checkpoints across your home</span></div>
+          <div class="ft-feature"><span class="ft-num">03</span><span class="ft-text">Personalised 12-month swap timeline</span></div>
+          <div class="ft-feature"><span class="ft-num">04</span><span class="ft-text">Budget-fitted product recommendations</span></div>
+        </div>
+      </div>
+
+      <!-- Email gate -->
+      <div class="email-gate">
+        <h3 class="email-gate-headline">You've seen 2 swaps. Your full report has specific recommendations for every finding above.</h3>
+        <p class="email-gate-body">Enter your email and we'll send your complete findings report &mdash; every swap, every product, every finding. Plus you'll be first in line when the full Trace home assessment launches this summer.</p>
+        <div class="input-wrap">
+          <input type="email" class="input-field" id="email-input" placeholder="Email address" autocomplete="email">
+          <button class="btn-submit" id="btn-submit" onclick="submitEmail()">Send my plan →</button>
+        </div>
+        <p class="error-msg" id="email-error">Please enter a valid email address.</p>
+        <p class="email-privacy">No spam. Unsubscribe anytime. Your data stays private.</p>
       </div>
 
     </div>
@@ -1286,6 +1542,11 @@
   <!-- ═══════════════════════════════════════
        SCREEN — Thank You
   ════════════════════════════════════════ -->
+  <!-- Legal footer -->
+  <div class="legal-footer" id="legal-footer" style="display:none;">
+    <p class="legal-line">For education only &mdash; not a substitute for professional medical advice. Always a good idea to loop in your doctor for personal health questions.</p>
+  </div>
+
   <div class="screen" id="screen-thankyou">
     <div class="ty-check">
       <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
@@ -1293,19 +1554,19 @@
       </svg>
     </div>
     <h2 class="ty-headline">You're in.</h2>
-    <p class="ty-body">Your swap plan is on its way to your inbox. Check for an email from Trace — your five highest-impact recommendations are inside.</p>
+    <p class="ty-body">Check your inbox for your top swap recommendations from Trace. You're now on the early access list for the full home health assessment launching this summer.</p>
 
     <div class="ty-divider"></div>
 
     <p class="ty-teaser">
       This is just the beginning.<br><br>
       <strong>Trace</strong> is launching soon with a full room-by-room home health assessment
-      — room by room, 80+ checkpoints, a complete scored breakdown of every exposure pathway,
+      — 9 rooms, 80+ checkpoints, a complete scored breakdown of every exposure pathway,
       and a personalized swap timeline built around your budget.<br><br>
       You'll be first to know.
     </p>
 
-    <a href="https://www.instagram.com/trace.home" target="_blank" class="btn-primary" style="display:inline-block; text-align:center; text-decoration:none;">Follow @trace.home →</a>
+    <a href="https://www.instagram.com/tracehome" target="_blank" class="btn-primary" style="display:inline-block; text-align:center; text-decoration:none;">Follow @tracehome →</a>
   </div>
 
 </div><!-- /shell -->
@@ -1342,26 +1603,17 @@ function updateProgress(n) {
 
 // ── Option selection ──────────────────────────
 function selectOption(btn) {
-  const q = parseInt(btn.dataset.q);
+  const q = btn.dataset.q;
   const val = parseInt(btn.dataset.val);
 
   // Deselect all in this question
   document.querySelectorAll(`#opts-q${q} .option`).forEach(o => o.classList.remove('selected'));
   btn.classList.add('selected');
-  answers[q] = val;
+  answers[parseInt(q)] = val;
 
   // Enable next button
   const nextBtn = document.getElementById('next-q' + q);
   if (nextBtn) nextBtn.classList.add('enabled');
-
-  // Auto-advance after short delay so user sees their selection highlighted
-  setTimeout(function() {
-    if (q === 5) {
-      showResult();
-    } else {
-      goToQ(q + 1);
-    }
-  }, 400);
 }
 
 // ── Scoring ───────────────────────────────────
@@ -1372,10 +1624,10 @@ function calcScore() {
 }
 
 function getBand(score) {
-  if (score >= 100) return 'perfect';
   if (score <= 49) return 'most-opportunity';
   if (score <= 74) return 'real-opportunity';
-  return 'good-start';
+  if (score <= 89) return 'good-start';
+  return 'clean-home';
 }
 
 // ── Findings builder ──────────────────────────
@@ -1410,7 +1662,7 @@ function buildFindings() {
   if (answers[5] >= 20) items.push({ name: 'Plug-in air fresheners / synthetic diffusers', note: 'Continuous VOC release into breathing air', level: 'high' });
   else if (answers[5] >= 12) items.push({ name: 'Paraffin candles', note: 'Releases benzene and toluene when burned', level: 'medium' });
   else if (answers[5] >= 8) items.push({ name: 'Mixed fragrance use', note: 'Reducing — some VOC load remaining', level: 'medium' });
-  else items.push({ name: 'Fragrance — free', note: 'No synthetic fragrance sources detected', level: 'low' });
+  else items.push({ name: 'Fragrance — good', note: 'Low or no synthetic fragrance in the home', level: 'low' });
 
   return items;
 }
@@ -1418,11 +1670,81 @@ function buildFindings() {
 // ── Top swap ──────────────────────────────────
 function getTopSwap() {
   const vals = [
-    { q: 1, val: answers[1], title: 'Add a HEPA air purifier', desc: 'A true HEPA unit in your main living area addresses one of the highest continuous exposures in your home. Air quality affects every hour you spend indoors. Models like the Coway AP-1512HH ($100–150) are a strong starting point.' },
-    { q: 2, val: answers[2], title: 'Upgrade your drinking water', desc: 'A countertop reverse osmosis filter removes 95–99% of contaminants including microplastics, chlorine, lead, and fluoride. Options start at $200 and pay for themselves within months versus bottled water costs.' },
-    { q: 3, val: answers[3], title: 'Switch your laundry detergent', desc: 'Branch Basics Laundry ($18 starter kit) or Molly\'s Suds ($15) are the cleanest options — no fragrance, no optical brighteners, no synthetic surfactants. The swap costs almost the same as conventional.' },
-    { q: 4, val: answers[4], title: 'Replace your Teflon cookware', desc: 'One good stainless steel pan (All-Clad or Made In, $50–150) eliminates PFAS exposure from cookware entirely. Cast iron ($30) is another excellent option. These last decades, not years.' },
-    { q: 5, val: answers[5], title: 'Remove synthetic fragrance sources', desc: 'Unplug air fresheners and swap paraffin candles for beeswax or coconut wax alternatives (Fontana, Bluecorn Beeswax). The fragrance swap is one of the fastest wins — it starts working the moment you make the change.' }
+    { q: 1, val: answers[1],
+      category: 'Air Quality',
+      title: 'AirDoctor AD1000 Air Purifier',
+      detail: '~$150–180 · UltraHEPA + carbon/VOC filter · No WiFi',
+      desc: 'You breathe indoor air for the equivalent of an Olympic swimming pool every year. The AirDoctor AD1000 captures particles 100x smaller than standard HEPA and removes VOCs that most purifiers miss entirely. It works while you sleep.',
+      budgetNote: 'A meaningful investment — and the highest single-impact swap in most homes. Budget option: Winix A231 (~$110) is a strong True HEPA alternative.',
+      boostRange: [15, 25],
+      link: 'https://www.amazon.com/s?k=airdoctor+ad1000&tag=tracehome-20',
+      todaySwap: {
+        title: "Molly's Suds Laundry Powder",
+        detail: '~$16 · Amazon · EWG Verified · Fragrance-free · 70 loads',
+        desc: 'While you save for the air purifier, swap your detergent today. Residue stays in every fabric you own — 8–16 hours of daily skin contact. One of the most affordable high-impact swaps available.',
+        boostRange: [10, 16],
+        link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20'
+      }},
+    { q: 2, val: answers[2],
+      category: 'Water Quality',
+      title: 'AquaTru Classic Countertop RO Filter',
+      detail: '~$299 · No installation · Removes PFAS, lead, microplastics',
+      desc: 'Removes 99.9% of contaminants including what pitcher filters cannot touch — PFAS, lead, microplastics, chlorine, and fluoride. No plumbing needed. Works in any kitchen including rentals.',
+      budgetNote: 'Budget entry: Clearly Filtered Pitcher (~$90) removes significantly more than Brita including PFAS — a meaningful step up while saving for RO.',
+      boostRange: [18, 28],
+      link: 'https://www.amazon.com/dp/B01N1QBR71?tag=tracehome-20',
+      todaySwap: {
+        title: 'Lodge Cast Iron Skillet 10"',
+        detail: '~$30 · Amazon · No coatings ever · Lasts decades',
+        desc: 'While you save for the water filter, eliminate PFAS from your cookware today. Lodge cast iron has no coatings, no chemicals, and improves with use. One of the best value swaps in the assessment.',
+        boostRange: [8, 14],
+        link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20'
+      }},
+    { q: 3, val: answers[3],
+      category: 'Laundry',
+      title: "Molly's Suds Laundry Powder",
+      detail: '~$16 · EWG Verified · Fragrance-free · HE compatible · 70 loads',
+      desc: 'Detergent residue stays in every fabric you own. You wear it and sleep in it for 8-16 hours daily. This is one of the most affordable and highest-impact swaps available — and it costs almost the same as Tide.',
+      budgetNote: '',
+      boostRange: [12, 20],
+      link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20',
+      todaySwap: {
+        title: 'Woolzies Organic Wool Dryer Balls',
+        detail: '~$18 · Amazon · Replaces dryer sheets permanently',
+        desc: 'Dryer sheets coat every fabric in your home with synthetic fragrance and quat compounds. Wool dryer balls replace them entirely — zero chemical residue, reusable for 1,000+ loads.',
+        boostRange: [6, 10],
+        link: 'https://www.amazon.com/s?k=woolzies+wool+dryer+balls&tag=tracehome-20'
+      }},
+    { q: 4, val: answers[4],
+      category: 'Cookware',
+      title: 'Lodge Cast Iron Skillet 10"',
+      detail: '~$30 · Amazon · No coatings ever · Lasts decades',
+      desc: 'One Lodge cast iron skillet eliminates PFAS from your most-used cooking surface entirely. No coatings, no chemicals, improves with use. One of the most affordable high-impact swaps in any home.',
+      budgetNote: '',
+      boostRange: [10, 18],
+      link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20',
+      todaySwap: {
+        title: 'Davids Natural Toothpaste',
+        detail: '~$10 · Amazon · EWG Verified · No SLS · No saccharin',
+        desc: 'Used twice daily and partially ingested. Conventional toothpaste contains SLS, saccharin, and artificial flavours absorbed through oral mucosa. EWG Verified with all ingredients rated 1. Costs almost the same as Colgate.',
+        boostRange: [4, 8],
+        link: 'https://www.amazon.com/s?k=davids+natural+toothpaste&tag=tracehome-20'
+      }},
+    { q: 5, val: answers[5],
+      category: 'Fragrance',
+      title: 'Pure Beeswax Pillar Candles',
+      detail: '~$12–20 · Amazon · No synthetic fragrance · No paraffin',
+      desc: 'Paraffin candles and plug-in air fresheners release phthalates and VOCs continuously into your home air. Pure beeswax candles replace them entirely. The swap works the moment you make it — no more synthetic fragrance in your breathing air.',
+      budgetNote: '',
+      boostRange: [8, 14],
+      link: 'https://www.amazon.com/s?k=pure+beeswax+pillar+candles&tag=tracehome-20',
+      todaySwap: {
+        title: 'Branch Basics Multi-Purpose Concentrate',
+        detail: '~$28 · branchbasics.com · EWG Verified · Replaces all cleaners',
+        desc: 'One concentrate replaces every surface cleaner in your home. Branch Basics is EWG Verified, fragrance-free, and the most versatile clean cleaning product available. The same bottle cleans counters, floors, and bathrooms.',
+        boostRange: [4, 8],
+        link: 'AMAZON_BRANCH_BASICS_LINK_HERE'
+      }}
   ];
 
   // Find highest deduction
@@ -1449,7 +1771,8 @@ function showResult() {
   // Score color
   if (score <= 49) arc.style.stroke = '#C87878';
   else if (score <= 74) arc.style.stroke = '#D4A847';
-  else arc.style.stroke = '#2D5A27';
+  else if (score <= 89) arc.style.stroke = '#2D5A27';
+  else arc.style.stroke = '#7DC878';
 
   // Animate number
   let current = 25;
@@ -1465,7 +1788,8 @@ function showResult() {
   const bandLabels = {
     'most-opportunity': 'Most Opportunity',
     'real-opportunity': 'Real Opportunity',
-    'good-start': 'Good Start'
+    'good-start': 'Good Start',
+    'clean-home': 'Clean Home'
   };
   document.getElementById('score-band-label').textContent = bandLabels[band];
 
@@ -1483,28 +1807,90 @@ function showResult() {
       headline: 'A genuinely healthy home — a few refinements worth knowing about.',
       body: 'You\'re already doing more than most. Your home shows strong baseline choices across all five categories. The gaps that remain are subtle — refinements that matter for long-term health rather than urgent concerns. Your plan will surface the ones worth prioritizing.'
     },
-    'perfect': {
-      headline: 'These five areas look great. Your home is ahead of most.',
-      body: 'You\'ve covered the five highest-impact exposure areas well — that\'s genuinely rare. But a home has many more exposure areas than five questions can cover. This snapshot covers the biggest contenders. The full Trace assessment goes deeper — room by room through your entire home — uncovering the areas most people don\'t think to check until they do.'
+    'clean-home': {
+      headline: 'Your home is genuinely clean. This is rare.',
+      body: 'You\'ve already made the highest-impact choices across all five areas. Most people never get here. The full Trace assessment goes deeper — 80+ checkpoints across every room — and surfaces the refinements most people miss even after years of clean living.'
     }
   };
 
   document.getElementById('result-headline').textContent = content[band].headline;
   document.getElementById('result-body').textContent = content[band].body;
 
-  // Top swap — hide if perfect score, otherwise populate for post-gate reveal
-  if (band === 'perfect') {
-    document.getElementById('swap-highlight').style.display = 'none';
-    // Also hide the locked swap teaser for perfect score
-    const lockedSwap = document.querySelector('.swap-locked');
-    if (lockedSwap) lockedSwap.style.display = 'none';
+  // Top swap
+  const topSwap = getTopSwap();
+  // Show clean home special cards or regular swap cards
+  var isCleanHome = band === 'clean-home';
+  var cleanHomeDiv = document.getElementById('clean-home-swaps');
+  var swapHighlightDiv = document.getElementById('swap-highlight');
+  var swapTodayDiv = document.getElementById('swap-today');
+  if (isCleanHome) {
+    if (cleanHomeDiv) cleanHomeDiv.style.display = 'block';
+    if (swapHighlightDiv) swapHighlightDiv.style.display = 'none';
+    if (swapTodayDiv) swapTodayDiv.style.display = 'none';
+    return; // Skip regular swap card rendering
   } else {
-    const topSwap = getTopSwap();
-    document.getElementById('swap-title').textContent = topSwap.title;
-    document.getElementById('swap-desc').textContent = topSwap.desc;
+    if (cleanHomeDiv) cleanHomeDiv.style.display = 'none';
   }
 
-  // Findings — populate for post-gate reveal
+  // Update swap eyebrow with category
+  if (topSwap.category) {
+    document.getElementById('swap-eyebrow').textContent = 'Your #1 swap — ' + topSwap.category;
+  }
+  document.getElementById('swap-title').textContent = topSwap.title;
+  // Detail line
+  var detailEl = document.getElementById('swap-detail');
+  if (detailEl && topSwap.detail) detailEl.textContent = topSwap.detail;
+  document.getElementById('swap-desc').textContent = topSwap.desc;
+  // Score boost
+  var boostMin = topSwap.boostRange ? topSwap.boostRange[0] : 10;
+  var boostMax = topSwap.boostRange ? topSwap.boostRange[1] : 20;
+  var boostedScore = Math.min(100, score + Math.round((boostMin + boostMax) / 2));
+  document.getElementById('boost-from').textContent = score;
+  document.getElementById('boost-to').textContent = boostedScore;
+  // Budget note
+  var budgetNoteEl = document.getElementById('swap-budget-note');
+  if (budgetNoteEl) {
+    if (topSwap.budgetNote) {
+      budgetNoteEl.textContent = topSwap.budgetNote;
+      budgetNoteEl.style.display = 'block';
+    } else {
+      budgetNoteEl.style.display = 'none';
+    }
+  }
+  // Show today card if primary swap is high ticket
+  var todayCard = document.getElementById('swap-today');
+  if (topSwap.todaySwap && todayCard) {
+    var ts = topSwap.todaySwap;
+    document.getElementById('today-title').textContent = ts.title;
+    document.getElementById('today-detail').textContent = ts.detail;
+    document.getElementById('today-desc').textContent = ts.desc;
+    var todayBoostMin = ts.boostRange ? ts.boostRange[0] : 8;
+    var todayBoostMax = ts.boostRange ? ts.boostRange[1] : 14;
+    var todayBoosted = Math.min(100, score + Math.round((todayBoostMin + todayBoostMax) / 2));
+    document.getElementById('today-boost-from').textContent = score;
+    document.getElementById('today-boost-to').textContent = todayBoosted;
+    var todayLinkEl = document.getElementById('today-link');
+    if (todayLinkEl) todayLinkEl.href = ts.link;
+    todayCard.style.display = 'block';
+  } else if (todayCard) {
+    todayCard.style.display = 'none';
+  }
+
+  // Affiliate link
+  var swapHighlight = document.getElementById('swap-highlight');
+  var existingLink = swapHighlight.querySelector('.swap-link');
+  if (existingLink) existingLink.remove();
+  if (topSwap.link) {
+    var linkEl = document.createElement('a');
+    linkEl.href = topSwap.link;
+    linkEl.target = '_blank';
+    linkEl.rel = 'noopener noreferrer';
+    linkEl.className = 'swap-link';
+    linkEl.textContent = 'Find this product →';
+    swapHighlight.appendChild(linkEl);
+  }
+
+  // Findings
   const findings = buildFindings();
   const list = document.getElementById('findings-list');
   list.innerHTML = findings.map(f => `
@@ -1517,13 +1903,9 @@ function showResult() {
     </div>
   `).join('');
 
-  // Update teaser label with real finding count
-  const teaserLabel = document.getElementById('findings-teaser-label');
-  if (teaserLabel) {
-    teaserLabel.textContent = findings.length + ' finding' + (findings.length !== 1 ? 's' : '') + ' identified in your home';
-  }
-
   showScreen('result');
+  var lf = document.getElementById('legal-footer');
+  if (lf) lf.style.display = 'block';
 }
 
 // ── Email submission ──────────────────────────
@@ -1534,6 +1916,7 @@ async function submitEmail() {
 
   const email = emailEl.value.trim();
 
+  // Validate
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     errorEl.classList.add('visible');
@@ -1543,33 +1926,48 @@ async function submitEmail() {
   errorEl.classList.remove('visible');
 
   btn.disabled = true;
-  btn.textContent = 'Unlocking…';
+  btn.textContent = 'Sending…';
+
+  // ──────────────────────────────────────────────────
+  // MAILERLITE INTEGRATION
+  // Replace YOUR_MAILERLITE_API_KEY with your actual key
+  // Replace YOUR_GROUP_ID with your "Trace Quiz Subscribers" group ID
+  // ──────────────────────────────────────────────────
+  const MAILERLITE_API_KEY = 'YOUR_MAILERLITE_API_KEY';
+  const GROUP_ID = 'YOUR_GROUP_ID';
+
+  const score = calcScore();
+  const band = getBand(score);
 
   try {
-    // Post directly to MailerLite — no new tab, no CORS issue with form endpoint
-    const formData = new FormData();
-    formData.append('fields[email]', email);
-    formData.append('ml-submit', '1');
-    formData.append('anticsrf', 'true');
-
-    await fetch('https://assets.mailerlite.com/jsonp/2295636/forms/186486267540670239/subscribe', {
+    const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
       method: 'POST',
-      body: formData,
-      mode: 'no-cors'
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${MAILERLITE_API_KEY}`
+      },
+      body: JSON.stringify({
+        email: email,
+        fields: {
+          trace_score: score,
+          trace_band: band
+        },
+        groups: [GROUP_ID]
+      })
     });
-  } catch(e) {
-    console.error('Submission error:', e);
+
+    if (response.ok || response.status === 200 || response.status === 201) {
+      showScreen('thankyou');
+    } else {
+      // Fallback — still show thank you (don't block user)
+      console.error('MailerLite response:', response.status);
+      showScreen('thankyou');
+    }
+  } catch (err) {
+    // Network error or CORS — still advance (handle via backend proxy if needed)
+    console.error('Submission error:', err);
+    showScreen('thankyou');
   }
-
-  // Reveal locked content inline — the satisfying unlock moment
-  // Hide the gate, show the real swap and findings
-  const preGate = document.getElementById('pre-gate-content');
-  const postGate = document.getElementById('post-gate-content');
-  if (preGate) preGate.style.display = 'none';
-  if (postGate) postGate.style.display = 'block';
-
-  // Scroll to top of results so they see the unlock from the top
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // ── Enter key support ─────────────────────────
@@ -1582,6 +1980,21 @@ document.addEventListener('keydown', (e) => {
     }
   }
 });
+
+// ── Share score ──────────────────────────────
+function shareScore() {
+  const score = document.getElementById('score-display').textContent;
+  const text = 'I just scored my home\u2019s health \u2014 got a ' + score + '/100 with the Trace home health quiz. Find out what\u2019s hiding in yours: tracehomeco.github.io/trace-quiz';
+  if (navigator.share) {
+    navigator.share({ text: text }).catch(() => {});
+  } else {
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.btn-share');
+      if (btn) { btn.textContent = '\u2713 Copied to clipboard'; setTimeout(() => { btn.textContent = 'Share my score \u2192'; }, 2500); }
+    });
+  }
+}
+
 </script>
 </body>
 </html>
