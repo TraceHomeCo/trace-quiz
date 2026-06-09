@@ -146,33 +146,15 @@
   }
 
   .stat-block {
-    background: var(--night);
-    color: var(--linen);
-    padding: 32px;
-    margin: 36px 0;
-    text-align: left;
-    position: relative;
-    border-left: 3px solid rgba(245,245,243,0.2);
+    background: transparent;
+    padding: 14px 0 20px;
+    margin: 24px 0;
+    border-top: 1px solid var(--night);
+    border-bottom: 1px solid var(--night);
   }
 
-  .stat-number {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 56px;
-    font-weight: 300;
-    line-height: 1;
-    margin-bottom: 6px;
-    letter-spacing: -0.02em;
-    color: var(--linen);
-  }
-
-  .stat-unit {
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: rgba(245,245,243,0.45);
-    font-weight: 400;
-    margin-bottom: 16px;
-  }
+  .stat-number { display: none; }
+  .stat-unit { display: none; }
 
   .stat-label {
     font-size: 14px;
@@ -430,8 +412,9 @@
 
   .score-number {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 42px;
-    font-weight: 300;
+    font-size: 72px;
+    font-weight: 400;
+    font-style: normal;
     line-height: 1;
     color: var(--night);
   }
@@ -481,7 +464,7 @@
     margin-bottom: 28px;
   }
   .swap-eyebrow {
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: rgba(245,245,243,0.35);
@@ -557,22 +540,7 @@
     font-size: 22px;
     color: #7DC878;
   }
-  .swap-link {
-    display: inline-block;
-    margin-top: 12px;
-    font-family: 'Jost', sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: rgba(245,245,243,0.65);
-    background: rgba(245,245,243,0.08);
-    border: 1px solid rgba(245,245,243,0.12);
-    padding: 8px 14px;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .swap-link:hover { opacity: 0.8; }
+
   .swap-budget-note {
     background: rgba(125,200,120,0.1);
     border: 0.5px solid rgba(125,200,120,0.2);
@@ -1049,20 +1017,211 @@
     line-height: 1.5;
   }
   .legal-footer {
-    padding: 16px 0 8px;
-    border-top: 1px solid var(--bone);
-    margin-top: 8px;
+    padding: 10px 0 6px;
+    border-top: 0.5px solid var(--bone);
+    margin-top: 12px;
   }
   .legal-line {
     font-family: 'Jost', sans-serif;
     font-size: 9px;
     font-weight: 300;
-    color: var(--ash);
-    letter-spacing: 0.03em;
-    line-height: 1.6;
+    color: var(--bone);
+    line-height: 1.5;
     text-align: center;
   }
 
+  
+  /* ── Three swap options ── */
+  .swap-options { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+  .swap-opt {
+    padding: 9px 11px;
+    border: 0.5px solid rgba(245,245,243,0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .swap-opt:hover { background: rgba(255,255,255,0.04); }
+  .swap-opt-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    min-width: 64px;
+    padding-top: 1px;
+  }
+  .swap-opt-label.low { color: #7DC878; }
+  .swap-opt-label.mid { color: rgba(245,245,243,0.5); }
+  .swap-opt-label.high { color: rgba(245,245,243,0.35); }
+  .swap-opt-info { flex: 1; }
+  .swap-opt-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: #F5F5F3;
+    display: block;
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+  .swap-opt-detail {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(245,245,243,0.35);
+    display: block;
+    line-height: 1.4;
+  }
+  .swap-opt-arrow {
+    font-size: 10px;
+    color: rgba(245,245,243,0.25);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  
+  /* ── Can't find this fallback ── */
+  .cant-find-wrap {
+    margin-top: 6px;
+  }
+  .cant-find-btn {
+    background: none;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(245,245,243,0.35);
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    padding: 0;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .cant-find-btn:hover { color: rgba(245,245,243,0.6); }
+  .cant-find-note {
+    display: none;
+    margin-top: 8px;
+    padding: 8px 10px;
+    border-left: 2px solid rgba(212,168,71,0.4);
+    background: rgba(212,168,71,0.06);
+  }
+  .cant-find-note p {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    color: rgba(245,245,243,0.45);
+    line-height: 1.6;
+  }
+  .cant-find-note strong {
+    color: rgba(212,168,71,0.8);
+    font-weight: 400;
+  }
+  .ns-panel-legacy {
+    display: none;
+    margin-top: 5px;
+    padding: 8px 10px;
+    background: var(--white);
+    border: 0.5px solid var(--bone);
+  }
+  .ns-panel-legacy.open { display: block; }
+  .ns-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash);
+    margin-bottom: 5px;
+    display: block;
+  }
+  .ns-brand-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    padding: 3px 0;
+    border-bottom: 0.5px solid var(--bone);
+  }
+  .ns-brand-row:last-child { border-bottom: none; }
+  .ns-brand {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--night);
+    flex: 1;
+  }
+  .ns-verdict {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    flex-shrink: 0;
+  }
+  .ns-verdict.approved { color: #2D5A27; }
+  .ns-verdict.caution { color: #D4A847; }
+  .ns-verdict.avoid { color: #C87878; }
+
+  
+  /* ── Brand example pills ── */
+  .opt-brands {
+    margin-top: 8px;
+    padding-top: 7px;
+    border-top: 0.5px solid var(--bone);
+    line-height: 1.7;
+  }
+  .opt-brand-intro {
+    font-size: 11px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ash);
+    font-family: 'Jost', sans-serif;
+    margin-right: 3px;
+  }
+  .opt-brand-pill {
+    font-size: 11px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ash);
+    font-family: 'Jost', sans-serif;
+  }
+  .opt-brand-pill:not(:last-child)::after {
+    content: ', ';
+    font-style: normal;
+  }
+  .option.selected .opt-brand-intro,
+  .option.selected .opt-brand-pill {
+    color: rgba(245,245,243,0.4);
+  }
+  .option.selected .opt-brands {
+    border-top-color: rgba(245,245,243,0.1);
+  }
+
+  
+  .stat-eyebrow {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(245,245,243,0.4);
+    font-family: 'Jost', sans-serif;
+    margin-bottom: 7px;
+  }
+  .stat-pool {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: var(--night);
+    line-height: 1.25;
+    margin-bottom: 0;
+  }
+  .stat-label {
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ash);
+    line-height: 1.6;
+    font-family: 'Jost', sans-serif;
+  }
   </style>
 </head>
 <body>
@@ -1094,28 +1253,22 @@
   <div class="screen active" id="screen-hook">
 
     <p class="hook-eyebrow">The 5 Most Common Hidden Toxin Exposures</p>
-    <p class="hook-eyebrow-sub">Full Assessment Coming Summer 2026</p>
+    <p class="hook-eyebrow-sub">Trace what’s hiding in your home · Full Assessment Coming Summer 2026</p>
 
     <h1 class="hook-headline">
       What's your<br><em>home health</em><br>score?
     </h1>
 
     <div class="stat-block">
-      <div class="stat-number">20</div>
-      <div class="stat-unit">cubic metres of air per day</div>
-      <div class="stat-label">
-        That's how much air the average person breathes daily —
-        equivalent to an Olympic swimming pool every year.
-        Most of it is indoor air, which contains 5–10× more
-        pollutants than the air outside.
-      </div>
+      <p class="stat-eyebrow">Every day you breathe</p>
+      <p class="stat-pool">You'll breathe an Olympic swimming pool of air today &mdash; mostly indoors, where pollutants run 5&ndash;10&times; higher than outside.</p>
     </div>
 
     <p class="hook-body">
       Most homes have hidden toxins across five key areas &mdash;
       air, water, laundry, cookware, and fragrance. In 5 questions, get a first look at where your home stands &mdash;
       a preview of the full 80+ checkpoint Trace home health assessment
-      launching this summer.
+      launching soon.
     </p>
 
     <p class="hook-time">Takes 90 seconds</p>
@@ -1139,6 +1292,7 @@
           <div>
             <div class="option-text">Yes — HEPA purifier running in main living areas</div>
             <div class="option-sub">Best practice</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">AirDoctor</span><span class="opt-brand-pill">Coway AP-1512HH</span><span class="opt-brand-pill">Levoit Core 300S</span><span class="opt-brand-pill">Winix</span></p>
           </div>
         </button>
         <button class="option" data-q="1" data-val="8" onclick="selectOption(this)">
@@ -1146,6 +1300,7 @@
           <div>
             <div class="option-text">Yes — but just one room, not the main areas</div>
             <div class="option-sub">Partial coverage</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">Any True HEPA model</span><span class="opt-brand-pill">placed in bedroom only</span></p>
           </div>
         </button>
         <button class="option" data-q="1" data-val="12" onclick="selectOption(this)">
@@ -1153,13 +1308,14 @@
           <div>
             <div class="option-text">I have an air purifier, but it's not HEPA</div>
             <div class="option-sub">Ionizers and non-HEPA filters vary widely in effectiveness</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">Honeywell basic</span><span class="opt-brand-pill">Germ Guardian</span></p>
           </div>
         </button>
         <button class="option" data-q="1" data-val="20" onclick="selectOption(this)">
           <span class="option-letter">D</span>
           <div>
-            <div class="option-text">No — I've never thought about it</div>
-            <div class="option-sub">Most homes fall here</div>
+            <div class="option-text">No — I don't use one</div>
+            <div class="option-sub">Most homes fall here</p>
           </div>
         </button>
       </div>
@@ -1181,55 +1337,86 @@
       <p class="q-context">Tap water often contains trace chlorine, fluoride, lead (from older pipes), and microplastics. The type of filter matters significantly. <strong>Note: a water softener alone does not filter contaminants &mdash; it only removes hardness minerals.</strong></p>
 
       <div class="options-list" id="opts-q2">
+
         <button class="option" data-q="2" data-val="0" onclick="selectOption(this)">
           <span class="option-letter">A</span>
           <div>
-            <div class="option-text">Reverse osmosis filter — countertop or under-sink</div>
-            <div class="option-sub">Removes 95–99% of contaminants including microplastics</div>
+            <div class="option-text">Reverse osmosis filter &mdash; countertop or under-sink</div>
+            <div class="option-sub">Removes 95&ndash;99% of contaminants including PFAS, lead, and microplastics</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">AquaTru</span><span class="opt-brand-pill">Cloud RO</span><span class="opt-brand-pill">APEC</span><span class="opt-brand-pill">Sans</span><span class="opt-brand-pill">Rorra</span></p>
           </div>
         </button>
+
         <button class="option" data-q="2" data-val="5" onclick="selectOption(this)">
           <span class="option-letter">B</span>
           <div>
             <div class="option-text">Whole-house filtration system</div>
             <div class="option-sub">Protects all water in the home &mdash; not a water softener</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">Aquasana</span><span class="opt-brand-pill">Pelican</span><span class="opt-brand-pill">SpringWell</span></p>
           </div>
         </button>
-        <button class="option" data-q="2" data-val="10" onclick="selectOption(this)">
+
+        <button class="option" data-q="2" data-val="8" onclick="selectOption(this)">
           <span class="option-letter">C</span>
           <div>
-            <div class="option-text">Pitcher filter (Brita, ZeroWater, etc.)</div>
-            <div class="option-sub">Reduces some contaminants; effectiveness varies by model</div>
+            <div class="option-text">Fill jugs at an RO or alkaline water store</div>
+            <div class="option-sub">Good for drinking water &mdash; leaves cooking and incidental tap use unfiltered</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">Costco water station</span><span class="opt-brand-pill">alkaline water bar</span><span class="opt-brand-pill">water kiosk</span></p>
           </div>
         </button>
-        <button class="option" data-q="2" data-val="8" onclick="selectOption(this)">
+
+        <button class="option" data-q="2" data-val="10" onclick="selectOption(this)">
           <span class="option-letter">D</span>
           <div>
-            <div class="option-text">Bottled water</div>
-            <div class="option-sub">Often contains microplastics from the plastic bottle</div>
+            <div class="option-text">Water delivery service</div>
+            <div class="option-sub">Large plastic jugs can leach microplastics &mdash; water quality varies by brand</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">Arrowhead</span><span class="opt-brand-pill">Sparklets</span><span class="opt-brand-pill">Primo</span><span class="opt-brand-pill">Culligan delivery</span></p>
           </div>
         </button>
-        <button class="option" data-q="2" data-val="10" onclick="selectOption(this)">
+
+        <button class="option" data-q="2" data-val="12" onclick="selectOption(this)">
           <span class="option-letter">E</span>
           <div>
-            <div class="option-text">Refrigerator filter</div>
-            <div class="option-sub">Most fridge filters remove chlorine taste only &mdash; not PFAS, lead, microplastics, or fluoride. Not a meaningful health filter without NSF certification for contaminant removal</div>
+            <div class="option-text">Advanced pitcher filter &mdash; removes PFAS</div>
+            <div class="option-sub">NSF certified for contaminant removal including PFAS and lead</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">Clearly Filtered</span><span class="opt-brand-pill">Alexapure</span></p>
           </div>
         </button>
-        <button class="option" data-q="2" data-val="5" onclick="selectOption(this)">
+
+        <button class="option" data-q="2" data-val="14" onclick="selectOption(this)">
           <span class="option-letter">F</span>
           <div>
             <div class="option-text">Water softener only</div>
-            <div class="option-sub">Softeners remove hardness minerals but do not filter chlorine, PFAS, lead, or microplastics &mdash; a filtration upgrade is still recommended</div>
+            <div class="option-sub">Removes hardness minerals only &mdash; not PFAS, lead, or microplastics</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">Culligan softener</span><span class="opt-brand-pill">Kinetico</span><span class="opt-brand-pill">EcoWater</span></p>
           </div>
         </button>
-        <button class="option" data-q="2" data-val="15" onclick="selectOption(this)">
+
+        <button class="option" data-q="2" data-val="18" onclick="selectOption(this)">
           <span class="option-letter">G</span>
           <div>
-            <div class="option-text">Straight from the tap &mdash; unfiltered</div>
-            <div class="option-sub">Quality depends heavily on your municipality</div>
+            <div class="option-text">Standard pitcher filter &mdash; taste only</div>
+            <div class="option-sub">Removes chlorine taste but not PFAS, lead, or microplastics</div>
+            <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">Brita</span><span class="opt-brand-pill">PUR</span><span class="opt-brand-pill">ZeroWater</span></p>
           </div>
         </button>
+
+        <button class="option" data-q="2" data-val="20" onclick="selectOption(this)">
+          <span class="option-letter">H</span>
+          <div>
+            <div class="option-text">Refrigerator filter</div>
+            <div class="option-sub">Removes chlorine taste only &mdash; not PFAS, lead, or microplastics</div>
+          </div>
+        </button>
+
+        <button class="option" data-q="2" data-val="24" onclick="selectOption(this)">
+          <span class="option-letter">I</span>
+          <div>
+            <div class="option-text">Straight from the tap &mdash; unfiltered</div>
+            <div class="option-sub">Quality depends entirely on local water source and pipe condition</div>
+          </div>
+        </button>
+
       </div>
 
       <div class="q-nav">
@@ -1395,7 +1582,7 @@
   </div>
 
   <!-- ═══════════════════════════════════════
-       SCREEN — Result (dynamically populated)
+       SCREEN — Results
   ════════════════════════════════════════ -->
   <div class="screen" id="screen-result">
     <div class="result-wrap">
@@ -1419,22 +1606,56 @@
       <h2 class="result-headline" id="result-headline"></h2>
       <p class="result-body" id="result-body"></p>
 
-      <p class="affiliate-note">Some product links support Trace through affiliate commissions — at no extra cost to you.</p>
+      <!-- Bridge callout — above findings -->
+      <div class="bridge-callout" id="bridge-callout">
+        <span style="font-size:14px;color:#2D5A27;">&darr;</span>
+        <p class="bc-text">Your full swap list &mdash; including everything else we found &mdash; is waiting in your report below.</p>
+      </div>
 
-      <div class="swap-highlight" id="swap-highlight">
-        <div class="swap-eyebrow" id="swap-eyebrow">Your #1 highest-impact swap</div>
-        <div class="swap-title" id="swap-title"></div>
-        <div class="swap-detail-line" id="swap-detail"></div>
-        <div class="swap-desc" id="swap-desc"></div>
-        <div class="swap-boost-row">
-          <span class="swap-boost-label">Score impact if you make this swap</span>
+      <div class="findings" id="findings-wrap">
+        <div class="findings-label">What we found in your home</div>
+        <div id="findings-list"></div>
+      </div>
+
+      <!-- Email gate -->
+      <div class="email-gate">
+        <h3 class="email-gate-headline">You've seen 2 swaps. Your full report has specific recommendations for every finding above.</h3>
+        <p class="email-gate-body">Enter your email and we'll send your complete findings report &mdash; every swap, every product, every finding. Plus you'll be first in line when the full Trace home assessment launches soon.</p>
+        <div class="input-wrap">
+          <input type="email" class="input-field" id="email-input" placeholder="Email address" autocomplete="email">
+          <button class="btn-submit" id="btn-submit" onclick="submitEmail()">Send my swaps →</button>
+        </div>
+        <p class="error-msg" id="email-error">Please enter a valid email address.</p>
+        <p class="email-privacy">No spam. Unsubscribe anytime. Your data stays private.</p>
+      </div>
+
+      <!-- Swap reveal — hidden until email submitted -->
+      <div id="swap-reveal" style="display:none;">
+
+        <p class="affiliate-note">Some product links support Trace through affiliate commissions &mdash; at no extra cost to you.</p>
+
+      <div class="swap-highlight" id="swap-highlight" style="display:none;">
+        <div class="swap-eyebrow" id="swap-eyebrow">Your top swaps &mdash; low to high</div>
+
+        <!-- Three swap options populated by JS -->
+        <div class="swap-options" id="swap-options-wrap"></div>
+
+        <!-- Can't find this fallback -->
+        <div class="cant-find-wrap" id="cant-find-wrap">
+          <button class="cant-find-btn" onclick="toggleCantFind()">Can't find these? See alternatives &darr;</button>
+          <div class="cant-find-note" id="cant-find-note">
+            <p id="cant-find-text"></p>
+          </div>
+        </div>
+
+        <div class="swap-boost-row" style="margin-top:10px;">
+          <span class="swap-boost-label">Score impact &mdash; best choice swap</span>
           <div class="swap-boost-nums">
             <span class="swap-boost-from" id="boost-from">--</span>
             <span class="swap-boost-arr">&rarr;</span>
             <span class="swap-boost-to" id="boost-to">--</span>
           </div>
         </div>
-        <div class="swap-budget-note" id="swap-budget-note"></div>
       </div>
 
       <!-- Start today card -->
@@ -1456,121 +1677,85 @@
 
       <!-- Clean home special recommendations -->
       <div id="clean-home-swaps" style="display:none; margin-bottom:16px;">
-        <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:#1A1A1A;margin-bottom:8px;font-family:'Jost',sans-serif;">What even clean homes often miss</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:18px;color:#1A1A1A;margin-bottom:6px;line-height:1.3;">You're already ahead of most homes. These are swaps you may not have considered yet — easy wins even health-conscious households often haven't gotten to.</p>
         <div class="dark-card" style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
-          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;font-family:'Jost',sans-serif;">Most surprising finding — oral care</p>
-          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;font-family:'Jost',sans-serif;">Cocofloss by CocoLab</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);font-family:'Jost',sans-serif;margin-bottom:6px;">~$9 · Third-party PFAS tested · PTFE-free</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);font-family:'Jost',sans-serif;">Most clean-living households still use Oral-B Glide — PTFE-coated floss with PFAS compounds in direct contact with gum tissue. One of the most overlooked swaps even in health-conscious homes.</p>
-          <a href="https://www.amazon.com/s?k=cocofloss&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
+          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;">Most surprising finding — oral care</p>
+          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;">Cocofloss by CocoLab</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:6px;">~$9 · Third-party PFAS tested · PTFE-free</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);">Most clean-living households still use Oral-B Glide — PTFE-coated floss with PFAS compounds in direct contact with gum tissue. One of the most overlooked swaps even in health-conscious homes.</p>
+          <a href="https://www.amazon.com/s?k=cocofloss&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
         </div>
         <div style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
-          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:#7DC878;margin-bottom:4px;font-family:'Jost',sans-serif;">Hidden exposure — kitchen</p>
-          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;font-family:'Jost',sans-serif;">French press or pour-over coffee maker</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);font-family:'Jost',sans-serif;margin-bottom:6px;">~$20–40 · Glass or stainless · No plastic in brew path</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);font-family:'Jost',sans-serif;">Hot water through plastic Keurig pods or plastic drip machines releases microplastics and BPA directly into your cup — every morning. Glass or stainless steel brew path eliminates this entirely.</p>
-          <a href="https://www.amazon.com/s?k=glass+french+press&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:#7DC878;background:rgba(125,200,120,0.12);border:1px solid rgba(125,200,120,0.25);padding:5px 9px;text-decoration:none;">Find this product →</a>
+          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;">Often overlooked — kitchen</p>
+          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;">French press or pour-over coffee maker</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:6px;">~$20–40 · Glass or stainless · No plastic in brew path</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);">Hot water through plastic Keurig pods or plastic drip machines releases microplastics and BPA directly into your cup — every morning. Glass or stainless steel brew path eliminates this entirely.</p>
+          <a href="https://www.amazon.com/s?k=glass+french+press&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
         </div>
         <div style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
-          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;font-family:'Jost',sans-serif;">Overlooked refinement — hair care</p>
-          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;font-family:'Jost',sans-serif;">Rahua Classic Shampoo</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);font-family:'Jost',sans-serif;margin-bottom:6px;">~$38 · Sulfate-free · No synthetic fragrance · Plant-based</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);font-family:'Jost',sans-serif;">Shampoo aerosolises in a hot shower — absorbed through the scalp and inhaled simultaneously. Even people who avoid synthetic fragrance elsewhere often haven't addressed their shampoo.</p>
-          <a href="https://www.amazon.com/s?k=rahua+shampoo&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
+          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;">Overlooked refinement — hair care</p>
+          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;">Rahua Classic Shampoo</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:6px;">~$38 · Sulfate-free · No synthetic fragrance · Plant-based</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);">Shampoo aerosolises in a hot shower — absorbed through the scalp and inhaled simultaneously. Even people who avoid synthetic fragrance elsewhere often haven't addressed their shampoo.</p>
+          <a href="https://www.amazon.com/s?k=rahua+shampoo&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
         </div>
-        <div style="background:#1A1A1A;padding:12px;margin-bottom:0;">
-          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;font-family:'Jost',sans-serif;">Most overlooked category — bedding</p>
-          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;font-family:'Jost',sans-serif;">Aizome Organic Bedding</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);font-family:'Jost',sans-serif;margin-bottom:6px;">GOTS certified · FDA registered Class 1 medical device · No bleach, no PFAS</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);font-family:'Jost',sans-serif;">Even people who buy organic sheets rarely know about Aizome — the only bedding registered as a medical device by the FDA. 8 hours of skin contact every night. The standard for a truly clean bedroom.</p>
-          <a href="https://aizome.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-family:'Jost',sans-serif;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
+        <div style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
+          <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;">Most overlooked category — bedding</p>
+          <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;">Aizome Organic Bedding</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:6px;">GOTS certified · FDA registered Class 1 medical device · No bleach, no PFAS</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);">Even people who buy organic sheets rarely know about Aizome — the only bedding registered as a medical device by the FDA. 8 hours of skin contact every night. The standard for a truly clean bedroom.</p>
+          <a href="https://aizome.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
         </div>
       </div>
 
-            <!-- Bridge callout — above findings -->
-      <div class="bridge-callout" id="bridge-callout">
-        <span style="font-size:14px;color:#2D5A27;">&darr;</span>
-        <p class="bc-text">Your full swap list &mdash; including everything else we found &mdash; is waiting in your report below.</p>
-      </div>
-
-      <div class="findings" id="findings-wrap">
-        <div class="findings-label">What we found in your home</div>
-        <div id="findings-list"></div>
-      </div>
-
-      <!-- Share your score -->
+            <!-- Share your score -->
       <div class="share-wrap">
         <button class="btn-share" onclick="shareScore()">Share my score →</button>
       </div>
 
-            <!-- Scroll hint -->
-      <div class="scroll-hint" id="scroll-hint">
-        <div class="scroll-hint-text">
-          <span>More swaps + early access below</span>
-          <span class="scroll-arrow">&darr;</span>
-        </div>
-      </div>
-
-      <!-- Full product teaser -->
-      <div class="full-teaser">
-        <div class="ft-eyebrow">Coming this summer</div>
-        <h3 class="ft-headline">The full Trace assessment goes deeper.</h3>
-        <p class="ft-body">These 5 questions cover the most widespread hidden toxin pathways in most homes. The complete Trace assessment looks at every room &mdash; 80+ checkpoints, room-by-room scores, and a 12-month swap plan personalised to your budget.</p>
+        <!-- Full product teaser -->
+      <div class="full-teaser" style="display:none;">
+        <div class="ft-eyebrow">Coming soon</div>
+        <h3 class="ft-headline">The full Trace home assessment.</h3>
+        <p class="ft-body">Room by room. 80+ checkpoints. A complete scored breakdown of every exposure in your home — and a personalized swap plan at your own pace.</p>
         <div class="ft-features">
           <div class="ft-feature"><span class="ft-num">01</span><span class="ft-text">Room-by-room health score</span></div>
-          <div class="ft-feature"><span class="ft-num">02</span><span class="ft-text">80+ checkpoints across your home</span></div>
-          <div class="ft-feature"><span class="ft-num">03</span><span class="ft-text">Personalised 12-month swap timeline</span></div>
+          <div class="ft-feature"><span class="ft-num">02</span><span class="ft-text">80+ hidden toxin checkpoints</span></div>
+          <div class="ft-feature"><span class="ft-num">03</span><span class="ft-text">Personalized swap plan at your own pace</span></div>
           <div class="ft-feature"><span class="ft-num">04</span><span class="ft-text">Budget-fitted product recommendations</span></div>
         </div>
       </div>
 
-      <!-- Email gate -->
-      <div class="email-gate">
-        <h3 class="email-gate-headline">You've seen 2 swaps. Your full report has specific recommendations for every finding above.</h3>
-        <p class="email-gate-body">Enter your email and we'll send your complete findings report &mdash; every swap, every product, every finding. Plus you'll be first in line when the full Trace home assessment launches this summer.</p>
-        <div class="input-wrap">
-          <input type="email" class="input-field" id="email-input" placeholder="Email address" autocomplete="email">
-          <button class="btn-submit" id="btn-submit" onclick="submitEmail()">Send my plan →</button>
-        </div>
-        <p class="error-msg" id="email-error">Please enter a valid email address.</p>
-        <p class="email-privacy">No spam. Unsubscribe anytime. Your data stays private.</p>
       </div>
 
-    </div>
-  </div>
+      <!-- Legal footer -->
+      <div class="legal-footer" id="legal-footer" style="display:none;">
+        <p class="legal-line">For educational purposes only &middot; Not medical advice &middot; Affiliate links at no cost to you</p>
+      </div>
+
+    </div><!-- /result-wrap -->
+  </div><!-- /screen-result -->
 
   <!-- ═══════════════════════════════════════
        SCREEN — Thank You
   ════════════════════════════════════════ -->
-  <!-- Legal footer -->
-  <div class="legal-footer" id="legal-footer" style="display:none;">
-    <p class="legal-line">For education only &mdash; not a substitute for professional medical advice. Always a good idea to loop in your doctor for personal health questions.</p>
-  </div>
-
   <div class="screen" id="screen-thankyou">
-    <div class="ty-check">
-      <svg width="16" height="12" viewBox="0 0 16 12" fill="none">
-        <path d="M1 6L6 11L15 1" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+    <div class="ty-wrap">
+      <div class="ty-icon">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="19" stroke="#2D5A27" stroke-width="1.5"/>
+          <path d="M13 20l5 5 9-10" stroke="#2D5A27" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 class="ty-headline">You're in.</h2>
+      <p class="ty-body">Your swap plan is on its way. Check for an email from Trace — your five highest-impact recommendations are inside.</p>
+      <div class="ty-divider"></div>
+      <p class="ty-teaser">Trace launches soon with a full room-by-room home health assessment — 80+ checkpoints and a personalized swap plan at your own pace. You'll be first to know.</p>
+      <a href="https://www.instagram.com/tracehome" target="_blank" class="btn-primary" style="display:inline-block;text-align:center;text-decoration:none;">Follow @tracehome →</a>
     </div>
-    <h2 class="ty-headline">You're in.</h2>
-    <p class="ty-body">Check your inbox for your top swap recommendations from Trace. You're now on the early access list for the full home health assessment launching this summer.</p>
-
-    <div class="ty-divider"></div>
-
-    <p class="ty-teaser">
-      This is just the beginning.<br><br>
-      <strong>Trace</strong> is launching soon with a full room-by-room home health assessment
-      — 9 rooms, 80+ checkpoints, a complete scored breakdown of every exposure pathway,
-      and a personalized swap timeline built around your budget.<br><br>
-      You'll be first to know.
-    </p>
-
-    <a href="https://www.instagram.com/tracehome" target="_blank" class="btn-primary" style="display:inline-block; text-align:center; text-decoration:none;">Follow @tracehome →</a>
   </div>
 
-</div><!-- /shell -->
-
+</div>
 <script>
 // ── State ──────────────────────────────────────
 const answers = { 1: null, 2: null, 3: null, 4: null, 5: null };
@@ -1641,9 +1826,13 @@ function buildFindings() {
   else items.push({ name: 'Air filtration — good', note: 'HEPA coverage in main areas', level: 'low' });
 
   // Q2 Water
-  if (answers[2] >= 15) items.push({ name: 'Unfiltered tap water', note: 'May contain chlorine, lead traces, microplastics', level: 'high' });
-  else if (answers[2] >= 10) items.push({ name: 'Pitcher filter only', note: 'Reduces some contaminants; not all', level: 'medium' });
-  else if (answers[2] >= 8) items.push({ name: 'Bottled water', note: 'Microplastics from plastic containers', level: 'medium' });
+  if (answers[2] >= 24) items.push({ name: 'Unfiltered tap water', note: 'Chlorine, lead, microplastics, PFAS — fully unfiltered', level: 'high' });
+  else if (answers[2] >= 20) items.push({ name: 'Refrigerator filter only', note: 'Removes chlorine taste only — not PFAS, lead, or microplastics', level: 'high' });
+  else if (answers[2] >= 18) items.push({ name: 'Standard pitcher filter', note: 'Removes chlorine taste only — upgrade to Clearly Filtered for PFAS removal', level: 'medium' });
+  else if (answers[2] >= 14) items.push({ name: 'Water softener only', note: 'Removes hardness only — not a health filter', level: 'medium' });
+  else if (answers[2] >= 12) items.push({ name: 'Advanced pitcher filter', note: 'Good PFAS removal — home RO covers cooking and incidental use too', level: 'low' });
+  else if (answers[2] >= 10) items.push({ name: 'Water delivery service', note: 'Plastic jug microplastic exposure — consider home filtration', level: 'low' });
+  else if (answers[2] >= 8) items.push({ name: 'Store RO or alkaline water', note: 'Good for drinking — cooking and incidental tap use still unfiltered', level: 'low' });
   else items.push({ name: 'Water filtration — good', note: 'Effective filtration in place', level: 'low' });
 
   // Q3 Laundry
@@ -1674,10 +1863,16 @@ function getTopSwap() {
       category: 'Air Quality',
       title: 'AirDoctor AD1000 Air Purifier',
       detail: '~$150–180 · UltraHEPA + carbon/VOC filter · No WiFi',
-      desc: 'You breathe indoor air for the equivalent of an Olympic swimming pool every year. The AirDoctor AD1000 captures particles 100x smaller than standard HEPA and removes VOCs that most purifiers miss entirely. It works while you sleep.',
-      budgetNote: 'A meaningful investment — and the highest single-impact swap in most homes. Budget option: Winix A231 (~$110) is a strong True HEPA alternative.',
+      desc: 'You breathe indoor air for the equivalent of an Olympic swimming pool every year. The AirDoctor AD1000 captures particles 100x smaller than standard HEPA and removes VOCs that most purifiers miss entirely.',
+      budgetNote: '',
       boostRange: [15, 25],
       link: 'https://www.amazon.com/s?k=airdoctor+ad1000&tag=tracehome-20',
+      betterThanMost: 'If none of these are accessible right now, any True HEPA unit is a meaningful step up from no filtration. Look for “True HEPA” on the label — not just “HEPA-type” or “HEPA-style,” which are not the same standard.',
+      swapOptions: [
+        { label: 'Start today', title: 'Levoit Core 300S Air Purifier', detail: '~$60 · Amazon · True HEPA · Quiet sleep mode · 219 sq ft', link: 'https://www.amazon.com/s?k=levoit+core+300s&tag=tracehome-20' },
+        { label: 'Mid range', title: 'Coway AP-1512HH Air Purifier', detail: '~$100 · Amazon · True HEPA · 360 sq ft · Wirecutter top pick', link: 'https://www.amazon.com/s?k=coway+ap-1512hh&tag=tracehome-20' },
+        { label: 'Best choice', title: 'AirDoctor AD1000', detail: '~$150–180 · UltraHEPA + dedicated VOC filter', link: 'https://www.amazon.com/s?k=airdoctor+ad1000&tag=tracehome-20' }
+      ],
       todaySwap: {
         title: "Molly's Suds Laundry Powder",
         detail: '~$16 · Amazon · EWG Verified · Fragrance-free · 70 loads',
@@ -1689,10 +1884,16 @@ function getTopSwap() {
       category: 'Water Quality',
       title: 'AquaTru Classic Countertop RO Filter',
       detail: '~$299 · No installation · Removes PFAS, lead, microplastics',
-      desc: 'Removes 99.9% of contaminants including what pitcher filters cannot touch — PFAS, lead, microplastics, chlorine, and fluoride. No plumbing needed. Works in any kitchen including rentals.',
-      budgetNote: 'Budget entry: Clearly Filtered Pitcher (~$90) removes significantly more than Brita including PFAS — a meaningful step up while saving for RO.',
+      desc: 'Removes 99.9% of contaminants including PFAS, lead, microplastics, chlorine, and fluoride. No plumbing needed. Works in any kitchen including rentals.',
+      budgetNote: '',
       boostRange: [18, 28],
       link: 'https://www.amazon.com/dp/B01N1QBR71?tag=tracehome-20',
+      betterThanMost: 'If a home RO filter isn’t accessible yet, Clearly Filtered pitcher (~$90) removes PFAS — a meaningful step up from standard pitcher or fridge filters. Store RO jugs are also a good drinking water solution while you work toward home filtration.',
+      swapOptions: [
+        { label: 'Start today', title: 'Clearly Filtered Pitcher', detail: '~$90 · Amazon · Removes PFAS unlike Brita · NSF certified', link: 'https://www.amazon.com/s?k=clearly+filtered+pitcher&tag=tracehome-20' },
+        { label: 'Mid range', title: 'AquaTru Countertop RO Filter', detail: '~$299 · aquatruwater.com · No installation needed · Removes PFAS, lead, microplastics', link: 'https://www.amazon.com/dp/B01N1QBR71?tag=tracehome-20' },
+        { label: 'Best choice', title: 'Cloud RO Under-Sink Filter', detail: '~$599–749 · cloudwaterfilters.com · Whole-home RO · NSF certified', link: 'https://cloudwaterfilters.com/?ref=tracehome' }
+      ],
       todaySwap: {
         title: 'Lodge Cast Iron Skillet 10"',
         detail: '~$30 · Amazon · No coatings ever · Lasts decades',
@@ -1704,10 +1905,16 @@ function getTopSwap() {
       category: 'Laundry',
       title: "Molly's Suds Laundry Powder",
       detail: '~$16 · EWG Verified · Fragrance-free · HE compatible · 70 loads',
-      desc: 'Detergent residue stays in every fabric you own. You wear it and sleep in it for 8-16 hours daily. This is one of the most affordable and highest-impact swaps available — and it costs almost the same as Tide.',
+      desc: 'Detergent residue stays in every fabric you own — 8–16 hours of daily skin contact. Costs almost the same as Tide. This single swap affects every item of clothing and bedding you own.',
       budgetNote: '',
       boostRange: [12, 20],
       link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20',
+      betterThanMost: 'If none of these are available locally, Seventh Generation Free & Clear is a step up from Tide — no optical brighteners and fewer synthetic surfactants. It still uses undisclosed “natural fragrance” so it’s not Trace Approved, but it’s meaningfully better than conventional.',
+      swapOptions: [
+        { label: 'Start today', title: "Molly's Suds Laundry Powder", detail: '~$16 · Amazon · EWG Verified · 70 loads', link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20' },
+        { label: 'Mid range', title: 'Meliora Laundry Powder', detail: '~$18 · Amazon · EWG Verified · Certified B Corp · Zero-waste packaging', link: 'https://www.amazon.com/s?k=meliora+laundry+powder&tag=tracehome-20' },
+        { label: 'Best choice', title: 'Branch Basics Concentrate', detail: '~$28 · branchbasics.com · EWG Verified · Replaces all cleaners', link: 'https://www.amazon.com/dp/B0FHQRRNLT?tag=tracehome-20' }
+      ],
       todaySwap: {
         title: 'Woolzies Organic Wool Dryer Balls',
         detail: '~$18 · Amazon · Replaces dryer sheets permanently',
@@ -1719,10 +1926,16 @@ function getTopSwap() {
       category: 'Cookware',
       title: 'Lodge Cast Iron Skillet 10"',
       detail: '~$30 · Amazon · No coatings ever · Lasts decades',
-      desc: 'One Lodge cast iron skillet eliminates PFAS from your most-used cooking surface entirely. No coatings, no chemicals, improves with use. One of the most affordable high-impact swaps in any home.',
+      desc: 'One Lodge cast iron skillet eliminates PFAS from your most-used cooking surface entirely. Non-stick pans release PFAS when scratched or overheated. Cast iron has no coatings, improves with use, and lasts decades.',
       budgetNote: '',
       boostRange: [10, 18],
       link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20',
+      betterThanMost: 'If cast iron isn’t for you, any stainless steel pan from a mainstream brand (All-Clad, Cuisinart) is a meaningful step up from non-stick. No PFAS coatings, lasts years. Not certified but the material itself is safe.',
+      swapOptions: [
+        { label: 'Start today', title: 'Lodge Cast Iron Skillet 10"', detail: '~$30 · Amazon · No coatings · Lasts decades', link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20' },
+        { label: 'Mid range', title: 'Made In Stainless Steel Frying Pan', detail: '~$109 · madeincookware.com · PFAS-free · 5-ply', link: 'https://www.amazon.com/s?k=made+in+stainless+frying+pan&tag=tracehome-20' },
+        { label: 'Best choice', title: 'Caraway Ceramic Cookware Set', detail: '~$395 · Amazon · Ceramic coated · PFAS-free', link: 'https://www.amazon.com/s?k=caraway+cookware+set&tag=tracehome-20' }
+      ],
       todaySwap: {
         title: 'Davids Natural Toothpaste',
         detail: '~$10 · Amazon · EWG Verified · No SLS · No saccharin',
@@ -1732,18 +1945,24 @@ function getTopSwap() {
       }},
     { q: 5, val: answers[5],
       category: 'Fragrance',
-      title: 'Pure Beeswax Pillar Candles',
-      detail: '~$12–20 · Amazon · No synthetic fragrance · No paraffin',
+      title: 'Bluecorn Pure Beeswax Candles',
+      detail: '~$16–25 · Amazon · 100% raw beeswax · No synthetic fragrance · No additives',
       desc: 'Paraffin candles and plug-in air fresheners release phthalates and VOCs continuously into your home air. Pure beeswax candles replace them entirely. The swap works the moment you make it — no more synthetic fragrance in your breathing air.',
       budgetNote: '',
       boostRange: [8, 14],
-      link: 'https://www.amazon.com/s?k=pure+beeswax+pillar+candles&tag=tracehome-20',
+      link: 'https://www.amazon.com/s?k=bluecorn+beeswax+candles&tag=tracehome-20',
+      betterThanMost: 'If beeswax candles aren’t accessible, simply removing plug-in air fresheners entirely costs nothing and immediately improves your air quality. Unscented is always better than synthetic fragrance — even from brands that market as natural.',
+      swapOptions: [
+        { label: 'Start today', title: 'Bluecorn Pure Beeswax Candles', detail: '~$16–25 · Amazon · 100% raw beeswax · No synthetic fragrance · No additives', link: 'https://www.amazon.com/s?k=bluecorn+beeswax+candles&tag=tracehome-20' },
+        { label: 'Mid range', title: 'Branch Basics Multi-Purpose Concentrate', detail: '~$28 · branchbasics.com · EWG Verified · Replaces all synthetic cleaners', link: 'https://www.amazon.com/dp/B0FHQRRNLT?tag=tracehome-20' },
+        { label: 'Best choice', title: 'Fontana Candle Co.', detail: '~$26–27 · fontanacandle.com · MADE SAFE certified · First candle brand certified', link: 'https://www.amazon.com/s?k=fontana+candle+co&tag=tracehome-20' }
+      ],
       todaySwap: {
         title: 'Branch Basics Multi-Purpose Concentrate',
         detail: '~$28 · branchbasics.com · EWG Verified · Replaces all cleaners',
         desc: 'One concentrate replaces every surface cleaner in your home. Branch Basics is EWG Verified, fragrance-free, and the most versatile clean cleaning product available. The same bottle cleans counters, floors, and bathrooms.',
         boostRange: [4, 8],
-        link: 'AMAZON_BRANCH_BASICS_LINK_HERE'
+        link: 'https://www.amazon.com/dp/B0FHQRRNLT?tag=tracehome-20'
       }}
   ];
 
@@ -1771,8 +1990,7 @@ function showResult() {
   // Score color
   if (score <= 49) arc.style.stroke = '#C87878';
   else if (score <= 74) arc.style.stroke = '#D4A847';
-  else if (score <= 89) arc.style.stroke = '#2D5A27';
-  else arc.style.stroke = '#7DC878';
+  else arc.style.stroke = '#2D5A27';
 
   // Animate number
   let current = 25;
@@ -1809,7 +2027,7 @@ function showResult() {
     },
     'clean-home': {
       headline: 'Your home is genuinely clean. This is rare.',
-      body: 'You\'ve already made the highest-impact choices across all five areas. Most people never get here. The full Trace assessment goes deeper — 80+ checkpoints across every room — and surfaces the refinements most people miss even after years of clean living.'
+      body: 'You\'ve already made the highest-impact choices across all five areas. Most people never get here. Below are a few unassuming swaps that often go unnoticed even in the cleanest homes — low-profile areas that quietly add up over time.'
     }
   };
 
@@ -1824,23 +2042,86 @@ function showResult() {
   var swapHighlightDiv = document.getElementById('swap-highlight');
   var swapTodayDiv = document.getElementById('swap-today');
   if (isCleanHome) {
-    if (cleanHomeDiv) cleanHomeDiv.style.display = 'block';
+    if (cleanHomeDiv) {
+      cleanHomeDiv.style.display = 'block';
+      // Add toilet paper surprise swap only once
+      if (!cleanHomeDiv.dataset.loaded) {
+        cleanHomeDiv.dataset.loaded = 'true';
+        var surpriseHtml = '';
+        surpriseHtml += '<div style="background:#1A1A1A;padding:12px;margin-bottom:5px;">' +
+        '<p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;">Most overlooked — bathroom</p>' +
+        '<p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;">PlantPaper Bamboo Toilet Paper</p>' +
+        '<p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:0;">(Reel Bamboo is also independently lab-tested non-detect for PFAS — a verified alternative)</p>' +
+        '<p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:6px;">~$30 · plantpaper.us · PFAS non-detect across 28 compounds · Unbleached · No dyes</p>' +
+        '<p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);">Most conventional toilet paper is chlorine-bleached. PlantPaper is lab-tested PFAS non-detect across 28 compounds, unbleached, formaldehyde-free. In direct contact with the most sensitive skin on your body — and most clean-living households have never thought about this.</p>' +
+        '<a href="https://plantpaper.us" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>' +
+      '</div>';
+      var insertBefore = cleanHomeDiv.querySelector('#insert-surprise');
+        // Wrap in standalone card container before appending
+      var wrapper = document.createElement('div');
+      wrapper.style.cssText = 'margin-bottom:5px;';
+      wrapper.innerHTML = surpriseHtml;
+      cleanHomeDiv.appendChild(wrapper);
+      } // end if not loaded
+    }
     if (swapHighlightDiv) swapHighlightDiv.style.display = 'none';
     if (swapTodayDiv) swapTodayDiv.style.display = 'none';
+    // Update findings for clean-home before returning
+    var flClean = document.querySelector('.findings-label');
+    if (flClean) flClean.textContent = 'What you\u2019re already doing right';
+    var listClean = document.getElementById('findings-list');
+    if (listClean) {
+      var cats = ['Air quality', 'Water filtration', 'Laundry', 'Cookware', 'Fragrance'];
+      listClean.innerHTML = cats.map(function(c) {
+        return '<div class="finding-item"><div class="finding-dot" style="background:#7DC878;"></div><div><div class="finding-name" style="color:#2D5A27;">&check; ' + c + '</div></div></div>';
+      }).join('');
+    }
+    // For clean home — reveal swaps immediately (no email gate needed for perfect scorers)
+    var revealDiv = document.getElementById('swap-reveal');
+    if (revealDiv) revealDiv.style.display = 'block';
+    showScreen('result');
     return; // Skip regular swap card rendering
   } else {
     if (cleanHomeDiv) cleanHomeDiv.style.display = 'none';
   }
 
-  // Update swap eyebrow with category
-  if (topSwap.category) {
-    document.getElementById('swap-eyebrow').textContent = 'Your #1 swap — ' + topSwap.category;
+  // Update swap eyebrow
+  var eyebrowEl = document.getElementById('swap-eyebrow');
+  if (eyebrowEl) eyebrowEl.textContent = topSwap.category ? 'Your ' + topSwap.category + ' swaps — low to high' : 'Your top swaps';
+
+  // Populate can't find fallback
+  var cantFindText = document.getElementById('cant-find-text');
+  var cantFindNote = document.getElementById('cant-find-note');
+  if (cantFindText && topSwap.betterThanMost) {
+    cantFindText.innerHTML = '<strong>Better than most — not Trace Approved:</strong> ' + topSwap.betterThanMost;
+    if (cantFindNote) cantFindNote.style.display = 'none'; // reset closed
   }
-  document.getElementById('swap-title').textContent = topSwap.title;
-  // Detail line
-  var detailEl = document.getElementById('swap-detail');
-  if (detailEl && topSwap.detail) detailEl.textContent = topSwap.detail;
-  document.getElementById('swap-desc').textContent = topSwap.desc;
+
+  // Render three swap options
+  var optWrap = document.getElementById('swap-options-wrap');
+  if (optWrap && topSwap.swapOptions) {
+    var labelClasses = ['low', 'mid', 'high'];
+    optWrap.innerHTML = topSwap.swapOptions.map(function(opt, i) {
+      return '<a href="' + opt.link + '" target="_blank" rel="noopener" class="swap-opt">' +
+        '<span class="swap-opt-label ' + labelClasses[i] + '">' + opt.label + '</span>' +
+        '<span class="swap-opt-info">' +
+          '<span class="swap-opt-title">' + opt.title + '</span>' +
+          '<span class="swap-opt-detail">' + opt.detail + '</span>' +
+        '</span>' +
+        '<span class="swap-opt-arrow">↗</span>' +
+      '</a>';
+    }).join('');
+  } else if (optWrap) {
+    // Fallback — single product
+    optWrap.innerHTML = '<a href="' + topSwap.link + '" target="_blank" rel="noopener" class="swap-opt">' +
+      '<span class="swap-opt-label high">Best choice</span>' +
+      '<span class="swap-opt-info">' +
+        '<span class="swap-opt-title">' + topSwap.title + '</span>' +
+        '<span class="swap-opt-detail">' + topSwap.detail + '</span>' +
+      '</span>' +
+      '<span class="swap-opt-arrow">↗</span>' +
+    '</a>';
+  }
   // Score boost
   var boostMin = topSwap.boostRange ? topSwap.boostRange[0] : 10;
   var boostMax = topSwap.boostRange ? topSwap.boostRange[1] : 20;
@@ -1857,10 +2138,21 @@ function showResult() {
       budgetNoteEl.style.display = 'none';
     }
   }
-  // Show today card if primary swap is high ticket
+  // Show today card — smart swap based on what user already has
   var todayCard = document.getElementById('swap-today');
-  if (topSwap.todaySwap && todayCard) {
-    var ts = topSwap.todaySwap;
+  // If Q1 primary (air) and user already has clean laundry (answers[3] <= 5), swap today rec to dryer balls
+  var effectiveTodaySwap = topSwap.todaySwap;
+  if (topSwap.q === 1 && answers[3] <= 5 && effectiveTodaySwap) {
+    effectiveTodaySwap = {
+      title: 'Woolzies Organic Wool Dryer Balls',
+      detail: '~$18 · Amazon · Replaces dryer sheets permanently',
+      desc: 'Dryer sheets coat every fabric with synthetic fragrance and quat compounds. Wool dryer balls replace them entirely — zero chemical residue.',
+      boostRange: [4, 8],
+      link: 'https://www.amazon.com/s?k=woolzies+wool+dryer+balls&tag=tracehome-20'
+    };
+  }
+  if (effectiveTodaySwap && todayCard) {
+    var ts = effectiveTodaySwap;
     document.getElementById('today-title').textContent = ts.title;
     document.getElementById('today-detail').textContent = ts.detail;
     document.getElementById('today-desc').textContent = ts.desc;
@@ -1871,41 +2163,42 @@ function showResult() {
     document.getElementById('today-boost-to').textContent = todayBoosted;
     var todayLinkEl = document.getElementById('today-link');
     if (todayLinkEl) todayLinkEl.href = ts.link;
-    todayCard.style.display = 'block';
+    // todayCard visibility controlled by swap-reveal parent
   } else if (todayCard) {
     todayCard.style.display = 'none';
   }
 
-  // Affiliate link
-  var swapHighlight = document.getElementById('swap-highlight');
-  var existingLink = swapHighlight.querySelector('.swap-link');
-  if (existingLink) existingLink.remove();
-  if (topSwap.link) {
-    var linkEl = document.createElement('a');
-    linkEl.href = topSwap.link;
-    linkEl.target = '_blank';
-    linkEl.rel = 'noopener noreferrer';
-    linkEl.className = 'swap-link';
-    linkEl.textContent = 'Find this product →';
-    swapHighlight.appendChild(linkEl);
-  }
+  // Individual swap option links handle product discovery
 
-  // Findings
+  // Findings — green checkmarks for clean-home, findings for others
   const findings = buildFindings();
   const list = document.getElementById('findings-list');
-  list.innerHTML = findings.map(f => `
-    <div class="finding-item">
-      <div class="finding-dot ${f.level}"></div>
-      <div>
-        <div class="finding-name">${f.name}</div>
-        <div class="finding-note">${f.note}</div>
+  const findingsLabel = document.querySelector('.findings-label');
+  if (band === 'clean-home') {
+    if (findingsLabel) findingsLabel.textContent = 'What you\u2019re already doing right';
+    const categories = ['Air quality', 'Water filtration', 'Laundry', 'Cookware', 'Fragrance'];
+    list.innerHTML = categories.map(c => `
+      <div class="finding-item">
+        <div class="finding-dot" style="background:#7DC878;"></div>
+        <div>
+          <div class="finding-name" style="color:#2D5A27;">&check; ${c}</div>
+        </div>
       </div>
-    </div>
-  `).join('');
+    `).join('');
+  } else {
+    if (findingsLabel) findingsLabel.textContent = 'What we found in your home';
+    list.innerHTML = findings.map(f => `
+      <div class="finding-item">
+        <div class="finding-dot ${f.level}"></div>
+        <div>
+          <div class="finding-name">${f.name}</div>
+          <div class="finding-note">${f.note}</div>
+        </div>
+      </div>
+    `).join('');
+  }
 
   showScreen('result');
-  var lf = document.getElementById('legal-footer');
-  if (lf) lf.style.display = 'block';
 }
 
 // ── Email submission ──────────────────────────
@@ -1913,75 +2206,48 @@ async function submitEmail() {
   const emailEl = document.getElementById('email-input');
   const errorEl = document.getElementById('email-error');
   const btn = document.getElementById('btn-submit');
-
-  const email = emailEl.value.trim();
+  const email = emailEl ? emailEl.value.trim() : '';
 
   // Validate
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
-    errorEl.classList.add('visible');
-    emailEl.focus();
+    if (errorEl) errorEl.classList.add('visible');
+    if (emailEl) emailEl.focus();
     return;
   }
-  errorEl.classList.remove('visible');
+  if (errorEl) errorEl.classList.remove('visible');
 
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
-
-  // ──────────────────────────────────────────────────
-  // MAILERLITE INTEGRATION
-  // Replace YOUR_MAILERLITE_API_KEY with your actual key
-  // Replace YOUR_GROUP_ID with your "Trace Quiz Subscribers" group ID
-  // ──────────────────────────────────────────────────
-  const MAILERLITE_API_KEY = 'YOUR_MAILERLITE_API_KEY';
-  const GROUP_ID = 'YOUR_GROUP_ID';
-
-  const score = calcScore();
-  const band = getBand(score);
-
-  try {
-    const response = await fetch('https://connect.mailerlite.com/api/subscribers', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${MAILERLITE_API_KEY}`
-      },
-      body: JSON.stringify({
-        email: email,
-        fields: {
-          trace_score: score,
-          trace_band: band
-        },
-        groups: [GROUP_ID]
-      })
-    });
-
-    if (response.ok || response.status === 200 || response.status === 201) {
-      showScreen('thankyou');
-    } else {
-      // Fallback — still show thank you (don't block user)
-      console.error('MailerLite response:', response.status);
-      showScreen('thankyou');
-    }
-  } catch (err) {
-    // Network error or CORS — still advance (handle via backend proxy if needed)
-    console.error('Submission error:', err);
-    showScreen('thankyou');
+  // Update button
+  if (btn) {
+    btn.textContent = '✓ Your swaps are below';
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
   }
+
+  // Reveal swap content
+  var reveal = document.getElementById('swap-reveal');
+  if (reveal) {
+    reveal.style.display = 'block';
+    setTimeout(function() {
+      reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+  // Show teaser after short delay
+  setTimeout(function() {
+    document.querySelectorAll('.full-teaser').forEach(function(el) {
+      el.style.display = 'block';
+    });
+  }, 800);
+
+  // Show legal footer
+  var lf = document.getElementById('legal-footer');
+  if (lf) lf.style.display = 'block';
+
+  // MailerLite integration placeholder
+  // fetch('https://api.mailerlite.com/...', { method: 'POST', body: JSON.stringify({ email }) });
+
 }
 
-// ── Enter key support ─────────────────────────
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    const activeScreen = document.querySelector('.screen.active');
-    if (!activeScreen) return;
-    if (activeScreen.id === 'screen-result') {
-      submitEmail();
-    }
-  }
-});
-
-// ── Share score ──────────────────────────────
 function shareScore() {
   const score = document.getElementById('score-display').textContent;
   const text = 'I just scored my home\u2019s health \u2014 got a ' + score + '/100 with the Trace home health quiz. Find out what\u2019s hiding in yours: tracehomeco.github.io/trace-quiz';
@@ -1994,6 +2260,20 @@ function shareScore() {
     });
   }
 }
+
+
+// ── Can't find this toggle ────────────────────────
+function toggleCantFind() {
+  var note = document.getElementById('cant-find-note');
+  var btn = document.querySelector('.cant-find-btn');
+  if (note) {
+    var isOpen = note.style.display === 'block';
+    note.style.display = isOpen ? 'none' : 'block';
+    if (btn) btn.textContent = isOpen ? "Can’t find these? See alternatives ↓" : "Hide alternatives ↑";
+  }
+}
+
+
 
 </script>
 </body>
