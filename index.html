@@ -1222,6 +1222,10 @@
     line-height: 1.6;
     font-family: 'Jost', sans-serif;
   }
+  
+  /* ── Gate control ── */
+  .gated { display: none !important; }
+
   </style>
 </head>
 <body>
@@ -1630,11 +1634,11 @@
       </div>
 
       <!-- Swap reveal — hidden until email submitted -->
-      <div id="swap-reveal" style="display:none;">
+      <div id="swap-reveal" class="gated">
 
         <p class="affiliate-note">Some product links support Trace through affiliate commissions &mdash; at no extra cost to you.</p>
 
-      <div class="swap-highlight" id="swap-highlight" style="display:none;">
+      <div class="swap-highlight" id="swap-highlight">
         <div class="swap-eyebrow" id="swap-eyebrow">Your top swaps &mdash; low to high</div>
 
         <!-- Three swap options populated by JS -->
@@ -1659,7 +1663,7 @@
       </div>
 
       <!-- Start today card -->
-      <div class="swap-today" id="swap-today" style="display:none;">
+      <div class="swap-today" id="swap-today">
         <div class="today-eyebrow">Start today &mdash; under $30</div>
         <div class="today-title" id="today-title"></div>
         <div class="today-detail" id="today-detail"></div>
@@ -1714,7 +1718,7 @@
       </div>
 
         <!-- Full product teaser -->
-      <div class="full-teaser" style="display:none;">
+      <div class="full-teaser gated">
         <div class="ft-eyebrow">Coming soon</div>
         <h3 class="ft-headline">The full Trace home assessment.</h3>
         <p class="ft-body">Room by room. 80+ checkpoints. A complete scored breakdown of every exposure in your home — and a personalized swap plan at your own pace.</p>
@@ -2078,7 +2082,7 @@ function showResult() {
     }
     // For clean home — reveal swaps immediately (no email gate needed for perfect scorers)
     var revealDiv = document.getElementById('swap-reveal');
-    if (revealDiv) revealDiv.style.display = 'block';
+    if (revealDiv) revealDiv.classList.remove('gated');
     showScreen('result');
     return; // Skip regular swap card rendering
   } else {
@@ -2227,7 +2231,7 @@ async function submitEmail() {
   // Reveal swap content
   var reveal = document.getElementById('swap-reveal');
   if (reveal) {
-    reveal.style.display = 'block';
+    reveal.classList.remove('gated');
     setTimeout(function() {
       reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 300);
@@ -2235,7 +2239,7 @@ async function submitEmail() {
   // Show teaser after short delay
   setTimeout(function() {
     document.querySelectorAll('.full-teaser').forEach(function(el) {
-      el.style.display = 'block';
+      el.classList.remove('gated');
     });
   }, 800);
 
