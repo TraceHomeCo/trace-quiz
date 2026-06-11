@@ -1,4 +1,16 @@
-<!DOCTYPE html>
+todaySwap: {
+        title: "David's Natural Toothpaste",
+        category: 'Oral care',
+        boostRange: [4, 8],
+        link: 'https://www.amazon.com/s?k=davids+natural+toothpaste&tag=tracehome-20',
+        betterThanMost: "Tom's of Maine fluoride-free is better than Colgate — no SLS in some lines — though ingredient disclosure is limited.",
+        swapOptions: [
+          { label: 'Start today', title: "David's Natural Toothpaste", detail: '~$10 · Amazon · EWG Verified · No SLS · No saccharin', link: 'https://www.amazon.com/s?k=davids+natural+toothpaste&tag=tracehome-20' },
+          { label: 'Mid range', title: 'Risewell Hydroxyapatite Toothpaste', detail: '~$18 · Amazon · Mineral-based · EWG Verified', link: 'https://www.amazon.com/s?k=risewell+hydroxyapatite+toothpaste&tag=tracehome-20' },
+          { label: 'Best choice', title: 'Bite Toothpaste Bits', detail: '~$12 · Amazon · EWG Verified · No SLS · Zero plastic', link: 'https://www.amazon.com/s?k=bite+toothpaste+bits&tag=tracehome-20' }
+        ]
+      }},
+    { q: 5,<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1255,6 +1267,67 @@
     text-decoration: none;
   }
 
+  
+  /* ── Export results ── */
+  .btn-export {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--night);
+    color: var(--night);
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 11px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.2s;
+  }
+  .btn-export:hover { background: var(--night); color: var(--linen); }
+
+  
+  /* ── Export card ── */
+  .export-wrap {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 0.5px solid rgba(245,245,243,0.1);
+  }
+  .export-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 9px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,245,243,0.3);
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  #export-canvas {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto 10px;
+    border: 0.5px solid rgba(245,245,243,0.08);
+  }
+  .btn-export {
+    display: block;
+    width: 100%;
+    background: rgba(245,245,243,0.08);
+    color: rgba(245,245,243,0.6);
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 11px;
+    border: 0.5px solid rgba(245,245,243,0.12);
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 6px;
+  }
+  .btn-export:hover { background: rgba(245,245,243,0.12); }
+
   </style>
 </head>
 <body>
@@ -1652,8 +1725,8 @@
 
       <!-- Email gate -->
       <div class="email-gate">
-        <h3 class="email-gate-headline" id="email-gate-headline">Your full swap list is waiting.</h3>
-        <p class="email-gate-body" id="email-gate-body">Enter your email and we'll send every recommendation above &mdash; your complete findings report, every product, every swap. Plus you'll be first when the full Trace assessment launches.</p>
+        <h3 class="email-gate-headline" id="email-gate-headline">Unlock your highest-impact swaps.</h3>
+        <p class="email-gate-body" id="email-gate-body">Enter your email to unlock your highest-impact product swaps now &mdash; plus additional recommendations delivered to your inbox over the next few days. You'll also be first when the full Trace assessment launches.</p>
         <div class="input-wrap">
           <input type="email" class="input-field" id="email-input" placeholder="Email address" autocomplete="email">
           <button class="btn-submit" id="btn-submit" onclick="submitEmail()">Send my swaps →</button>
@@ -1747,8 +1820,15 @@
       </div>
 
             <!-- Share your score -->
-      <div class="share-wrap">
+       <div class="share-wrap">
         <button class="btn-share" onclick="shareScore()">Share my score →</button>
+      </div>
+
+      <!-- Export score + swaps card -->
+      <div class="export-wrap" id="export-wrap">
+        <p class="export-label">Save your score &amp; swaps</p>
+        <canvas id="export-canvas" width="640" height="760" style="display:none;"></canvas>
+        <button class="btn-export" onclick="downloadExportCard()">Download my score &amp; swaps &darr;</button>
       </div>
 
         <!-- Full product teaser -->
@@ -1922,15 +2002,14 @@ function getTopSwap() {
       ],
       todaySwap: {
         title: "Molly's Suds Laundry Powder",
-        detail: '~$16 · Amazon · EWG Verified · Fragrance-free',
         category: 'Laundry',
         boostRange: [10, 16],
         link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20',
-        betterThanMost: 'If none are available, Seventh Generation Free & Clear is a step up from Tide — no optical brighteners. Not Trace Approved but meaningfully better than conventional.',
+        betterThanMost: 'Seventh Generation Free & Clear is better than Tide — no optical brighteners. Not Trace Approved but a step up.',
         swapOptions: [
           { label: 'Start today', title: "Molly's Suds Laundry Powder", detail: '~$16 · Amazon · Walmart · EWG Verified · 70 loads', link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20' },
           { label: 'Mid range', title: 'Meliora Laundry Powder', detail: '~$18 · Amazon · MADE SAFE Certified · EWG Verified', link: 'https://www.amazon.com/s?k=meliora+laundry+powder&tag=tracehome-20' },
-          { label: 'Best choice', title: 'Branch Basics Concentrate', detail: '~$28 · Amazon · MADE SAFE + EWG Verified · Replaces all cleaners', link: 'https://www.amazon.com/dp/B0D9WG23V6?tag=tracehome-20' }
+          { label: 'Best choice', title: 'Branch Basics Concentrate', detail: '~$28 · Amazon · MADE SAFE + EWG Verified', link: 'https://www.amazon.com/dp/B0D9WG23V6?tag=tracehome-20' }
         ]
       }},
     { q: 2, val: answers[2],
@@ -1949,10 +2028,15 @@ function getTopSwap() {
       ],
       todaySwap: {
         title: 'Lodge Cast Iron Skillet 10"',
-        detail: '~$30 · Amazon · No coatings ever · Lasts decades',
-        desc: 'While you save for the water filter, eliminate PFAS from your cookware today. Lodge cast iron has no coatings, no chemicals, and improves with use. One of the best value swaps in the assessment.',
+        category: 'Cookware',
         boostRange: [8, 14],
-        link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20'
+        link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20',
+        betterThanMost: 'Any stainless steel pan is PFAS-free and a meaningful step up from non-stick, even without certification.',
+        swapOptions: [
+          { label: 'Start today', title: 'Lodge Cast Iron Skillet 10"', detail: '~$30 · Amazon · ASIN B00G2XGC88 · No coatings ever', link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20' },
+          { label: 'Mid range', title: 'Made In Stainless Steel Pan', detail: '~$109 · Amazon · PFAS-free · 5-ply stainless', link: 'https://www.amazon.com/s?k=made+in+stainless+frying+pan&tag=tracehome-20' },
+          { label: 'Best choice', title: 'Caraway Ceramic Cookware Set', detail: '~$395 · Amazon · Ceramic coated · PFAS-free full set', link: 'https://www.amazon.com/s?k=caraway+cookware+set&tag=tracehome-20' }
+        ]
       }},
     { q: 3, val: answers[3],
       category: 'Laundry',
@@ -1970,10 +2054,15 @@ function getTopSwap() {
       ],
       todaySwap: {
         title: 'Woolzies Organic Wool Dryer Balls',
-        detail: '~$18 · Amazon · Replaces dryer sheets permanently',
-        desc: 'Dryer sheets coat every fabric in your home with synthetic fragrance and quat compounds. Wool dryer balls replace them entirely — zero chemical residue, reusable for 1,000+ loads.',
+        category: 'Dryer sheets',
         boostRange: [6, 10],
-        link: 'https://www.amazon.com/s?k=woolzies+wool+dryer+balls&tag=tracehome-20'
+        link: 'https://www.amazon.com/s?k=woolzies+wool+dryer+balls&tag=tracehome-20',
+        betterThanMost: 'Removing dryer sheets entirely costs nothing and immediately reduces synthetic fragrance residue on all fabrics.',
+        swapOptions: [
+          { label: 'Start today', title: 'Woolzies Organic Wool Dryer Balls', detail: '~$18 · Amazon · 100% organic wool · 1000+ loads', link: 'https://www.amazon.com/s?k=woolzies+wool+dryer+balls&tag=tracehome-20' },
+          { label: 'Mid range', title: 'Friendsheep Eco Dryer Balls', detail: '~$22 · Amazon · Certified organic wool · Reusable', link: 'https://www.amazon.com/s?k=friendsheep+dryer+balls&tag=tracehome-20' },
+          { label: 'Best choice', title: "Molly's Suds Powder + Dryer Balls", detail: '~$35 · Amazon · Full clean laundry system', link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20' }
+        ]
       }},
     { q: 4, val: answers[4],
       category: 'Cookware',
@@ -1990,32 +2079,16 @@ function getTopSwap() {
         { label: 'Best choice', title: 'Caraway Ceramic Cookware Set', detail: '~$395 · Amazon · Ceramic coated · PFAS-free', link: 'https://www.amazon.com/s?k=caraway+cookware+set&tag=tracehome-20' }
       ],
       todaySwap: {
-        title: 'Davids Natural Toothpaste',
-        detail: '~$10 · Amazon · EWG Verified · No SLS · No saccharin',
-        desc: 'Used twice daily and partially ingested. Conventional toothpaste contains SLS, saccharin, and artificial flavours absorbed through oral mucosa. EWG Verified with all ingredients rated 1. Costs almost the same as Colgate.',
+        title: 'Bluecorn Pure Beeswax Candles',
+        category: 'Fragrance',
         boostRange: [4, 8],
-        link: 'https://www.amazon.com/s?k=davids+natural+toothpaste&tag=tracehome-20'
-      }},
-    { q: 5, val: answers[5],
-      category: 'Fragrance',
-      title: 'Bluecorn Pure Beeswax Candles',
-      detail: '~$16–25 · Amazon · 100% raw beeswax · No synthetic fragrance · No additives',
-      desc: 'Paraffin candles and plug-in air fresheners release phthalates and VOCs continuously into your home air. Pure beeswax candles replace them entirely. The swap works the moment you make it — no more synthetic fragrance in your breathing air.',
-      budgetNote: '',
-      boostRange: [8, 14],
-      link: 'https://www.amazon.com/s?k=bluecorn+beeswax+candles&tag=tracehome-20',
-      betterThanMost: 'If beeswax candles aren’t accessible, simply removing plug-in air fresheners entirely costs nothing and immediately improves your air quality. Unscented is always better than synthetic fragrance — even from brands that market as natural.',
-      swapOptions: [
-        { label: 'Start today', title: 'Bluecorn Pure Beeswax Candles', detail: '~$16–25 · Amazon · 100% raw beeswax · No synthetic fragrance · No additives', link: 'https://www.amazon.com/s?k=bluecorn+beeswax+candles&tag=tracehome-20' },
-        { label: 'Mid range', title: 'Branch Basics Multi-Purpose Concentrate', detail: '~$28 · branchbasics.com · EWG Verified · Replaces all synthetic cleaners', link: 'https://www.amazon.com/dp/B0D9WG23V6?tag=tracehome-20' },
-        { label: 'Best choice', title: 'Fontana Candle Co.', detail: '~$26–27 · fontanacandle.com · MADE SAFE certified · First candle brand certified', link: 'https://www.amazon.com/s?k=fontana+candle+co&tag=tracehome-20' }
-      ],
-      todaySwap: {
-        title: 'Branch Basics Multi-Purpose Concentrate',
-        detail: '~$28 · branchbasics.com · EWG Verified · Replaces all cleaners',
-        desc: 'One concentrate replaces every surface cleaner in your home. Branch Basics is EWG Verified, fragrance-free, and the most versatile clean cleaning product available. The same bottle cleans counters, floors, and bathrooms.',
-        boostRange: [4, 8],
-        link: 'https://www.amazon.com/dp/B0D9WG23V6?tag=tracehome-20'
+        link: 'https://www.amazon.com/s?k=bluecorn+beeswax+candles&tag=tracehome-20',
+        betterThanMost: 'Simply removing plug-in air fresheners entirely costs nothing and immediately improves your indoor air quality.',
+        swapOptions: [
+          { label: 'Start today', title: 'Bluecorn Pure Beeswax Candles', detail: '~$16–25 · Amazon · 100% pure beeswax · No additives', link: 'https://www.amazon.com/s?k=bluecorn+beeswax+candles&tag=tracehome-20' },
+          { label: 'Mid range', title: 'Fontana Candle Co.', detail: '~$28 · Amazon · MADE SAFE certified', link: 'https://www.amazon.com/s?k=fontana+candle+company&tag=tracehome-20' },
+          { label: 'Best choice', title: 'Branch Basics Concentrate', detail: '~$28 · Amazon · Replaces all synthetic cleaning fragrances', link: 'https://www.amazon.com/dp/B0D9WG23V6?tag=tracehome-20' }
+        ]
       }}
   ];
 
@@ -2292,8 +2365,16 @@ function showResult() {
   // Update email gate copy for non-perfect scorers
   var egh = document.getElementById('email-gate-headline');
   var egb = document.getElementById('email-gate-body');
-  if (egh) egh.textContent = 'Your full swap list is waiting.';
-  if (egb) egb.textContent = 'Enter your email and we\u2019ll send every recommendation above \u2014 your complete findings report, every product, every swap. Plus you\u2019ll be first when the full Trace assessment launches.';
+  if (egh) egh.textContent = 'See your personalised swap recommendations.';
+  if (egb) egb.textContent = 'Enter your email and we\'ll send your complete swap list for every finding above \u2014 specific products, prices, and where to buy. Plus additional recommendations by email over the next few days. You\'ll also be first when the full Trace assessment launches.';
+
+  // Encode results in URL for bookmarking
+  try {
+    var params = new URLSearchParams(window.location.search);
+    params.set('s', score);
+    params.set('b', band.charAt(0));
+    window.history.replaceState({}, '', '?' + params.toString());
+  } catch(e) {}
 
   showScreen('result');
 }
@@ -2328,6 +2409,7 @@ async function submitEmail() {
     setTimeout(function() {
       reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 300);
+    showExportPreview();
   }
   // Show teaser after short delay
   setTimeout(function() {
@@ -2381,6 +2463,168 @@ function toggleTodayCantFind() {
     note.style.display = isOpen ? 'none' : 'block';
     if (btn) btn.textContent = isOpen ? "Can't find these? See alternatives ↓" : "Hide alternatives ↑";
   }
+}
+
+
+// ── Export results ──────────────────────────
+function exportResults() {
+  var score = calcScore();
+  var band = getBand(score);
+  var bandLabels = { 'most-opportunity': 'Most Opportunity', 'real-opportunity': 'Real Opportunity', 'good-start': 'Good Start', 'clean-home': 'Clean Home' };
+  var findings = buildFindings();
+  
+  var text = 'TRACE HOME HEALTH RESULTS\n';
+  text += '================================\n';
+  text += 'Score: ' + score + ' / 100 \u2014 ' + (bandLabels[band] || band) + '\n\n';
+  text += 'What we found:\n';
+  findings.forEach(function(f) {
+    text += '\u2022 ' + f.name + ' \u2014 ' + f.note + '\n';
+  });
+  text += '\nGet your full swap recommendations at tracehome.co\n';
+  text += 'Take the full assessment (coming soon): tracehomeco.github.io/trace-quiz\n';
+  
+  // Try clipboard first, fall back to share sheet
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function() {
+      var btn = document.querySelector('.btn-export');
+      if (btn) { btn.textContent = 'Copied to clipboard ✓'; setTimeout(function() { btn.textContent = 'Save my results →'; }, 2500); }
+    });
+  } else if (navigator.share) {
+    navigator.share({ title: 'My Trace Home Health Score', text: text, url: 'https://tracehome.co' });
+  } else {
+    // Fallback — show in alert
+    alert(text);
+  }
+}
+
+
+// ── Export card ──────────────────────────────────────────
+function drawExportCard() {
+  var canvas = document.getElementById('export-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 640, H = 760;
+  canvas.width = W; canvas.height = H;
+
+  // Background
+  ctx.fillStyle = '#1A1A1A';
+  ctx.fillRect(0, 0, W, H);
+
+  // Header border
+  ctx.strokeStyle = 'rgba(245,245,243,0.08)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(40, 160);
+  ctx.lineTo(W - 40, 160);
+  ctx.stroke();
+
+  // Score eyebrow
+  ctx.font = '300 20px "Plus Jakarta Sans", sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.3)';
+  ctx.letterSpacing = '4px';
+  ctx.fillText('HOME HEALTH SCORE', 40, 60);
+
+  // Score number
+  var score = calcScore();
+  var band = getBand(score);
+  var scoreColors = { 'clean-home': '#7DC878', 'good-start': '#2D5A27', 'real-opportunity': '#D4A847', 'most-opportunity': '#C87878' };
+  ctx.font = 'italic 400 120px "Cormorant Garamond", serif';
+  ctx.fillStyle = scoreColors[band] || '#D4A847';
+  ctx.fillText(score.toString(), 40, 140);
+
+  // Band label
+  var bandNames = { 'clean-home': 'Clean Home', 'good-start': 'Good Start', 'real-opportunity': 'Real Opportunity', 'most-opportunity': 'Most Opportunity' };
+  ctx.font = '300 22px "Plus Jakarta Sans", sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.4)';
+  ctx.fillText((bandNames[band] || '').toUpperCase(), 40, 195);
+
+  // Trace logo top right
+  ctx.font = '200 28px "Plus Jakarta Sans", sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.2)';
+  ctx.textAlign = 'right';
+  ctx.fillText('trace', W - 40, 140);
+  ctx.textAlign = 'left';
+
+  // Section label
+  ctx.font = '400 18px "Plus Jakarta Sans", sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.25)';
+  ctx.fillText('YOUR HIGHEST-IMPACT SWAPS', 40, 250);
+
+  // Swap rows
+  var topSwap = getTopSwap();
+  var swaps = [
+    { cat: topSwap.category || 'Primary', name: topSwap.title, boost: topSwap.boostRange },
+    topSwap.todaySwap ? { cat: topSwap.todaySwap.category || 'Second', name: topSwap.todaySwap.title, boost: topSwap.todaySwap.boostRange } : null
+  ].filter(Boolean);
+
+  // Add remaining categories
+  var cats = ['Air Quality', 'Water Quality', 'Laundry', 'Cookware', 'Fragrance'];
+  var used = swaps.map(function(s) { return s.cat; });
+  cats.forEach(function(cat) {
+    if (!used.includes(cat) && swaps.length < 5) {
+      swaps.push({ cat: cat, name: '—', boost: null });
+    }
+  });
+
+  var y = 300;
+  swaps.slice(0, 5).forEach(function(swap, i) {
+    // Row bg on alternating
+    if (i % 2 === 0) {
+      ctx.fillStyle = 'rgba(255,255,255,0.02)';
+      ctx.fillRect(40, y - 24, W - 80, 56);
+    }
+    // Category
+    ctx.font = '300 18px "Plus Jakarta Sans", sans-serif';
+    ctx.fillStyle = 'rgba(245,245,243,0.25)';
+    ctx.fillText((swap.cat || '').toUpperCase().substring(0, 10), 40, y + 4);
+    // Product name
+    ctx.font = '300 22px "Plus Jakarta Sans", sans-serif';
+    ctx.fillStyle = '#F5F5F3';
+    var name = swap.name || '';
+    if (name.length > 32) name = name.substring(0, 30) + '…';
+    ctx.fillText(name, 200, y + 4);
+    // Boost
+    if (swap.boost) {
+      var avg = Math.round((swap.boost[0] + swap.boost[1]) / 2);
+      ctx.font = '300 18px "Plus Jakarta Sans", sans-serif';
+      ctx.fillStyle = '#7DC878';
+      ctx.textAlign = 'right';
+      ctx.fillText('+' + avg + ' pts', W - 40, y + 4);
+      ctx.textAlign = 'left';
+    }
+    y += 72;
+  });
+
+  // Footer line
+  ctx.strokeStyle = 'rgba(245,245,243,0.06)';
+  ctx.beginPath();
+  ctx.moveTo(40, H - 80);
+  ctx.lineTo(W - 40, H - 80);
+  ctx.stroke();
+
+  // Footer
+  ctx.font = '300 18px "Plus Jakarta Sans", sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.2)';
+  ctx.fillText('tracehome.co', 40, H - 44);
+  ctx.font = 'italic 400 18px "Cormorant Garamond", serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('Find it. Fix it. Live better.', W - 40, H - 44);
+  ctx.textAlign = 'left';
+}
+
+function downloadExportCard() {
+  drawExportCard();
+  var canvas = document.getElementById('export-canvas');
+  if (!canvas) return;
+  var link = document.createElement('a');
+  link.download = 'trace-home-score.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+// Draw preview when revealed
+function showExportPreview() {
+  setTimeout(drawExportCard, 400);
 }
 
 </script>
