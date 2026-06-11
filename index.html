@@ -1035,12 +1035,13 @@
   /* ── Three swap options ── */
   .swap-options { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
   .swap-opt {
-    padding: 9px 11px;
-    border: 0.5px solid rgba(245,245,243,0.1);
+    padding: 12px 14px;
+    border: 0.5px solid rgba(245,245,243,0.12);
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    text-decoration: none;
+    gap: 12px;
+    margin-bottom: 4px;
+  }ne;
   }
   .swap-opt:hover { background: rgba(255,255,255,0.04); }
   .swap-opt-label {
@@ -1070,9 +1071,9 @@
     font-family: 'Jost', sans-serif;
     font-size: 12px;
     font-weight: 300;
-    color: rgba(245,245,243,0.35);
+    color: rgba(245,245,243,0.45);
     display: block;
-    line-height: 1.4;
+    line-height: 1.5;
   }
   .swap-opt-arrow {
     font-size: 10px;
@@ -1227,6 +1228,15 @@
   /* ── Gate control ── */
   .gated { display: none !important; }
 
+  
+  .finding-check {
+    font-size: 13px;
+    color: #2D5A27;
+    font-weight: 400;
+    flex-shrink: 0;
+    width: 8px;
+    margin-top: 2px;
+  }
   </style>
 </head>
 <body>
@@ -1266,7 +1276,7 @@
 
     <div class="stat-block">
       <p class="stat-eyebrow">Every day you breathe</p>
-      <p class="stat-pool">You'll breathe an Olympic swimming pool of air today &mdash; mostly indoors, where pollutants run 5&ndash;10&times; higher than outside.</p>
+      <p class="stat-pool">You'll breathe an Olympic swimming pool of air this year &mdash; mostly indoors, where pollutants run 5&ndash;10&times; higher than outside.</p>
     </div>
 
     <p class="hook-body">
@@ -1876,16 +1886,16 @@ function getTopSwap() {
     { q: 1, val: answers[1],
       category: 'Air Quality',
       title: 'AirDoctor AD1000 Air Purifier',
-      detail: '~$150–180 · UltraHEPA + carbon/VOC filter · No WiFi',
+      detail: '~$149–169 · Amazon · UltraHEPA + VOC filter · AD1000 model',
       desc: 'You breathe indoor air for the equivalent of an Olympic swimming pool every year. The AirDoctor AD1000 captures particles 100x smaller than standard HEPA and removes VOCs that most purifiers miss entirely.',
       budgetNote: '',
       boostRange: [15, 25],
-      link: 'https://www.amazon.com/s?k=airdoctor+ad1000&tag=tracehome-20',
-      betterThanMost: 'If none of these are accessible right now, any True HEPA unit is a meaningful step up from no filtration. Look for “True HEPA” on the label — not just “HEPA-type” or “HEPA-style,” which are not the same standard.',
+      link: 'https://www.amazon.com/s?k=airdoctor+AD1000&tag=tracehome-20',
+      betterThanMost: 'If none of these are accessible right now, any True HEPA unit is a meaningful step up from no filtration. Look for “True HEPA” on the label — not just “HEPA-type” or “HEPA-style.”',
       swapOptions: [
-        { label: 'Start today', title: 'Levoit Core 300S Air Purifier', detail: '~$60 · Amazon · True HEPA · Quiet sleep mode · 219 sq ft', link: 'https://www.amazon.com/s?k=levoit+core+300s&tag=tracehome-20' },
+        { label: 'Start today', title: 'Levoit Core 300S Air Purifier', detail: '~$55–65 · Amazon · True HEPA · 219 sq ft', link: 'https://www.amazon.com/dp/B08L73QL1V?tag=tracehome-20' },
         { label: 'Mid range', title: 'Coway AP-1512HH Air Purifier', detail: '~$100 · Amazon · True HEPA · 360 sq ft · Wirecutter top pick', link: 'https://www.amazon.com/s?k=coway+ap-1512hh&tag=tracehome-20' },
-        { label: 'Best choice', title: 'AirDoctor AD1000', detail: '~$150–180 · UltraHEPA + dedicated VOC filter', link: 'https://www.amazon.com/s?k=airdoctor+ad1000&tag=tracehome-20' }
+        { label: 'Best choice', title: 'AirDoctor AD1000', detail: '~$149–169 · Amazon · UltraHEPA + VOC filter', link: 'https://www.amazon.com/s?k=airdoctor+AD1000&tag=tracehome-20' }
       ],
       todaySwap: {
         title: "Molly's Suds Laundry Powder",
@@ -1927,7 +1937,7 @@ function getTopSwap() {
       swapOptions: [
         { label: 'Start today', title: "Molly's Suds Laundry Powder", detail: '~$16 · Amazon · EWG Verified · 70 loads', link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20' },
         { label: 'Mid range', title: 'Meliora Laundry Powder', detail: '~$18 · Amazon · EWG Verified · Certified B Corp · Zero-waste packaging', link: 'https://www.amazon.com/s?k=meliora+laundry+powder&tag=tracehome-20' },
-        { label: 'Best choice', title: 'Branch Basics Concentrate', detail: '~$28 · branchbasics.com · EWG Verified · Replaces all cleaners', link: 'https://www.amazon.com/dp/B0FHQRRNLT?tag=tracehome-20' }
+        { label: 'Best choice', title: 'Branch Basics Concentrate', detail: '~$28 · branchbasics.com · EWG Verified · Replaces all cleaners', link: 'https://www.amazon.com/dp/B0D9WG23V6?tag=tracehome-20' }
       ],
       todaySwap: {
         title: 'Woolzies Organic Wool Dryer Balls',
@@ -1968,7 +1978,7 @@ function getTopSwap() {
       betterThanMost: 'If beeswax candles aren’t accessible, simply removing plug-in air fresheners entirely costs nothing and immediately improves your air quality. Unscented is always better than synthetic fragrance — even from brands that market as natural.',
       swapOptions: [
         { label: 'Start today', title: 'Bluecorn Pure Beeswax Candles', detail: '~$16–25 · Amazon · 100% raw beeswax · No synthetic fragrance · No additives', link: 'https://www.amazon.com/s?k=bluecorn+beeswax+candles&tag=tracehome-20' },
-        { label: 'Mid range', title: 'Branch Basics Multi-Purpose Concentrate', detail: '~$28 · branchbasics.com · EWG Verified · Replaces all synthetic cleaners', link: 'https://www.amazon.com/dp/B0FHQRRNLT?tag=tracehome-20' },
+        { label: 'Mid range', title: 'Branch Basics Multi-Purpose Concentrate', detail: '~$28 · branchbasics.com · EWG Verified · Replaces all synthetic cleaners', link: 'https://www.amazon.com/dp/B0D9WG23V6?tag=tracehome-20' },
         { label: 'Best choice', title: 'Fontana Candle Co.', detail: '~$26–27 · fontanacandle.com · MADE SAFE certified · First candle brand certified', link: 'https://www.amazon.com/s?k=fontana+candle+co&tag=tracehome-20' }
       ],
       todaySwap: {
@@ -1976,7 +1986,7 @@ function getTopSwap() {
         detail: '~$28 · branchbasics.com · EWG Verified · Replaces all cleaners',
         desc: 'One concentrate replaces every surface cleaner in your home. Branch Basics is EWG Verified, fragrance-free, and the most versatile clean cleaning product available. The same bottle cleans counters, floors, and bathrooms.',
         boostRange: [4, 8],
-        link: 'https://www.amazon.com/dp/B0FHQRRNLT?tag=tracehome-20'
+        link: 'https://www.amazon.com/dp/B0D9WG23V6?tag=tracehome-20'
       }}
   ];
 
@@ -2210,15 +2220,14 @@ function showResult() {
     `).join('');
   } else {
     if (findingsLabel) findingsLabel.textContent = 'What we found in your home';
-    list.innerHTML = findings.map(f => `
-      <div class="finding-item">
-        <div class="finding-dot ${f.level}"></div>
-        <div>
-          <div class="finding-name">${f.name}</div>
-          <div class="finding-note">${f.note}</div>
-        </div>
-      </div>
-    `).join('');
+    list.innerHTML = findings.map(f => {
+      var dot = f.level === 'low'
+        ? '<div class="finding-check">&#10003;</div>'
+        : '<div class="finding-dot ' + f.level + '"></div>';
+      return '<div class="finding-item">' + dot +
+        '<div><div class="finding-name">' + f.name + '</div>' +
+        '<div class="finding-note">' + f.note + '</div></div></div>';
+    }).join('');
   }
 
   // Update email gate copy for non-perfect scorers
