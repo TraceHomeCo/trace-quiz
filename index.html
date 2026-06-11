@@ -515,9 +515,9 @@
     margin-top: 10px;
   }
   .swap-boost-label {
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 300;
-    color: rgba(245,245,243,0.35);
+    color: rgba(245,245,243,0.4);
     font-family: 'Jost', sans-serif;
   }
   .swap-boost-nums {
@@ -528,18 +528,20 @@
   .swap-boost-from {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 18px;
-    color: rgba(245,245,243,0.25);
+    font-size: 28px;
+    color: rgba(245,245,243,0.3);
+    line-height: 1;
   }
   .swap-boost-arr {
-    font-size: 10px;
-    color: rgba(245,245,243,0.2);
+    font-size: 14px;
+    color: rgba(245,245,243,0.25);
   }
   .swap-boost-to {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 22px;
+    font-size: 36px;
     color: #7DC878;
+    line-height: 1;
   }
 
   .swap-budget-note {
@@ -904,7 +906,7 @@
     align-items: center;
     gap: 4px;
   }
-  .today-boost-from {
+  .today-boost-from { /* inherits from swap-boost-from */ 
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: 15px;
@@ -1041,7 +1043,8 @@
     align-items: flex-start;
     gap: 12px;
     margin-bottom: 4px;
-  }ne;
+    text-decoration: none;
+    color: inherit;
   }
   .swap-opt:hover { background: rgba(255,255,255,0.04); }
   .swap-opt-label {
@@ -1237,6 +1240,21 @@
     width: 8px;
     margin-top: 2px;
   }
+  
+  /* ── Anchor resets for dark swap cards ── */
+  .swap-opt,
+  .swap-opt:visited,
+  .swap-opt:hover,
+  .swap-opt:active {
+    text-decoration: none;
+    color: inherit;
+  }
+  .swap-opt-title,
+  .swap-opt-detail,
+  .swap-opt-label {
+    text-decoration: none;
+  }
+
   </style>
 </head>
 <body>
@@ -1675,10 +1693,15 @@
 
       <!-- Start today card -->
       <div class="swap-today" id="swap-today">
-        <div class="today-eyebrow">Start today &mdash; under $30</div>
-        <div class="today-title" id="today-title"></div>
-        <div class="today-detail" id="today-detail"></div>
-        <div class="today-desc" id="today-desc"></div>
+        <div class="today-eyebrow" id="today-eyebrow">Your second highest-impact swap</div>
+        <!-- Three options for today card -->
+        <div class="swap-options" id="today-options-wrap"></div>
+        <div class="cant-find-wrap" id="today-cant-find-wrap" style="margin-top:6px;">
+          <button class="cant-find-btn" onclick="toggleTodayCantFind()">Can't find these? See alternatives &darr;</button>
+          <div class="cant-find-note" id="today-cant-find-note">
+            <p id="today-cant-find-text"></p>
+          </div>
+        </div>
         <div class="today-boost-row">
           <span class="today-boost-label">Score impact</span>
           <div class="today-boost-nums">
@@ -1899,10 +1922,16 @@ function getTopSwap() {
       ],
       todaySwap: {
         title: "Molly's Suds Laundry Powder",
-        detail: '~$16 · Amazon · EWG Verified · Fragrance-free · 70 loads',
-        desc: 'While you save for the air purifier, swap your detergent today. Residue stays in every fabric you own — 8–16 hours of daily skin contact. One of the most affordable high-impact swaps available.',
+        detail: '~$16 · Amazon · EWG Verified · Fragrance-free',
+        category: 'Laundry',
         boostRange: [10, 16],
-        link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20'
+        link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20',
+        betterThanMost: 'If none are available, Seventh Generation Free & Clear is a step up from Tide — no optical brighteners. Not Trace Approved but meaningfully better than conventional.',
+        swapOptions: [
+          { label: 'Start today', title: "Molly's Suds Laundry Powder", detail: '~$16 · Amazon · Walmart · EWG Verified · 70 loads', link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20' },
+          { label: 'Mid range', title: 'Meliora Laundry Powder', detail: '~$18 · Amazon · MADE SAFE Certified · EWG Verified', link: 'https://www.amazon.com/s?k=meliora+laundry+powder&tag=tracehome-20' },
+          { label: 'Best choice', title: 'Branch Basics Concentrate', detail: '~$28 · Amazon · MADE SAFE + EWG Verified · Replaces all cleaners', link: 'https://www.amazon.com/dp/B0D9WG23V6?tag=tracehome-20' }
+        ]
       }},
     { q: 2, val: answers[2],
       category: 'Water Quality',
@@ -2186,17 +2215,47 @@ function showResult() {
   }
   if (effectiveTodaySwap && todayCard) {
     var ts = effectiveTodaySwap;
-    document.getElementById('today-title').textContent = ts.title;
-    document.getElementById('today-detail').textContent = ts.detail;
-    document.getElementById('today-desc').textContent = ts.desc;
+    // Update today eyebrow
+    var todayEyebrow = document.getElementById('today-eyebrow');
+    if (todayEyebrow) todayEyebrow.textContent = ts.category ? 'Your ' + ts.category + ' swaps — low to high' : 'Your second highest-impact swap';
+    // Render three options if available
+    var todayOptWrap = document.getElementById('today-options-wrap');
+    if (todayOptWrap && ts.swapOptions) {
+      var labelClasses = ['low', 'mid', 'high'];
+      todayOptWrap.innerHTML = ts.swapOptions.map(function(opt, i) {
+        return '<a href="' + opt.link + '" target="_blank" rel="noopener" class="swap-opt">' +
+          '<span class="swap-opt-label ' + labelClasses[i] + '">' + opt.label + '</span>' +
+          '<span class="swap-opt-info">' +
+            '<span class="swap-opt-title">' + opt.title + '</span>' +
+            '<span class="swap-opt-detail">' + opt.detail + '</span>' +
+          '</span>' +
+          '<span class="swap-opt-arrow">↗</span>' +
+        '</a>';
+      }).join('');
+    } else if (todayOptWrap) {
+      // Fallback single option
+      todayOptWrap.innerHTML = '<a href="' + ts.link + '" target="_blank" rel="noopener" class="swap-opt">' +
+        '<span class="swap-opt-label low">Today swap</span>' +
+        '<span class="swap-opt-info">' +
+          '<span class="swap-opt-title">' + ts.title + '</span>' +
+          '<span class="swap-opt-detail">' + ts.detail + '</span>' +
+        '</span>' +
+        '<span class="swap-opt-arrow">↗</span>' +
+      '</a>';
+    }
+    // Populate today can't find
+    var todayCantFind = document.getElementById('today-cant-find-text');
+    if (todayCantFind && ts.betterThanMost) {
+      todayCantFind.innerHTML = '<strong>Better than most — not Trace Approved:</strong> ' + ts.betterThanMost;
+    } else if (document.getElementById('today-cant-find-wrap')) {
+      document.getElementById('today-cant-find-wrap').style.display = 'none';
+    }
+    // Score boost
     var todayBoostMin = ts.boostRange ? ts.boostRange[0] : 8;
     var todayBoostMax = ts.boostRange ? ts.boostRange[1] : 14;
     var todayBoosted = Math.min(100, score + Math.round((todayBoostMin + todayBoostMax) / 2));
     document.getElementById('today-boost-from').textContent = score;
     document.getElementById('today-boost-to').textContent = todayBoosted;
-    var todayLinkEl = document.getElementById('today-link');
-    if (todayLinkEl) todayLinkEl.href = ts.link;
-    // todayCard visibility controlled by swap-reveal parent
   } else if (todayCard) {
     todayCard.style.display = 'none';
   }
@@ -2312,6 +2371,17 @@ function toggleCantFind() {
 }
 
 
+
+
+function toggleTodayCantFind() {
+  var note = document.getElementById('today-cant-find-note');
+  var btn = document.querySelector('#today-cant-find-wrap .cant-find-btn');
+  if (note) {
+    var isOpen = note.style.display === 'block';
+    note.style.display = isOpen ? 'none' : 'block';
+    if (btn) btn.textContent = isOpen ? "Can't find these? See alternatives ↓" : "Hide alternatives ↑";
+  }
+}
 
 </script>
 </body>
