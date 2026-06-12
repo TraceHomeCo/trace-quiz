@@ -2114,6 +2114,30 @@ function getTopSwap() {
 }
 
 // ── Show result ───────────────────────────────
+
+// ── Get second-highest swap from different category ──────────
+function getSecondSwap(excludeQ) {
+  var allVals = [
+    { q: 1, val: answers[1] || 0 },
+    { q: 2, val: answers[2] || 0 },
+    { q: 3, val: answers[3] || 0 },
+    { q: 4, val: answers[4] || 0 },
+    { q: 5, val: answers[5] || 0 }
+  ];
+  allVals.sort(function(a, b) { return b.val - a.val; });
+  var second = allVals.find(function(v) { return v.q !== excludeQ && v.val > 0; });
+  if (!second) return null;
+  // Get the full swap data from getTopSwap logic
+  var savedAnswers = {};
+  Object.keys(answers).forEach(function(k) { savedAnswers[k] = answers[k]; });
+  // Temporarily zero out excludeQ to get next best
+  answers[excludeQ] = 0;
+  var result = getTopSwap();
+  // Restore
+  Object.keys(savedAnswers).forEach(function(k) { answers[k] = savedAnswers[k]; });
+  return result;
+}
+
 function showResult() {
   document.getElementById('progress-wrap').classList.remove('visible');
 
@@ -2294,8 +2318,7 @@ function showResult() {
   // If Q1 primary (air) and user already has clean laundry (answers[3] <= 5), swap today rec to dryer balls
   // Pick today swap from a DIFFERENT category than the top swap
   // Sort vals by score descending and find highest val from a different q
-  var sortedVals = vals.slice().sort(function(a, b) { return b.val - a.val; });
-  var secondSwap = sortedVals.find(function(v) { return v.q !== topSwap.q && v.val > 0; });
+  var secondSwap = getSecondSwap(topSwap.q);
   var effectiveTodaySwap = secondSwap ? secondSwap.todaySwap : topSwap.todaySwap;
   if (topSwap.q === 1 && answers[3] <= 5 && effectiveTodaySwap) {
     effectiveTodaySwap = {
@@ -2314,7 +2337,7 @@ function showResult() {
     // Render three options if available
     var todayOptWrap = document.getElementById('today-options-wrap');
     if (todayOptWrap && ts.swapOptions) {
-      var labelClasses = ['low', 'mid', 'high'];
+      // labelClasses already declared above
       todayOptWrap.innerHTML = ts.swapOptions.map(function(opt, i) {
         return '<a href="' + opt.link + '" target="_blank" rel="noopener" class="swap-opt">' +
           '<span class="swap-opt-label ' + labelClasses[i] + '">' + opt.label + '</span>' +
@@ -2383,8 +2406,8 @@ function showResult() {
   }
 
   // Update email gate copy for non-perfect scorers
-  var egh = document.getElementById('email-gate-headline');
-  var egb = document.getElementById('email-gate-body');
+  egh = document.getElementById('email-gate-headline');
+  egb = document.getElementById('email-gate-body');
   if (egh) egh.textContent = 'Unlock your two highest-impact swaps.';
   if (egb) egb.textContent = 'Enter your email to unlock your two highest-impact swaps now \u2014 with more recommendations delivered to your inbox over the next few days. Over the next few days. You\'ll also be first when the full Trace assessment launches.';
 
