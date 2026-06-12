@@ -906,11 +906,12 @@
     align-items: center;
     gap: 4px;
   }
-  .today-boost-from { /* inherits from swap-boost-from */ 
+  .today-boost-from {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 15px;
-    color: rgba(245,245,243,0.25);
+    font-size: 28px;
+    color: rgba(245,245,243,0.3);
+    line-height: 1;
   }
   .today-boost-arr {
     font-size: 8px;
@@ -919,11 +920,12 @@
   .today-boost-to {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 19px;
+    font-size: 36px;
     color: #7DC878;
+    line-height: 1;
   }
   .today-link {
-    display: inline-block;
+    display: none;
     margin-top: 9px;
     font-family: 'Jost', sans-serif;
     font-size: 9px;
@@ -1713,8 +1715,8 @@
 
       <!-- Email gate -->
       <div class="email-gate">
-        <h3 class="email-gate-headline" id="email-gate-headline">Unlock your highest-impact swaps.</h3>
-        <p class="email-gate-body" id="email-gate-body">Enter your email to unlock your highest-impact product swaps now &mdash; plus additional recommendations delivered to your inbox over the next few days. You'll also be first when the full Trace assessment launches.</p>
+        <h3 class="email-gate-headline" id="email-gate-headline">Unlock your two highest-impact swaps.</h3>
+        <p class="email-gate-body" id="email-gate-body">Enter your email to unlock your two highest-impact swaps now &mdash; with more recommendations delivered to your inbox over the next few days. You'll also be first when the full Trace assessment launches.</p>
         <div class="input-wrap">
           <input type="email" class="input-field" id="email-input" placeholder="Email address" autocomplete="email">
           <button class="btn-submit" id="btn-submit" onclick="submitEmail()">Send my swaps →</button>
@@ -1771,7 +1773,7 @@
             <span class="today-boost-to" id="today-boost-to">--</span>
           </div>
         </div>
-        <a class="today-link" id="today-link" href="#" target="_blank" rel="noopener noreferrer">Find this product &rarr;</a>
+
       </div>
 
       <!-- Clean home special recommendations -->
@@ -2049,7 +2051,7 @@ function getTopSwap() {
         swapOptions: [
           { label: 'Start today', title: 'Woolzies Organic Wool Dryer Balls', detail: '~$18 · Amazon · 100% organic wool · 1000+ loads', link: 'https://www.amazon.com/s?k=woolzies+wool+dryer+balls&tag=tracehome-20' },
           { label: 'Mid range', title: 'Friendsheep Eco Dryer Balls', detail: '~$22 · Amazon · Certified organic wool · Reusable', link: 'https://www.amazon.com/s?k=friendsheep+dryer+balls&tag=tracehome-20' },
-          { label: 'Best choice', title: "Molly's Suds Powder + Dryer Balls", detail: '~$35 · Amazon · Full clean laundry system', link: 'https://www.amazon.com/s?k=mollys+suds+laundry+powder&tag=tracehome-20' }
+          { label: 'Best choice', title: "Molly's Suds Powder + Dryer Balls", detail: '~$35 · Amazon · Full clean laundry system', link: 'https://www.amazon.com/s?k=mollys+suds+dryer+balls&tag=tracehome-20' }
         ]
       }},
     { q: 4, val: answers[4],
@@ -2290,7 +2292,11 @@ function showResult() {
   // Show today card — smart swap based on what user already has
   var todayCard = document.getElementById('swap-today');
   // If Q1 primary (air) and user already has clean laundry (answers[3] <= 5), swap today rec to dryer balls
-  var effectiveTodaySwap = topSwap.todaySwap;
+  // Pick today swap from a DIFFERENT category than the top swap
+  // Sort vals by score descending and find highest val from a different q
+  var sortedVals = vals.slice().sort(function(a, b) { return b.val - a.val; });
+  var secondSwap = sortedVals.find(function(v) { return v.q !== topSwap.q && v.val > 0; });
+  var effectiveTodaySwap = secondSwap ? secondSwap.todaySwap : topSwap.todaySwap;
   if (topSwap.q === 1 && answers[3] <= 5 && effectiveTodaySwap) {
     effectiveTodaySwap = {
       title: 'Woolzies Organic Wool Dryer Balls',
@@ -2379,8 +2385,8 @@ function showResult() {
   // Update email gate copy for non-perfect scorers
   var egh = document.getElementById('email-gate-headline');
   var egb = document.getElementById('email-gate-body');
-  if (egh) egh.textContent = 'See your personalised swap recommendations.';
-  if (egb) egb.textContent = 'Enter your email and we\'ll send your complete swap list for every finding above \u2014 specific products, prices, and where to buy. Plus additional recommendations by email over the next few days. You\'ll also be first when the full Trace assessment launches.';
+  if (egh) egh.textContent = 'Unlock your two highest-impact swaps.';
+  if (egb) egb.textContent = 'Enter your email to unlock your two highest-impact swaps now \u2014 with more recommendations delivered to your inbox over the next few days. Over the next few days. You\'ll also be first when the full Trace assessment launches.';
 
   // Encode results in URL for bookmarking
   try {
