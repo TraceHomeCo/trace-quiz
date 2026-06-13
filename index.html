@@ -2023,7 +2023,7 @@ function getTopSwap() {
         link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20',
         betterThanMost: 'Any stainless steel pan is PFAS-free and a meaningful step up from non-stick, even without certification.',
         swapOptions: [
-          { label: 'Start today', title: 'Lodge Cast Iron Skillet 10"', detail: '~$30 · Amazon · ASIN B00G2XGC88 · No coatings ever', link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20' },
+          { label: 'Start today', title: 'Lodge Cast Iron Skillet 10"', detail: '~$30 · Amazon · Plain cast iron only · ASIN B00G2XGC88 · No coatings', link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20' },
           { label: 'Mid range', title: 'Made In Stainless Steel Pan', detail: '~$109 · Amazon · PFAS-free · 5-ply stainless', link: 'https://www.amazon.com/s?k=made+in+stainless+frying+pan&tag=tracehome-20' },
           { label: 'Best choice', title: 'Caraway Ceramic Cookware Set', detail: '~$395 · Amazon · Ceramic coated · PFAS-free full set', link: 'https://www.amazon.com/s?k=caraway+cookware+set&tag=tracehome-20' }
         ]
@@ -2057,14 +2057,14 @@ function getTopSwap() {
     { q: 4, val: answers[4],
       category: 'Cookware',
       title: 'Lodge Cast Iron Skillet 10"',
-      detail: '~$30 · Amazon · No coatings ever · Lasts decades',
+      detail: '~$30 · Amazon · Plain cast iron only · No coatings · Lasts decades',
       desc: 'One Lodge cast iron skillet eliminates PFAS from your most-used cooking surface entirely. Non-stick pans release PFAS when scratched or overheated. Cast iron has no coatings, improves with use, and lasts decades.',
       budgetNote: '',
       boostRange: [10, 18],
       link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20',
       betterThanMost: 'If cast iron isn’t for you, any stainless steel pan from a mainstream brand (All-Clad, Cuisinart) is a meaningful step up from non-stick. No PFAS coatings, lasts years. Not certified but the material itself is safe.',
       swapOptions: [
-        { label: 'Start today', title: 'Lodge Cast Iron Skillet 10"', detail: '~$30 · Amazon · No coatings · Lasts decades', link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20' },
+        { label: 'Start today', title: 'Lodge Cast Iron Skillet 10"', detail: '~$30 · Amazon · Plain cast iron only · No coatings · Lasts decades', link: 'https://www.amazon.com/dp/B00G2XGC88?tag=tracehome-20' },
         { label: 'Mid range', title: 'Made In Stainless Steel Frying Pan', detail: '~$109 · madeincookware.com · PFAS-free · 5-ply', link: 'https://www.amazon.com/s?k=made+in+stainless+frying+pan&tag=tracehome-20' },
         { label: 'Best choice', title: 'Caraway Ceramic Cookware Set', detail: '~$395 · Amazon · Ceramic coated · PFAS-free', link: 'https://www.amazon.com/s?k=caraway+cookware+set&tag=tracehome-20' }
       ],
@@ -2465,8 +2465,31 @@ async function submitEmail() {
   var lf = document.getElementById('legal-footer');
   if (lf) lf.style.display = 'block';
 
-  // MailerLite integration placeholder
-  // fetch('https://api.mailerlite.com/...', { method: 'POST', body: JSON.stringify({ email }) });
+  // ── MailerLite integration ──────────────────────────────
+  // PASTE YOUR API TOKEN BELOW (replace YOUR_API_TOKEN_HERE)
+  var MAILERLITE_API_KEY = 'YOUR_API_TOKEN_HERE';
+  var MAILERLITE_GROUP_ID = '185856111618819356';
+
+  fetch('https://connect.mailerlite.com/api/subscribers', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer ' + MAILERLITE_API_KEY
+    },
+    body: JSON.stringify({
+      email: email,
+      groups: [MAILERLITE_GROUP_ID],
+      fields: {
+        score: String(calcScore()),
+        band: getBand(calcScore())
+      }
+    })
+  }).then(function(res) {
+    if (!res.ok) { console.warn('MailerLite error', res.status); }
+  }).catch(function(err) {
+    console.warn('MailerLite fetch failed', err);
+  });
 
 }
 
@@ -2543,118 +2566,170 @@ function exportResults() {
 
 // ── Export card ──────────────────────────────────────────
 function drawExportCard() {
+  // Wait for fonts to load before drawing
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function() { _renderExportCard(); });
+  } else {
+    setTimeout(_renderExportCard, 800);
+  }
+}
+
+function _renderExportCard() {
   var canvas = document.getElementById('export-canvas');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
-  var W = 640, H = 760;
-  canvas.width = W; canvas.height = H;
+  var W = 640, H = 800;
+  canvas.width = W;
+  canvas.height = H;
 
   // Background
   ctx.fillStyle = '#1A1A1A';
   ctx.fillRect(0, 0, W, H);
 
-  // Header border
-  ctx.strokeStyle = 'rgba(245,245,243,0.08)';
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(40, 160);
-  ctx.lineTo(W - 40, 160);
-  ctx.stroke();
-
-  // Score eyebrow
-  ctx.font = '300 20px "Plus Jakarta Sans", sans-serif';
-  ctx.fillStyle = 'rgba(245,245,243,0.3)';
-  ctx.letterSpacing = '4px';
-  ctx.fillText('HOME HEALTH SCORE', 40, 60);
+  // ── Header ──
+  // Eyebrow
+  ctx.font = '300 17px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.35)';
+  ctx.letterSpacing = '3px';
+  ctx.fillText('HOME HEALTH SCORE', 40, 54);
 
   // Score number
   var score = calcScore();
   var band = getBand(score);
-  var scoreColors = { 'clean-home': '#7DC878', 'good-start': '#2D5A27', 'real-opportunity': '#D4A847', 'most-opportunity': '#C87878' };
-  ctx.font = 'italic 400 120px "Cormorant Garamond", serif';
+  var scoreColors = {
+    'clean-home': '#7DC878',
+    'good-start': '#2D5A27',
+    'real-opportunity': '#D4A847',
+    'most-opportunity': '#C87878'
+  };
+  ctx.font = 'italic 400 110px Georgia, serif';
   ctx.fillStyle = scoreColors[band] || '#D4A847';
-  ctx.fillText(score.toString(), 40, 140);
+  ctx.fillText(score.toString(), 40, 152);
 
   // Band label
-  var bandNames = { 'clean-home': 'Clean Home', 'good-start': 'Good Start', 'real-opportunity': 'Real Opportunity', 'most-opportunity': 'Most Opportunity' };
-  ctx.font = '300 22px "Plus Jakarta Sans", sans-serif';
-  ctx.fillStyle = 'rgba(245,245,243,0.4)';
-  ctx.fillText((bandNames[band] || '').toUpperCase(), 40, 195);
+  var bandNames = {
+    'clean-home': 'Clean Home',
+    'good-start': 'Good Start',
+    'real-opportunity': 'Real Opportunity',
+    'most-opportunity': 'Most Opportunity'
+  };
+  ctx.font = '300 18px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.45)';
+  ctx.fillText((bandNames[band] || '').toUpperCase(), 40, 185);
 
-  // Trace logo top right
-  ctx.font = '200 28px "Plus Jakarta Sans", sans-serif';
+  // Trace wordmark top right
+  ctx.font = '200 26px Arial, sans-serif';
   ctx.fillStyle = 'rgba(245,245,243,0.2)';
   ctx.textAlign = 'right';
-  ctx.fillText('trace', W - 40, 140);
+  ctx.fillText('trace', W - 40, 152);
   ctx.textAlign = 'left';
 
-  // Section label
-  ctx.font = '400 18px "Plus Jakarta Sans", sans-serif';
-  ctx.fillStyle = 'rgba(245,245,243,0.25)';
-  ctx.fillText('YOUR HIGHEST-IMPACT SWAPS', 40, 250);
-
-  // Swap rows
-  var topSwap = getTopSwap();
-  var secondSwapCard = getSecondSwap(topSwap.q);
-  var swaps = [
-    { cat: topSwap.category || 'Primary', name: topSwap.title, boost: topSwap.boostRange },
-    secondSwapCard ? { cat: secondSwapCard.category || 'Second', name: secondSwapCard.title, boost: secondSwapCard.boostRange } : null,
-    topSwap.todaySwap ? { cat: topSwap.todaySwap.category || 'Today', name: topSwap.todaySwap.title, boost: topSwap.todaySwap.boostRange } : null
-  ].filter(Boolean);
-
-  // Fill remaining category slots
-  var catMap = { 1: 'Air', 2: 'Water', 3: 'Laundry', 4: 'Cookware', 5: 'Fragrance' };
-  var used = swaps.map(function(s) { return s.cat; });
-  [1,2,3,4,5].forEach(function(q) {
-    var cat = catMap[q];
-    if (used.indexOf(cat) < 0 && used.indexOf(cat + ' Quality') < 0 && swaps.length < 5) {
-      swaps.push({ cat: cat, name: answers[q] > 0 ? 'Needs attention' : 'Good', boost: null });
-    }
-  });
-
-  var y = 300;
-  swaps.slice(0, 5).forEach(function(swap, i) {
-    // Row bg on alternating
-    if (i % 2 === 0) {
-      ctx.fillStyle = 'rgba(255,255,255,0.02)';
-      ctx.fillRect(40, y - 24, W - 80, 56);
-    }
-    // Category
-    ctx.font = '300 18px "Plus Jakarta Sans", sans-serif';
-    ctx.fillStyle = 'rgba(245,245,243,0.25)';
-    ctx.fillText((swap.cat || '').toUpperCase().substring(0, 10), 40, y + 4);
-    // Product name
-    ctx.font = '300 22px "Plus Jakarta Sans", sans-serif';
-    ctx.fillStyle = '#F5F5F3';
-    var name = swap.name || '';
-    if (name.length > 32) name = name.substring(0, 30) + '…';
-    ctx.fillText(name, 200, y + 4);
-    // Boost
-    if (swap.boost) {
-      var avg = Math.round((swap.boost[0] + swap.boost[1]) / 2);
-      ctx.font = '300 18px "Plus Jakarta Sans", sans-serif';
-      ctx.fillStyle = '#7DC878';
-      ctx.textAlign = 'right';
-      ctx.fillText('+' + avg + ' pts', W - 40, y + 4);
-      ctx.textAlign = 'left';
-    }
-    y += 72;
-  });
-
-  // Footer line
-  ctx.strokeStyle = 'rgba(245,245,243,0.06)';
+  // Header divider
+  ctx.strokeStyle = 'rgba(245,245,243,0.1)';
+  ctx.lineWidth = 1;
   ctx.beginPath();
-  ctx.moveTo(40, H - 80);
-  ctx.lineTo(W - 40, H - 80);
+  ctx.moveTo(40, 210);
+  ctx.lineTo(W - 40, 210);
   ctx.stroke();
 
-  // Footer
-  ctx.font = '300 18px "Plus Jakarta Sans", sans-serif';
+  // ── Swaps section ──
+  ctx.font = '300 15px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.3)';
+  ctx.fillText('YOUR HIGHEST-IMPACT SWAPS', 40, 246);
+
+  // Get swap data
+  var topSwap = getTopSwap();
+  var secondSwapCard = getSecondSwap(topSwap.q);
+  var swapRows = [];
+
+  if (topSwap) swapRows.push({
+    cat: (topSwap.category || 'Primary').toUpperCase().substring(0, 12),
+    name: topSwap.title || '',
+    boost: topSwap.boostRange
+  });
+  if (secondSwapCard) swapRows.push({
+    cat: (secondSwapCard.category || 'Second').toUpperCase().substring(0, 12),
+    name: secondSwapCard.title || '',
+    boost: secondSwapCard.boostRange
+  });
+  if (topSwap && topSwap.todaySwap) swapRows.push({
+    cat: (topSwap.todaySwap.category || 'Today').toUpperCase().substring(0, 12),
+    name: topSwap.todaySwap.title || '',
+    boost: topSwap.todaySwap.boostRange
+  });
+
+  // Fill remaining slots with category names
+  var catMap = {1:'AIR',2:'WATER',3:'LAUNDRY',4:'COOKWARE',5:'FRAGRANCE'};
+  var usedCats = swapRows.map(function(r){return r.cat;});
+  [1,2,3,4,5].forEach(function(q) {
+    if (swapRows.length < 5) {
+      var cat = catMap[q];
+      var alreadyUsed = usedCats.some(function(u){ return u.indexOf(cat.substring(0,4)) >= 0; });
+      if (!alreadyUsed) {
+        swapRows.push({ cat: cat, name: answers[q] > 0 ? 'See recommendations' : 'Good standing', boost: null });
+        usedCats.push(cat);
+      }
+    }
+  });
+
+  var y = 286;
+  swapRows.slice(0, 5).forEach(function(swap, i) {
+    var rowH = 86;
+    // Alternating row background
+    if (i % 2 === 0) {
+      ctx.fillStyle = 'rgba(255,255,255,0.03)';
+      ctx.fillRect(40, y, W - 80, rowH);
+    }
+
+    // Category label
+    ctx.font = '300 13px Arial, sans-serif';
+    ctx.fillStyle = 'rgba(245,245,243,0.3)';
+    ctx.fillText(swap.cat, 54, y + 28);
+
+    // Product name — truncate if needed
+    var name = swap.name || '';
+    if (name.length > 36) name = name.substring(0, 34) + '…';
+    ctx.font = '300 19px Arial, sans-serif';
+    ctx.fillStyle = '#F5F5F3';
+    ctx.fillText(name, 54, y + 56);
+
+    // Boost points
+    if (swap.boost) {
+      var avg = Math.round((swap.boost[0] + swap.boost[1]) / 2);
+      ctx.font = '300 16px Arial, sans-serif';
+      ctx.fillStyle = '#7DC878';
+      ctx.textAlign = 'right';
+      ctx.fillText('+' + avg + ' pts', W - 54, y + 56);
+      ctx.textAlign = 'left';
+    }
+
+    // Row divider
+    ctx.strokeStyle = 'rgba(245,245,243,0.05)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(40, y + rowH);
+    ctx.lineTo(W - 40, y + rowH);
+    ctx.stroke();
+
+    y += rowH;
+  });
+
+  // ── Footer ──
+  ctx.strokeStyle = 'rgba(245,245,243,0.08)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(40, H - 72);
+  ctx.lineTo(W - 40, H - 72);
+  ctx.stroke();
+
+  ctx.font = '300 15px Arial, sans-serif';
   ctx.fillStyle = 'rgba(245,245,243,0.2)';
-  ctx.fillText('tracehome.co', 40, H - 44);
-  ctx.font = 'italic 400 18px "Cormorant Garamond", serif';
+  ctx.fillText('tracehome.co', 40, H - 40);
+
+  ctx.font = 'italic 300 15px Georgia, serif';
   ctx.textAlign = 'right';
-  ctx.fillText('Find it. Fix it. Live better.', W - 40, H - 44);
+  ctx.fillStyle = 'rgba(245,245,243,0.2)';
+  ctx.fillText('Find it. Fix it. Live better.', W - 40, H - 40);
   ctx.textAlign = 'left';
 }
 
@@ -2672,7 +2747,7 @@ function downloadExportCard() {
 function showExportPreview() {
   var canvas = document.getElementById('export-canvas');
   if (canvas) canvas.style.display = 'block';
-  setTimeout(drawExportCard, 600);
+  drawExportCard();
 }
 
 </script>
