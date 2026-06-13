@@ -1815,10 +1815,11 @@
       </div>
 
       <!-- Export score + swaps card -->
-      <div class="export-wrap" id="export-wrap">
+      <div class="export-wrap" id="export-wrap" style="display:none;">
         <p class="export-label">Save your score &amp; swaps</p>
-        <canvas id="export-canvas" width="640" height="760" style="width:100%;max-width:320px;display:block;margin:0 auto 10px;border:0.5px solid rgba(245,245,243,0.1);"></canvas>
-        <button class="btn-export" onclick="downloadExportCard()">Download my score &amp; swaps &darr;</button>
+        <canvas id="export-canvas" width="640" height="760" style="width:100%;max-width:320px;display:none;margin:0 auto 10px;border:0.5px solid rgba(245,245,243,0.1);"></canvas>
+        <button class="btn-export" onclick="showAndDownloadExportCard()">Download my score &amp; swaps &darr;</button>
+        <p style="font-family:'Jost',sans-serif;font-size:10px;font-weight:300;color:rgba(245,245,243,0.3);text-align:center;margin-top:10px;line-height:1.6;">Know someone who should check their home?<br><a href="https://tracehome.co/trace-quiz" target="_blank" style="color:rgba(245,245,243,0.45);text-decoration:underline;">tracehome.co/trace-quiz</a></p>
       </div>
 
         <!-- Full product teaser -->
@@ -2452,7 +2453,6 @@ async function submitEmail() {
     setTimeout(function() {
       reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 300);
-    showExportPreview();
   }
   // Show teaser after short delay
   setTimeout(function() {
@@ -2724,7 +2724,7 @@ function _renderExportCard() {
 
   ctx.font = '300 15px Arial, sans-serif';
   ctx.fillStyle = 'rgba(245,245,243,0.2)';
-  ctx.fillText('tracehome.co', 40, H - 40);
+  ctx.fillText('tracehome.co/trace-quiz', 40, H - 40);
 
   ctx.font = 'italic 300 15px Georgia, serif';
   ctx.textAlign = 'right';
@@ -2733,21 +2733,43 @@ function _renderExportCard() {
   ctx.textAlign = 'left';
 }
 
-function downloadExportCard() {
-  drawExportCard();
+function showAndDownloadExportCard() {
+  // Show the wrap and canvas
+  var wrap = document.getElementById('export-wrap');
   var canvas = document.getElementById('export-canvas');
-  if (!canvas) return;
-  var link = document.createElement('a');
-  link.download = 'trace-home-score.png';
-  link.href = canvas.toDataURL('image/png');
-  link.click();
+  if (wrap) wrap.style.display = 'block';
+  if (canvas) canvas.style.display = 'block';
+  // Draw then download
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function() {
+      _renderExportCard();
+      setTimeout(function() {
+        var link = document.createElement('a');
+        link.download = 'trace-home-score.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }, 200);
+    });
+  } else {
+    setTimeout(function() {
+      _renderExportCard();
+      setTimeout(function() {
+        var link = document.createElement('a');
+        link.download = 'trace-home-score.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      }, 200);
+    }, 600);
+  }
+}
+
+function downloadExportCard() {
+  showAndDownloadExportCard();
 }
 
 // Draw preview when revealed
 function showExportPreview() {
-  var canvas = document.getElementById('export-canvas');
-  if (canvas) canvas.style.display = 'block';
-  drawExportCard();
+  // Card only draws on explicit button click — not auto-shown
 }
 
 </script>
