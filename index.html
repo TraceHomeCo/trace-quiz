@@ -132,7 +132,7 @@
 
   .hook-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(36px, 8vw, 56px);
+    font-size: clamp(42px, 10vw, 66px);
     font-weight: 300;
     line-height: 1.1;
     letter-spacing: -0.01em;
@@ -515,9 +515,9 @@
     margin-top: 10px;
   }
   .swap-boost-label {
-    font-size: 10px;
-    font-weight: 300;
-    color: rgba(245,245,243,0.4);
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(245,245,243,0.5);
     font-family: 'Jost', sans-serif;
   }
   .swap-boost-nums {
@@ -896,9 +896,9 @@
     margin-top: 7px;
   }
   .today-boost-label {
-    font-size: 9px;
-    font-weight: 300;
-    color: rgba(245,245,243,0.35);
+    font-size: 13px;
+    font-weight: 400;
+    color: rgba(245,245,243,0.5);
     font-family: 'Jost', sans-serif;
   }
   .today-boost-nums {
@@ -1003,8 +1003,8 @@
     gap: 8px;
   }
   .bc-text {
-    font-size: 10px;
-    font-weight: 300;
+    font-size: 13px;
+    font-weight: 400;
     color: #2D5A27;
     font-family: 'Jost', sans-serif;
     line-height: 1.5;
@@ -2140,6 +2140,8 @@ function getSecondSwap(excludeQ) {
 }
 
 function showResult() {
+  // Shared label classes for swap option rendering
+  var labelClasses = ['low', 'mid', 'high'];
   document.getElementById('progress-wrap').classList.remove('visible');
 
   const score = calcScore();
@@ -2276,7 +2278,6 @@ function showResult() {
   // Render three swap options
   var optWrap = document.getElementById('swap-options-wrap');
   if (optWrap && topSwap.swapOptions) {
-    var labelClasses = ['low', 'mid', 'high'];
     optWrap.innerHTML = topSwap.swapOptions.map(function(opt, i) {
       return '<a href="' + opt.link + '" target="_blank" rel="noopener" class="swap-opt">' +
         '<span class="swap-opt-label ' + labelClasses[i] + '">' + opt.label + '</span>' +
@@ -2319,10 +2320,40 @@ function showResult() {
   // If Q1 primary (air) and user already has clean laundry (answers[3] <= 5), swap today rec to dryer balls
   // Pick today swap from a DIFFERENT category than the top swap
   // Sort vals by score descending and find highest val from a different q
-  var secondSwap = getSecondSwap(topSwap.q);
-  // Use secondSwap directly as the second card recommendation
-  // NOT secondSwap.todaySwap — the second card should show the main category swap
-  var effectiveTodaySwap = secondSwap || null;
+  // Find second-highest scoring category (different from topSwap)
+  var CLEAN_HOME_FALLBACK = {
+    title: 'Cocofloss',
+    category: 'Often overlooked',
+    boostRange: [3, 6],
+    link: 'https://www.amazon.com/s?k=cocofloss&tag=tracehome-20',
+    betterThanMost: 'Most conventional floss is coated with PTFE — the same compound as Teflon. Cocofloss is one of the few without it.',
+    swapOptions: [
+      { label: 'Start today', title: 'Cocofloss', detail: '~$8 · Amazon · No PTFE coating · Plastic-free', link: 'https://www.amazon.com/s?k=cocofloss&tag=tracehome-20' },
+      { label: 'Mid range', title: 'PlantPaper Bamboo Toilet Paper', detail: '~$30 · plantpaper.us · PFAS non-detect across 28 compounds', link: 'https://plantpaper.us' },
+      { label: 'Best choice', title: 'French Press Coffee', detail: '~$25 · Amazon · Eliminates PFAS-treated paper filters', link: 'https://www.amazon.com/s?k=french+press+coffee&tag=tracehome-20' }
+    ]
+  };
+  // Build sorted list of all answer values excluding topSwap category
+  var allAnswerVals = [
+    { q: 1, v: parseInt(answers[1]) || 0 },
+    { q: 2, v: parseInt(answers[2]) || 0 },
+    { q: 3, v: parseInt(answers[3]) || 0 },
+    { q: 4, v: parseInt(answers[4]) || 0 },
+    { q: 5, v: parseInt(answers[5]) || 0 }
+  ].filter(function(a) { return a.q !== topSwap.q && a.v > 0; })
+   .sort(function(a, b) { return b.v - a.v; });
+  var secondQ = allAnswerVals.length > 0 ? allAnswerVals[0].q : null;
+  // Get the full swap object for that category
+  var effectiveTodaySwap = CLEAN_HOME_FALLBACK;
+  if (secondQ) {
+    var savedQ = answers[topSwap.q];
+    answers[topSwap.q] = 0;
+    var secondResult = getTopSwap();
+    answers[topSwap.q] = savedQ;
+    if (secondResult && secondResult.q === secondQ) {
+      effectiveTodaySwap = secondResult;
+    }
+  }
   if (effectiveTodaySwap && todayCard) {
     var ts = effectiveTodaySwap;
     // Update today eyebrow
@@ -2331,7 +2362,6 @@ function showResult() {
     // Render three options if available
     var todayOptWrap = document.getElementById('today-options-wrap');
     if (todayOptWrap && ts.swapOptions) {
-      // labelClasses already declared above
       todayOptWrap.innerHTML = ts.swapOptions.map(function(opt, i) {
         return '<a href="' + opt.link + '" target="_blank" rel="noopener" class="swap-opt">' +
           '<span class="swap-opt-label ' + labelClasses[i] + '">' + opt.label + '</span>' +
@@ -2353,6 +2383,8 @@ function showResult() {
         '<span class="swap-opt-arrow">↗</span>' +
       '</a>';
     }
+    // Ensure today card is visible (safety net)
+    if (todayCard.style) todayCard.style.display = '';
     // Populate today can't find
     var todayCantFind = document.getElementById('today-cant-find-text');
     if (todayCantFind && ts.betterThanMost) {
