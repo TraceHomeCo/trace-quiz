@@ -850,6 +850,7 @@
   
   /* ── Start today card — Option A dark ── */
   .swap-today {
+    display: block;
     background: #1A1A1A;
     padding: 13px;
     margin-bottom: 28px;
@@ -2261,6 +2262,9 @@ function showResult() {
     return; // Skip regular swap card rendering
   } else {
     if (cleanHomeDiv) cleanHomeDiv.style.display = 'none';
+    // Show the primary swap card for all non-clean-home users
+    var swapHighlight = document.getElementById('swap-highlight');
+    if (swapHighlight) swapHighlight.style.display = 'block';
   }
 
   // Update swap eyebrow
@@ -2384,7 +2388,7 @@ function showResult() {
       '</a>';
     }
     // Ensure today card is visible (safety net)
-    if (todayCard.style) todayCard.style.display = '';
+    if (todayCard.style) todayCard.style.display = 'block';
     // Populate today can't find
     var todayCantFind = document.getElementById('today-cant-find-text');
     if (todayCantFind && ts.betterThanMost) {
