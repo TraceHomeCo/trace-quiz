@@ -1730,7 +1730,7 @@
 
         <p class="affiliate-note">Some product links support Trace through affiliate commissions &mdash; at no extra cost to you.</p>
 
-      <div class="swap-highlight" id="swap-highlight">
+      <div class="swap-highlight" id="swap-highlight" style="display:none;">
         <div class="swap-eyebrow" id="swap-eyebrow">Your top swaps &mdash; low to high</div>
 
         <!-- Three swap options populated by JS -->
@@ -2320,21 +2320,14 @@ function showResult() {
   // Pick today swap from a DIFFERENT category than the top swap
   // Sort vals by score descending and find highest val from a different q
   var secondSwap = getSecondSwap(topSwap.q);
-  var effectiveTodaySwap = secondSwap ? secondSwap.todaySwap : topSwap.todaySwap;
-  if (topSwap.q === 1 && answers[3] <= 5 && effectiveTodaySwap) {
-    effectiveTodaySwap = {
-      title: 'Woolzies Organic Wool Dryer Balls',
-      detail: '~$18 · Amazon · Replaces dryer sheets permanently',
-      desc: 'Dryer sheets coat every fabric with synthetic fragrance and quat compounds. Wool dryer balls replace them entirely — zero chemical residue.',
-      boostRange: [4, 8],
-      link: 'https://www.amazon.com/s?k=woolzies+wool+dryer+balls&tag=tracehome-20'
-    };
-  }
+  // Use secondSwap directly as the second card recommendation
+  // NOT secondSwap.todaySwap — the second card should show the main category swap
+  var effectiveTodaySwap = secondSwap || null;
   if (effectiveTodaySwap && todayCard) {
     var ts = effectiveTodaySwap;
     // Update today eyebrow
     var todayEyebrow = document.getElementById('today-eyebrow');
-    if (todayEyebrow) todayEyebrow.textContent = ts.category ? 'Your ' + ts.category + ' swaps — low to high' : 'Your second highest-impact swap';
+    if (todayEyebrow) todayEyebrow.textContent = ts.category ? 'Your ' + ts.category + ' swap — ranked low to high' : 'Your second highest-impact swap';
     // Render three options if available
     var todayOptWrap = document.getElementById('today-options-wrap');
     if (todayOptWrap && ts.swapOptions) {
@@ -2494,15 +2487,50 @@ async function submitEmail() {
 }
 
 function shareScore() {
-  const score = document.getElementById('score-display').textContent;
-  const text = 'I just scored my home\u2019s health \u2014 got a ' + score + '/100 with the Trace home health quiz. Find out what\u2019s hiding in yours: tracehomeco.github.io/trace-quiz';
-  if (navigator.share) {
-    navigator.share({ text: text }).catch(() => {});
+  var score = document.getElementById('score-display').textContent;
+  var quizUrl = 'tracehome.co/trace-quiz';
+  var shareText = 'I just got my home health score \u2014 ' + score + '/100. Find out what\'s hiding in yours: ' + quizUrl;
+  var canvas = document.getElementById('export-canvas');
+
+  function shareImage() {
+    if (canvas && navigator.canShare) {
+      _renderExportCard();
+      canvas.toBlob(function(blob) {
+        if (!blob) { shareTextOnly(); return; }
+        var file = new File([blob], 'trace-home-score.png', { type: 'image/png' });
+        if (navigator.canShare({ files: [file] })) {
+          navigator.share({ files: [file], text: shareText }).catch(function() { shareTextOnly(); });
+        } else {
+          shareTextOnly();
+        }
+      }, 'image/png');
+    } else {
+      shareTextOnly();
+    }
+  }
+
+  function shareTextOnly() {
+    if (navigator.share) {
+      navigator.share({ text: shareText }).catch(function() { copyFallback(); });
+    } else {
+      copyFallback();
+    }
+  }
+
+  function copyFallback() {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(shareText).then(function() {
+        var btn = document.querySelector('.btn-share');
+        if (btn) { btn.textContent = '\u2713 Copied'; setTimeout(function() { btn.textContent = 'Share my score \u2192'; }, 2500); }
+      });
+    }
+  }
+
+  // Draw card first if fonts ready, then share
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function() { shareImage(); });
   } else {
-    navigator.clipboard.writeText(text).then(() => {
-      const btn = document.querySelector('.btn-share');
-      if (btn) { btn.textContent = '\u2713 Copied to clipboard'; setTimeout(() => { btn.textContent = 'Share my score \u2192'; }, 2500); }
-    });
+    setTimeout(shareImage, 600);
   }
 }
 
@@ -2547,7 +2575,7 @@ function exportResults() {
     text += '\u2022 ' + f.name + ' \u2014 ' + f.note + '\n';
   });
   text += '\nGet your full swap recommendations at tracehome.co\n';
-  text += 'Take the full assessment (coming soon): tracehomeco.github.io/trace-quiz\n';
+  text += 'Take the full assessment (coming soon): tracehome.co/trace-quiz\n';
   
   // Try clipboard first, fall back to share sheet
   if (navigator.clipboard && navigator.clipboard.writeText) {
