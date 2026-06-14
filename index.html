@@ -2337,27 +2337,24 @@ function showResult() {
       { label: 'Best choice', title: 'French Press Coffee', detail: '~$25 · Amazon · Eliminates PFAS-treated paper filters', link: 'https://www.amazon.com/s?k=french+press+coffee&tag=tracehome-20' }
     ]
   };
-  // Build sorted list of all answer values excluding topSwap category
-  var allAnswerVals = [
-    { q: 1, v: parseInt(answers[1]) || 0 },
-    { q: 2, v: parseInt(answers[2]) || 0 },
-    { q: 3, v: parseInt(answers[3]) || 0 },
-    { q: 4, v: parseInt(answers[4]) || 0 },
-    { q: 5, v: parseInt(answers[5]) || 0 }
-  ].filter(function(a) { return a.q !== topSwap.q && a.v > 0; })
-   .sort(function(a, b) { return b.v - a.v; });
-  var secondQ = allAnswerVals.length > 0 ? allAnswerVals[0].q : null;
-  // Get the full swap object for that category
+  // Find second swap: zero out topSwap category, get next highest
+  // Use CLEAN_HOME_FALLBACK only when truly only one category has any score
+  var otherScores = [1,2,3,4,5].filter(function(q) {
+    return q !== topSwap.q && (parseInt(answers[q]) || 0) > 0;
+  });
   var effectiveTodaySwap = CLEAN_HOME_FALLBACK;
-  if (secondQ) {
-    var savedQ = answers[topSwap.q];
+  if (otherScores.length > 0) {
+    // At least one other category has a score — get that swap
+    var savedTopQ = answers[topSwap.q];
     answers[topSwap.q] = 0;
     var secondResult = getTopSwap();
-    answers[topSwap.q] = savedQ;
-    if (secondResult && secondResult.q === secondQ) {
+    answers[topSwap.q] = savedTopQ;
+    // Use secondResult as long as it's different from topSwap
+    if (secondResult && secondResult.q !== topSwap.q) {
       effectiveTodaySwap = secondResult;
     }
   }
+  // effectiveTodaySwap = CLEAN_HOME_FALLBACK only if truly single-category score
   if (effectiveTodaySwap && todayCard) {
     var ts = effectiveTodaySwap;
     // Update today eyebrow
