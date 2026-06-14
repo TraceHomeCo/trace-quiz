@@ -1814,6 +1814,8 @@
        <div class="share-wrap">
         <button class="btn-share" onclick="shareScore()">Share my score →</button>
       </div>
+      <!-- Hidden canvas for share card (score only) -->
+      <canvas id="share-canvas" width="640" height="640" style="display:none;position:absolute;left:-9999px;"></canvas>
 
       <!-- Export score + swaps card -->
       <div class="export-wrap" id="export-wrap" style="display:none;">
@@ -1839,7 +1841,8 @@
       </div>
 
       <!-- Legal footer -->
-      <div class="legal-footer" id="legal-footer" style="display:none;">
+      <p class="source-note" id="source-note" style="display:none;font-family:'Jost',sans-serif;font-size:9px;font-weight:300;color:rgba(245,245,243,0.25);text-align:center;margin:16px 0 8px;line-height:1.6;">Findings based on EPA, EWG, and peer-reviewed research. Full sources at tracehome.co/learn</p>
+    <div class="legal-footer" id="legal-footer" style="display:none;">
         <p class="legal-line">For educational purposes only &middot; Not medical advice &middot; Affiliate links at no cost to you</p>
       </div>
 
@@ -2476,6 +2479,8 @@ async function submitEmail() {
   var reveal = document.getElementById('swap-reveal');
   if (reveal) {
     reveal.classList.remove('gated');
+    var srcNote = document.getElementById('source-note');
+    if (srcNote) srcNote.style.display = 'block';
     setTimeout(function() {
       reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }, 300);
@@ -2523,11 +2528,11 @@ function shareScore() {
   var score = document.getElementById('score-display').textContent;
   var quizUrl = 'tracehome.co/trace-quiz';
   var shareText = 'I just got my home health score \u2014 ' + score + '/100. Find out what\'s hiding in yours: ' + quizUrl;
-  var canvas = document.getElementById('export-canvas');
+  var canvas = document.getElementById('share-canvas');
 
   function shareImage() {
     if (canvas && navigator.canShare) {
-      _renderExportCard();
+      _renderShareCard();
       canvas.toBlob(function(blob) {
         if (!blob) { shareTextOnly(); return; }
         var file = new File([blob], 'trace-home-score.png', { type: 'image/png' });
@@ -2633,6 +2638,83 @@ function drawExportCard() {
   } else {
     setTimeout(_renderExportCard, 800);
   }
+}
+
+function _renderShareCard() {
+  var canvas = document.getElementById('share-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = 640, H = 640;
+  canvas.width = W; canvas.height = H;
+
+  // Background
+  ctx.fillStyle = '#1A1A1A';
+  ctx.fillRect(0, 0, W, H);
+
+  // Subtle border
+  ctx.strokeStyle = 'rgba(245,245,243,0.08)';
+  ctx.lineWidth = 2;
+  ctx.strokeRect(20, 20, W - 40, H - 40);
+
+  // Score eyebrow
+  ctx.font = '300 17px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.3)';
+  ctx.textAlign = 'center';
+  ctx.fillText('HOME HEALTH SCORE', W / 2, 160);
+
+  // Score number — large, centred
+  var score = calcScore();
+  var band = getBand(score);
+  var scoreColors = {
+    'clean-home': '#7DC878',
+    'good-start': '#7DC878',
+    'real-opportunity': '#D4A847',
+    'most-opportunity': '#C87878'
+  };
+  ctx.font = 'italic 300 200px Georgia, serif';
+  ctx.fillStyle = scoreColors[band] || '#D4A847';
+  ctx.textAlign = 'center';
+  ctx.fillText(score.toString(), W / 2, 360);
+
+  // Band name
+  var bandNames = {
+    'clean-home': 'Clean Home',
+    'good-start': 'Good Start',
+    'real-opportunity': 'Real Opportunity',
+    'most-opportunity': 'Most Opportunity'
+  };
+  ctx.font = '300 22px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.45)';
+  ctx.textAlign = 'center';
+  ctx.fillText((bandNames[band] || '').toUpperCase(), W / 2, 420);
+
+  // Divider
+  ctx.strokeStyle = 'rgba(245,245,243,0.1)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(120, 460);
+  ctx.lineTo(W - 120, 460);
+  ctx.stroke();
+
+  // CTA
+  ctx.font = '300 18px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.35)';
+  ctx.textAlign = 'center';
+  ctx.fillText('What\u2019s yours?', W / 2, 504);
+
+  // URL
+  ctx.font = '300 17px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.2)';
+  ctx.textAlign = 'center';
+  ctx.fillText('tracehome.co/trace-quiz', W / 2, 534);
+
+  // Trace wordmark
+  ctx.font = '200 22px Arial, sans-serif';
+  ctx.fillStyle = 'rgba(245,245,243,0.15)';
+  ctx.textAlign = 'center';
+  ctx.fillText('trace', W / 2, 596);
+
+  ctx.textAlign = 'left';
 }
 
 function _renderExportCard() {
