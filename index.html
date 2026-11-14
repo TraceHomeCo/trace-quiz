@@ -1350,7 +1350,7 @@
   <div class="screen active" id="screen-hook">
 
     <p class="hook-eyebrow">The 5 Most Common Hidden Toxin Exposures</p>
-    <p class="hook-eyebrow-sub">Trace what’s hiding in your home · Full Assessment Coming Summer 2026</p>
+    <p class="hook-eyebrow-sub">HomeSnapshot by Trace · In-home assessments in San Diego</p>
 
     <h1 class="hook-headline">
       What's your<br><em>home health</em><br>score?
@@ -1358,17 +1358,16 @@
 
     <div class="stat-block">
       <p class="stat-eyebrow">Every day you breathe</p>
-      <p class="stat-pool">You'll breathe an Olympic swimming pool of air this year &mdash; mostly indoors, where pollutants run 5&ndash;10&times; higher than outside.</p>
+      <p class="stat-pool">You'll breathe an Olympic swimming pool of air this year &mdash; mostly indoors, where the EPA says pollutant levels are typically 2 to 5 times higher than outside.</p>
     </div>
 
     <p class="hook-body">
       Most homes have hidden toxins across five key areas &mdash;
       air, water, laundry, cookware, and fragrance. In 5 questions, get a first look at where your home stands &mdash;
-      a preview of the full 80+ checkpoint Trace home health assessment
-      launching soon.
+      a preview of the full room-by-room Trace home health assessment.
     </p>
 
-    <p class="hook-time">Takes 90 seconds</p>
+    <p class="hook-time">Takes about 2 minutes</p>
 
     <button class="btn-primary" onclick="goToQ(1)">See how your home scores &rarr;</button>
 
@@ -1380,14 +1379,14 @@
   <div class="screen" id="screen-q1">
     <div class="question-wrap">
       <p class="q-number">Question 01 — Air Quality</p>
-      <h2 class="q-text">Do you run a HEPA air purifier in your home?</h2>
-      <p class="q-context">Indoor air typically contains 5–10x more pollutants than outdoor air. A true HEPA filter captures particles down to 0.3 microns — including dust, pet dander, VOCs, and fine particulate matter.</p>
+      <h2 class="q-text">Do you run an air purifier in your home?</h2>
+      <p class="q-context">The EPA says indoor air is typically 2 to 5 times more polluted than outdoor air. Any air purifier helps, and a true HEPA filter captures particles down to 0.3 microns — including dust, pet dander, VOCs, and fine particulate matter.</p>
 
       <div class="options-list" id="opts-q1">
         <button class="option" data-q="1" data-val="0" onclick="selectOption(this)">
           <span class="option-letter">A</span>
           <div>
-            <div class="option-text">Yes — HEPA purifier running in main living areas</div>
+            <div class="option-text">Yes — a purifier runs in the main living areas</div>
             <div class="option-sub">Best practice</div>
             <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">AirDoctor</span><span class="opt-brand-pill">Coway AP-1512HH</span><span class="opt-brand-pill">Levoit Core 300S</span><span class="opt-brand-pill">Winix</span></p>
           </div>
@@ -1403,8 +1402,8 @@
         <button class="option" data-q="1" data-val="12" onclick="selectOption(this)">
           <span class="option-letter">C</span>
           <div>
-            <div class="option-text">I have an air purifier, but it's not HEPA</div>
-            <div class="option-sub">Ionizers and non-HEPA filters vary widely in effectiveness</div>
+            <div class="option-text">Yes — I have an air purifier that isn't True HEPA</div>
+            <div class="option-sub">Still counts. Look for no ozone or ionizer function; True HEPA captures more fine particles</div>
             <p class="opt-brands"><span class="opt-brand-intro">e.g.</span><span class="opt-brand-pill">Honeywell basic</span><span class="opt-brand-pill">Germ Guardian</span></p>
           </div>
         </button>
@@ -1717,7 +1716,7 @@
       <!-- Email gate -->
       <div class="email-gate">
         <h3 class="email-gate-headline" id="email-gate-headline">Unlock your two highest-impact swaps.</h3>
-        <p class="email-gate-body" id="email-gate-body">Enter your email to unlock your two highest-impact swaps &mdash; plus additional recommendations in the days ahead and early access when the full Trace assessment launches.</p>
+        <p class="email-gate-body" id="email-gate-body">Enter your email to unlock your two highest-impact swaps &mdash; plus more recommendations in the days ahead and details on a full in-home Trace assessment in San Diego.</p>
         <div class="input-wrap">
           <input type="email" class="input-field" id="email-input" placeholder="Email address" autocomplete="email">
           <button class="btn-submit" id="btn-submit" onclick="submitEmail()">Send my swaps →</button>
@@ -1729,7 +1728,7 @@
       <!-- Swap reveal — hidden until email submitted -->
       <div id="swap-reveal" class="gated">
 
-        <p class="affiliate-note">Some product links support Trace through affiliate commissions &mdash; at no extra cost to you.</p>
+        <p class="affiliate-note">Some product links support Trace through affiliate commissions &mdash; at no extra cost to you. A commission never changes what we recommend.</p>
 
       <div class="swap-highlight" id="swap-highlight" style="display:none;">
         <div class="swap-eyebrow" id="swap-eyebrow">Your top swaps &mdash; low to high</div>
@@ -1783,8 +1782,8 @@
         <div class="dark-card" style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
           <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;">Most surprising finding — oral care</p>
           <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;">Cocofloss by CocoLab</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:6px;">~$9 · Third-party PFAS tested · PTFE-free</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);">Most clean-living households still use Oral-B Glide — PTFE-coated floss with PFAS compounds in direct contact with gum tissue. One of the most overlooked swaps even in health-conscious homes.</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:6px;">~$9 · PTFE-free</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);">Many conventional flosses are coated with PTFE, a PFAS-class material, and floss sits in direct contact with your gums. A small swap that is easy to overlook, even in health-conscious homes.</p>
           <a href="https://www.amazon.com/s?k=cocofloss&tag=tracehome-20" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
         </div>
         <div style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
@@ -1804,8 +1803,8 @@
         <div style="background:#1A1A1A;padding:12px;margin-bottom:5px;">
           <p style="font-size:8px;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:rgba(245,245,243,0.35);margin-bottom:4px;">Most overlooked category — bedding</p>
           <p style="font-size:12px;font-weight:300;color:#F5F5F3;margin-bottom:1px;">Aizome Organic Bedding</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:6px;">GOTS certified · FDA registered Class 1 medical device · No bleach, no PFAS</p>
-          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);">Even people who buy organic sheets rarely know about Aizome — the only bedding registered as a medical device by the FDA. 8 hours of skin contact every night. The standard for a truly clean bedroom.</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.35);margin-bottom:6px;">Organic cotton bedding · check the certification on the product you choose</p>
+          <p style="font-size:9px;font-weight:300;color:rgba(245,245,243,0.4);line-height:1.5;padding-top:6px;border-top:1px solid rgba(255,255,255,0.07);">Even people who buy organic sheets rarely think about 8 hours of skin contact every night. Aizome is one option to look into. Confirm the certification on the exact product before you buy.</p>
           <a href="https://aizome-textiles.com" target="_blank" rel="noopener" style="display:inline-block;margin-top:8px;font-size:8px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,245,243,0.65);background:rgba(245,245,243,0.1);border:1px solid rgba(245,245,243,0.12);padding:5px 9px;text-decoration:none;">Find this product →</a>
         </div>
       </div>
@@ -1827,12 +1826,12 @@
 
         <!-- Full product teaser -->
       <div class="full-teaser gated">
-        <div class="ft-eyebrow">Coming soon</div>
+        <div class="ft-eyebrow">Full assessment &middot; San Diego</div>
         <h3 class="ft-headline">The full Trace home assessment.</h3>
-        <p class="ft-body">Room by room. 80+ checkpoints. A complete scored breakdown of every exposure in your home — and a personalized swap plan at your own pace.</p>
+        <p class="ft-body">Room by room. A complete scored breakdown of every exposure in your home — and a personalized swap plan at your own pace.</p>
         <div class="ft-features">
           <div class="ft-feature"><span class="ft-num">01</span><span class="ft-text">Room-by-room health score</span></div>
-          <div class="ft-feature"><span class="ft-num">02</span><span class="ft-text">80+ hidden toxin checkpoints</span></div>
+          <div class="ft-feature"><span class="ft-num">02</span><span class="ft-text">Room-by-room hidden toxin checkpoints</span></div>
           <div class="ft-feature"><span class="ft-num">03</span><span class="ft-text">Personalized swap plan at your own pace</span></div>
           <div class="ft-feature"><span class="ft-num">04</span><span class="ft-text">Budget-fitted product recommendations</span></div>
         </div>
@@ -1843,7 +1842,7 @@
       <!-- Legal footer -->
       <p class="source-note" id="source-note" style="display:none;font-family:'Jost',sans-serif;font-size:9px;font-weight:300;color:rgba(245,245,243,0.25);text-align:center;margin:16px 0 8px;line-height:1.6;">Findings based on EPA, EWG, and peer-reviewed research. Full sources at tracehome.co/learn</p>
     <div class="legal-footer" id="legal-footer" style="display:none;">
-        <p class="legal-line">For educational purposes only &middot; Not medical advice &middot; Affiliate links at no cost to you</p>
+        <p class="legal-line">For educational purposes only &middot; Not medical advice &middot; We review products and materials; we don&rsquo;t test for mold &middot; Affiliate links at no cost to you</p>
       </div>
 
     </div><!-- /result-wrap -->
@@ -1863,8 +1862,8 @@
       <h2 class="ty-headline">You're in.</h2>
       <p class="ty-body">Your swap plan is on its way. Check for an email from Trace — your five highest-impact recommendations are inside.</p>
       <div class="ty-divider"></div>
-      <p class="ty-teaser">Trace launches soon with a full room-by-room home health assessment — 80+ checkpoints and a personalized swap plan at your own pace. You'll be first to know.</p>
-      <a href="https://www.instagram.com/tracehome" target="_blank" class="btn-primary" style="display:inline-block;text-align:center;text-decoration:none;">Follow @tracehome →</a>
+      <p class="ty-teaser">Trace offers a full room-by-room home health assessment in San Diego, with a personalized swap plan at your own pace. Email hello@tracehome.co to learn more.</p>
+      <a href="https://www.instagram.com/tracehomeco" target="_blank" class="btn-primary" style="display:inline-block;text-align:center;text-decoration:none;">Follow @tracehomeco →</a>
     </div>
   </div>
 
@@ -1943,7 +1942,7 @@ function buildFindings() {
 
   // Q1 Air
   if (answers[1] >= 20) items.push({ name: 'No HEPA air filtration', note: 'Indoor air quality — continuous 24/7 exposure', level: 'high' });
-  else if (answers[1] >= 12) items.push({ name: 'Non-HEPA air purifier', note: 'May not capture fine particulates and VOCs', level: 'medium' });
+  else if (answers[1] >= 12) items.push({ name: 'Non-HEPA air purifier', note: 'Better than none. True HEPA captures more fine particles', level: 'medium' });
   else if (answers[1] >= 8) items.push({ name: 'Partial air filtration', note: 'Main living areas still unfiltered', level: 'medium' });
   else items.push({ name: 'Air filtration — good', note: 'HEPA coverage in main areas', level: 'low' });
 
@@ -2259,8 +2258,8 @@ function showResult() {
     var egb = document.getElementById('email-gate-body');
     var esb = document.getElementById('btn-submit');
     if (egh) egh.textContent = 'The full Trace assessment goes even deeper.';
-    if (egb) egb.textContent = 'Your home is genuinely clean \u2014 the full assessment has 80+ checkpoints across every room and will surface refinements most people miss even after years of clean living. Be first in line when it launches.';
-    if (esb) esb.textContent = 'Notify me when it launches \u2192';
+    if (egb) egb.textContent = 'Your home is genuinely clean \u2014 the full in-home assessment goes room by room and can surface refinements most people miss even after years of clean living.';
+    if (esb) esb.textContent = 'Tell me about the full assessment \u2192';
     showScreen('result');
     return; // Skip regular swap card rendering
   } else {
@@ -2439,7 +2438,7 @@ function showResult() {
   egh = document.getElementById('email-gate-headline');
   egb = document.getElementById('email-gate-body');
   if (egh) egh.textContent = 'Unlock your two highest-impact swaps.';
-  if (egb) egb.textContent = 'Enter your email to unlock your two highest-impact swaps \u2014 plus additional recommendations in the days ahead and early access when the full Trace assessment lau first when the full Trace assessment launches.';
+  if (egb) egb.textContent = 'Enter your email to unlock your two highest-impact swaps \u2014 plus more recommendations in the days ahead and details on a full in-home Trace assessment in San Diego.';
 
   // Encode results in URL for bookmarking
   try {
@@ -2613,7 +2612,7 @@ function exportResults() {
     text += '\u2022 ' + f.name + ' \u2014 ' + f.note + '\n';
   });
   text += '\nGet your full swap recommendations at tracehome.co\n';
-  text += 'Take the full assessment (coming soon): tracehome.co/trace-quiz\n';
+  text += 'Take the free HomeSnapshot: tracehome.co/trace-quiz\n';
   
   // Try clipboard first, fall back to share sheet
   if (navigator.clipboard && navigator.clipboard.writeText) {
